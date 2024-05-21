@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 > [기업] 채용확인서</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+        <style>
+            @media print {
+                @page {
+                    margin: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 컨텐츠영역 -->
+        <main>
+            <div class="print--container">
+                <!-- 프린트 버튼 -->
+                <button type="button" class="btn btn--line btn-s btn--print" title="프린트하기" onclick="printPageArea()"><span class="icon ic-print"></span></button>
+                
+                <div class="print--inner">
+                    <!-- <img class="print--logo" src="./images/print/pring-logo.png" alt=""> -->
+
+                    <h1 class="print--title font-myeongjo ac" style="font-size: 3rem;">채용확인서</h1>
+                    <table class="table mb-column-table mr-top-xs">
+                        <colgroup>
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">신청업체 기본정보</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>업체명(상호)</th>
+                                <td> </td>
+                                <th>대표자</th>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <th>사업자번호</th>
+                                <td> </td>
+                                <th>대표번호</th>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <th>주소</th>
+                                <td colspan="3"> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table mb-column-table mr-top-xs">
+                        <colgroup>
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">채용내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>채용일시</th>
+                                <td> </td>
+                                <th>채용분야</th>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <th>채용공고명</th>
+                                <td colspan="3"> </td>
+                            </tr>
+                            <tr>
+                                <th>채용계획 인원수</th>
+                                <td> </td>
+                                <th>실제채용 인원수</th>
+                                <td> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="print--description fs-l">
+                        상기 기업은 'KOICA 개발협력 커리어센터' 사이트를 통해<br />
+                        신규 직원을 채용하였음을 확인합니다.
+                    </p>
+                    <p class="pring--date font-myeongjo">2023년&nbsp; 09월&nbsp; 01일</p>
+
+                    <div class="print--signature-wrap">
+                        <small class="font-myeongjo mr-top-m">KOICA 개발협력커리어센터</small>
+                        <h2 class="print--signature font-myeongjo mr-top-xs">
+                            <span class="fs-l">Tel.1588-0434 / www.koical.go.kr</span>
+                            <!-- <img src="./images/print/stamp.png" alt="" class="print--stamp"> -->
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

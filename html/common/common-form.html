@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼요소 모음</title>
+    <!-- css -->
+<link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/wvCommon.css" />
+    <link rel="stylesheet" href="/css/wvUser.css" />
+    <!-- 모바일 css -->
+    <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+    <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+    <!-- script -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script defer src="/js/wvScript.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            accordionSlide('.accordion-wrap');
+        });
+    </script>
+</head>
+
+<body>
+    <!-- content -->
+    <main id="contentSkip" class="">
+        <div class="wrap-inner">
+            <div class="sub-content-wrap">
+                <!-- left menu -->
+                <aside class="left-menu">
+                    <ul class="left-menu__list">
+                        <!-- PUB: 메뉴 활성화 is-active 클래스 추가 -->
+                        <!-- PUB: 메뉴 활성화 aria-expanded="true" 추가 -->
+                        <li class="left-menu__item is-on">
+                            <h2 class="depth-title"><a href="" aria-expanded="true">menu</a></h2>
+                            <ul class="depth-list">
+                                <!-- PUB: is-active 클래스 추가 -->
+                                <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                            </ul>
+                        </li>
+                        <li class="left-menu__item">
+                            <h2 class="depth-title"><a href="#">menu</a></h2>
+                        </li>
+                        <li class="left-menu__item">
+                            <h2 class="depth-title"><a href="#">menu</a></h2>
+                        </li>
+                        <li class="left-menu__item">
+                            <h2 class="depth-title"><a href="#">menu</a></h2>
+                        </li>
+                        <li class="left-menu__item">
+                            <!-- PUB: 메뉴 활성화 is-active 클래스 추가 -->
+                            <!-- PUB: 메뉴 활성화 aria-expanded="true" 추가 -->
+                            <h2 class="depth-title"><a href="" aria-expanded="false">menu</a></h2>
+                            <ul class="depth-list">
+                                <!-- PUB: is-active 클래스 추가 -->
+                                <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                                <li class="depth-item"><a href="#">depth-menu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- content -->
+                <section class="content-wrpper">
+                    <h2 class="content-title">form</h2>
+                    <article class="contents">
+                        <form action="">
+                            <fieldset class="mr-top-ms">
+                                <legend class="sub-title flex--between wrap">지원자 기본정보</legend>
+                                <div class="info-box resume-item bg__blue mr-top-xs">
+                                    <dl class="user-name-group">
+                                        <dt class="fs-m fw-m">홍길동</dt>
+                                        <dd class="fw-m ac">1980.12.12 / 남</dd>
+                                    </dl>
+                                    <div class="label-input-group">
+                                        <div class="label-input input--m">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="label-input" type="text" placeholder="">
+                                            <label for="label-input" class="essential">이메일 주소</label>
+                                        </div>
+                                        <div class="label-input input--m">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="mobile-number" type="text" placeholder="">
+                                            <label for="mobile-number" class="essential">휴대폰 번호</label>
+                                        </div>
+                                        <div class="drop-select-wrap">
+                                            <!-- 보여지는 select -->
+                                            <div class="dropdown-select input--s">
+                                                <div class="select-main-box">
+                                                    <button type="button" class="select-btn" title="취 · 창업 지역">
+                                                        <span class="visually-hidden">열기</span>
+                                                    </button>
+                                                    <p class="select-title">
+                                                        <span class="essential select-lebel">취 · 창업 지역</span>
+                                                        <strong class="select-text">취 · 창업 지역</strong>
+                                                    </p>
+                                                </div>
+                                                <div class="select-menu-box">
+                                                    <ul class="select-menu">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- 실제 select -->
+                                            <select name="" id="" class="real_select_list" title="취 · 창업 지역">
+                                                <option value="국내">국내</option>
+                                                <option value="국내">국내</option>
+                                            </select>
+                                        </div>
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="mobile-number" type="text" placeholder="">
+                                            <label for="mobile-number" class="essential">해외의 경우 국가명 기재</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="info-box box--line">
+                                <dl class="user-name-group">
+                                    <dt class="fs-m fw-m">홍길동</dt>
+                                    <dd class="fw-m ac">1980.12.12 / 남</dd>
+                                </dl>
+                                <div class="label-input-group">
+                                    <div class="label-input input--s">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="label-input" type="text" placeholder="">
+                                        <label for="label-input" class="essential">이메일 주소</label>
+                                    </div>
+                                    <div class="label-input input--s">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="mobile-number" type="text" placeholder="">
+                                        <label for="mobile-number" class="essential">휴대폰 번호</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <fieldset class="mr-top-ms">
+                                <div class="">
+                                    <p class="flex--start wrap">
+                                        <span class="sub-title">교재 수령정보</span>
+                                        <button type="button" class="btn btn--line btn-s ml-auto">주소검색</button>
+                                    </p>
+                                    <p class="mr-top-xs">※ 응시유형 지면(문제집) 방식을 선택하신 분들 대상으로 모의고사 교재 수령을 위한 우편주소 정보를 취합합니다.</p>
+                                </div>
+                                <div class="resume-item bg__blue mr-top-xs">
+                                    <div class="label-input-group">
+                                        <div class="label-search input--s">
+                                            <button type="button" class="label-search-btn" title="우편번호"></button>
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <div class="label-search-title">
+                                                <span class="essential select-lebel">우편번호</span>
+                                                <strong class="select-text">02111</strong>
+                                            </div>
+                                        </div>
+                                        <div class="label-input input--l">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="adress" type="text" placeholder="">
+                                            <label for="adress" class="essential">주소</label>
+                                        </div>
+                                        <div class="label-input input--l">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="home-number" type="text" placeholder="">
+                                            <label for="home-number" class="essential">상세주소</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="resume-item bg__blue mr-top-xs">
+                                <div class="label-input-group">
+                                    <div class="label-input input--full">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">업체명</label>
+                                    </div>
+                                    <div class="label-input input--l">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">대표자명</label>
+                                    </div>
+                                    <div class="left-label-input input--xxl">
+                                        <p class="label-text essential">사업자등록번호</p>
+                                        <div class="business-num">
+                                            <label for="businessRegistration01" class="visually-hidden">일련번호코드</label>
+                                            <input id="businessRegistration01" type="text" placeholder="" />
+                                            <label for="businessRegistration02" class="visually-hidden">개인법인구분코드</label>
+                                            <input id="businessRegistration02" type="text" placeholder="" />
+                                            <label for="businessRegistration03" class="visually-hidden">일련번호코드 와 검증코드</label>
+                                            <input id="businessRegistration03" type="text" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="label-input input--xl">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">업태명</label>
+                                    </div>
+                                    <div class="label-input input--xl">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">업종명</label>
+                                    </div>
+                                    <div class="label-date input--xl">
+                                        <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                        <label for="DATE_C3">법인설립일자</label>
+                                    </div>
+                                    <div class="label-input input--xl">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">종업원수(명)</label>
+                                    </div>
+                                    <div class="drop-select-wrap">
+                                        <!-- 보여지는 select -->
+                                        <div class="dropdown-select input--m">
+                                            <div class="select-main-box">
+                                                <button type="button" class="select-btn" title="국내 외 구분">
+                                                    <span class="visually-hidden">열기</span>
+                                                </button>
+                                                <p class="select-title">
+                                                    <span class="essential select-lebel">국내 외 구분</span>
+                                                    <strong class="select-text">선택</strong>
+                                                </p>
+                                            </div>
+                                            <ul class="select-menu-box">
+                                                <li class="select-item"><a href="">국내</a></li>
+                                                <li class="select-item"><a href="">해외</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 실제 select -->
+                                        <select name="" id="" class="real_select_list" title="국내 외 구분">
+                                            <option value="국내">국내</option>
+                                            <option value="해외">해외</option>
+                                        </select>
+                                    </div>
+                                    <div class="drop-select-wrap">
+                                        <!-- 보여지는 select -->
+                                        <div class="dropdown-select input--m">
+                                            <div class="select-main-box">
+                                                <button type="button" class="select-btn" title="기관 대분류">
+                                                    <span class="visually-hidden">열기</span>
+                                                </button>
+                                                <p class="select-title">
+                                                    <span class="essential select-lebel">기관 대분류</span>
+                                                    <strong class="select-text">선택</strong>
+                                                </p>
+                                            </div>
+                                            <ul class="select-menu-box">
+                                                <li class="select-item"><a href="">국내</a></li>
+                                                <li class="select-item"><a href="">해외</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 실제 select -->
+                                        <select name="" id="" class="real_select_list" title="기관 대분류">
+                                            <option value="국내">국내</option>
+                                            <option value="해외">해외</option>
+                                        </select>
+                                    </div>
+                                    <div class="drop-select-wrap">
+                                        <!-- 보여지는 select -->
+                                        <div class="dropdown-select input--m">
+                                            <div class="select-main-box">
+                                                <button type="button" class="select-btn" title="기관 중분류">
+                                                    <span class="visually-hidden">열기</span>
+                                                </button>
+                                                <p class="select-title">
+                                                    <span class="essential select-lebel">기관 중분류</span>
+                                                    <strong class="select-text">선택</strong>
+                                                </p>
+                                            </div>
+                                            <ul class="select-menu-box">
+                                                <li class="select-item"><a href="">국내</a></li>
+                                                <li class="select-item"><a href="">해외</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 실제 select -->
+                                        <select name="" id="" class="real_select_list" title="기관 중분류">
+                                            <option value="국내">국내</option>
+                                            <option value="해외">해외</option>
+                                        </select>
+                                    </div>
+                                    <div class="label-search input--s">
+                                        <button type="button" class="label-search-btn" title="우편번호"></button>
+                                        <div class="label-search-title">
+                                            <span class="essential select-lebel">우편번호</span>
+                                            <strong class="select-text">02111</strong>
+                                        </div>
+                                    </div>
+                                    <div class="label-input input--l">
+                                        <input id="adress" type="text" placeholder="" />
+                                        <label for="adress" class="essential">주소</label>
+                                    </div>
+                                    <div class="label-input input--l">
+                                        <input id="home-number" type="text" placeholder="" />
+                                        <label for="home-number" class="essential">상세주소</label>
+                                    </div>
+                                    <div class="label-input input--xl">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">전화번호</label>
+                                    </div>
+                                    <div class="label-input input--xl">
+                                        <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                        <input id="name" type="text" placeholder="" />
+                                        <label for="name" class="essential">팩스번호</label>
+                                    </div>
+                                </div>
+                                <ul class="resume-file-list mr-top-s">
+                                    <li>
+                                        <p class="file-title essential fw-m">로고파일</p>
+                                        <div class="right-group">
+                                            <div class="file-name-group">
+                                                <p class="file-name">
+                                                    로고파일.png
+                                                    <button type="button">
+                                                        <span class="visually-hidden">삭제</span>
+                                                        <span class="icon ic-close"></span>
+                                                    </button>
+                                                </p>
+                                            </div>
+                                            <div class="btn--upload-wrap">
+                                                <label for="file-upload" class="btn btn--secondaly btn-s btn--upload">파일첨부</label>
+                                                <input type="file" name="" id="file-upload" class="visually-hidden" />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset class="mr-top-m">
+                                <p class="sub-title">신청목적 및 희망사항 기재</p>
+                                <div class="resume-item bg__blue mr-top-xs">
+                                    <div class="label-input input--full">
+                                        <textarea name="" id="label-input6" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea"></textarea>
+                                        <label for="label-input6" class="essential">본 과정이 본인에게 꼭 필요한 이유를 기재해주세요.</label>
+                                    </div>
+                                    <div class="label-input input--full">
+                                        <textarea name="" id="label-input7" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea"></textarea>
+                                        <label for="label-input7" class="essential">본 과정에서 다루어주었으면 하는 내용이 있으시면 기재해주세요.</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <ul class="box--line">
+                                <li class="group__item">
+                                    <p class="fs-l fw-b">KOICA 글로벌인재양성사업 참가경험 (중복응답)<span class="text--red">&nbsp;*</span></p>
+                                    
+                                    <ul class="check-list-block mr-top-s">
+                                        <li class="check__item">
+                                            <div class="checkbox-block">
+                                                <input type="checkbox" name="" id="check-box1">
+                                                <label for="check-box1">해외봉사단원(KOICA 일반/드림/청년중기/프로젝트/UNV 대학생봉사단/NGO봉사단 등)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-block">
+                                                <input type="checkbox" name="" id="check-box2">
+                                                <label for="check-box2">개발협력인재(영프로페셔널(YP)/다자협력전문가(KMCO)/코디네이터 등)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-block">
+                                                <input type="checkbox" name="" id="check-box3">
+                                                <label for="check-box3">기타 인재양성사업(연수모니터링인턴/체험형 청년인턴'홍보분야'/리턴프로그램/PAO/STEP-Up 등)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-block">
+                                                <input type="checkbox" name="" id="check-box4">
+                                                <label for="check-box4">일반인</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="group__item">
+                                    <p class="fs-l fw-b">참여형태<span class="text--red">&nbsp;*</span></p>
+                                    
+                                    <ul class="check-list-block mr-top-s">
+                                        <li class="check__item">
+                                            <div class="radio-block">
+                                                <input type="radio" name="type" id="radio5">
+                                                <label for="radio5">오프라인 현장 참석</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="radio-block">
+                                                <input type="radio" name="type" id="radio6">
+                                                <label for="radio6">온라인 참석</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <fieldset class="mr-top-s">
+                                <legend class="sub-title">사전 설문</legend>
+                                <div class="info-box box--line">
+                                    <ul>
+                                        <li>
+                                            <div class="input-wrap">
+                                                <p class="fs-m fw-m">Q1. <em class="text--navy">(선택)</em> 글로벌인재사업(봉사단, yp 등)  참여 이후 개발협력분야로 진출하려고(하려고 했던) 이유는 무엇인가요?</p>
+                                                <textarea name="" id="" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea mr-top-xs" placeholder="examples" title="Q1. (선택) 글로벌인재사업(봉사단, yp 등)  참여 이후 개발협력분야로 진출하려고(하려고 했던) 이유는 무엇인가요?"></textarea>
+                                            </div>
+                                        </li>
+                                        <li class="mr-top-s">
+                                            <div class="input-wrap">
+                                                <p class="fs-m fw-m">Q2. 개발협력분야로의 전직/이직을 결심한 후 취업준비 과정에서 가장 어려운 점이 있다면 무엇인가요??</p>
+                                                <textarea name="" id="" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea mr-top-xs" placeholder="examples" title="Q2. 개발협력분야로의 전직/이직을 결심한 후 취업준비 과정에서 가장 어려운 점이 있다면 무엇인가요??"></textarea>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="box--bg__gray">
+                                    <li class="group__item">
+                                        <h4 class="fs-l">오프라인 참석장소 안내</h4>
+                                        <p class="text--darkgray mr-top-xs">장소 및 일정 안내는 신청하신 전화번호와 이메일로 재안내가 나갑니다. (안내예정일 12일, 15일 2회)</p>
+                                        <div class="box--bg__white">
+                                            <ul class="normal-list">
+                                                <li> ·  2023. 6. 16.(금), 14:00~17:00 </li>
+                                                <li> ·  역삼역 제네베라스페이스 (서울특별시 강남구 논현로 507 성지하이츠 3차 B1 108)</li>
+                                                <li> ·  오프라인 참석자분들께 저희가 정성껏 준비한 핑거푸드 케이터링과 커피, 소정의 기념품이 있습니다. </li>
+                                            </ul>
+                                        </div>
+                                        <p class="text--darkgray">
+                                            ODA YP, 봉사단 동기들과 함께 신청하시어 엔데믹을 맞이할겸 오랜만에 얼굴도 보고 <br>
+                                            개발협력 일자리의 발전을 위해 프로그램도 참여하시면 어떨까요?
+                                        </p>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset class="accordion-wrap">
+                                <legend hidden="">개인정보 제공 동의 및 이용 안내</legend>
+                                <div class="accordion-group terms-box">
+                                    <div class="accordion-title flex--between">
+                                        <button type="button" class="terms-btn" title="(필수) 개인정보 제공 동의 및 이용 안내 "><span class="visually-hidden">열기</span></button>
+                                        <p class="fs-m fw-m"><em class="text--red">(필수)</em> 개인정보 제공 동의 및 이용 안내</p>
+                                        <div class="radio-group">
+                                            <div class="radio-inline">
+                                                <input type="radio" name="privacy" id="privacy1" checked="">
+                                                <label for="privacy1">동의</label>
+                                            </div>
+                                            <div class="radio-inline">
+                                                <input type="radio" name="privacy" id="privacy2">
+                                                <label for="privacy2">동의하지 않음</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-cont scr-custom" tabindex="0">
+                                        <pre class="text--darkgray"><strong>개인정보 제공 동의 및 이용 안내</strong>
+
+                                            ㈜코웍스(이하 ‘코웍스’)는 개인정보 보호법 및 관련 법령에 따라 개인정보 보호에 최선을 다하고 있습니다. 아래의 안내된 내용을 상세히 읽어보신 후에 동의 여부를 결정하여 주시기 바랍니다.
+
+                                            ------------- 아                래 -------------
+                                            
+                                            1. 개인 정보의 수집 및 이용목적
+                                             ○ 코웍스는 개인 정보를 다음 목적을 위해서 수집 및 활용합니다.
+                                               - 교육 신청자 KOICA 활동 정보 확인 및 교육 운영 주요 안내사항 전달
+                                               - 커리어센터 이용안내 및 커리어센터 이용자 취업준비상태 확인
+                                               - 커리어센터 개인회원가입
+                                                 :  주간웹진 수신, 취업컨설팅 이용, 교육 및 행사 참여 등 개별적인 구직활동점검을 통한 맞춤 취업지원서비스 제공
+                                            
+                                            2. 수집하는 개인 정보의 항목
+                                             ○ 수집·이용 항목
+                                              - 필수 정보: 성명, 생년월일, 성별, 이메일 주소, 연락처, 거주지역, KOICA 인재양성사업 참여 여부
+                                             
+                                            3. 개인 정보의 보유 및 이용 기간
+                                            코웍스는 원칙적으로 개인 정보의 보유 및 이용 기간이 경과하였거나 목적이 달성될 경우 해당 개인 정보를 파기합니다. 다만 다른 법령에 따라 보존 필요성이 있는 경우에는 그러하지 않습니다.
+                                            
+                                            4. 개인 정보 제3자 제공에 대한 동의
+                                            개인 정보는 아래와 같이 제3자에게 제공될 수 있습니다.
+                                             ○ 제공받는 자: 에듀윌
+                                             ○ 제공받는 자의 이용목적: 교육 진행 및 지원
+                                             ○ 제공하는 개인 정보 항목: 성명, 이메일 주소, 휴대폰 번호
+                                            
+                                            ※ 귀하는 이상과 같은 코웍스의 개인 정보 수집 및 이용 사항에 대하여 동의를 거부할 권리가 있으며, 다만, 동의하지 않을 경우 수집·이용 목적과 관련된 업무를 처리할 수 없습니다.                                            </pre>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="btn-group ar mr-top-m">
+                                <button type="button" class="btn btn--primary btn-m">확인</button>
+                                <button type="button" class="btn btn--secondaly btn-m">취소</button>
+                            </div>
+                        </form>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

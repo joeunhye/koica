@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 > 상장</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+        <style>
+            @media print {
+                @page {
+                    margin: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 컨텐츠영역 -->
+        <main>
+            <div class="print--container bg">
+                <!-- 프린트 버튼 -->
+                <button type="button" class="btn btn--line btn-s btn--print" title="프린트하기" onclick="printPageArea()"><span class="icon ic-print"></span></button>
+                
+                <div class="print--inner">
+                    <!-- <img class="print--logo" src="./images/print/pring-logo.png" alt=""> -->
+                    <div class="print--top font-myeongjo al">
+                        <p>제 KP-2022-BB0001호</p>
+                    </div>
+                    <h1 class="print--title font-myeongjo ac" style="font-size: 5rem; letter-spacing: 3rem;">상 장</h1>
+                    
+                    <div class="print--info">
+                        <h2 class="font-myeongjo" style="font-size: 3rem; letter-spacing: 1rem; flex-shrink: 0;">최 우 수 상</h2>
+                        <ul>
+                            <li><strong style="word-spacing: 23px;">팀 명</strong><span>홍길동</span></li>
+                            <li><strong style="word-spacing: 23px;">팀 원</strong><span>홍길동, 박길동, 조길동, 김길동, 이길동</span></li>
+                            <li><strong style="word-spacing: 4px;">활동기간</strong><span>2023.01.24~2023.01.24</span></li>
+                        </ul>
+                    </div>
+
+                    <p class="print--description font-myeongjo" style="margin: 10rem 5rem; font-size: 3rem;">
+                        위는 2023 KOICA 리턴프로그램 참여팀으로 선발되어 
+                        <strong>'발달장애인 가족의 소통 및 네트워킹 플랫폼 개발'
+                        </strong>
+                        이라는 주제로 우수한 성과를
+                            거두었기에 이 상장을 드립니다.
+                    </p>
+                    <p class="pring--date font-myeongjo">2023년&nbsp; 09월&nbsp; 01일</p>
+                    <div class="print--signature-wrap mr-top-m">
+                        <small class="font-myeongjo" style="font-size: 2rem; letter-spacing: 1rem;">한국구제협력단</small>
+                        <h2 class="print--signature font-myeongjo mr-top-s">
+                            <span class="fs-l">이사장</span>
+                            <strong style="margin-left: 2rem;">장 원 삼</strong>
+                            <!-- <img src="./images/print/stamp.png" alt="" class="print--stamp"> -->
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

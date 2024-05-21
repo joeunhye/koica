@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커뮤니티 > 팝업 유형 모음</title>
+    <!-- css -->
+<link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/wvCommon.css" />
+    <link rel="stylesheet" href="../../css/wvUser.css" />
+    <!-- 모바일 css -->
+    <link rel="stylesheet" href="../../css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+    <link rel="stylesheet" href="../../css/wvUser-m.css" media="screen and (max-width: 860px)" />
+    <!-- script -->
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script defer src="../../js/wvScript.js"></script>
+</head>
+<body>
+    <!-- content -->
+    <main id="contentSkip" class="">
+        <div class="wrap-inner">
+            <div class="sub-content-wrap">
+
+                <!-- content -->
+                <section class="content-wrpper">
+                    <h2 class="content-title">커뮤니티 팝업 유형 모음</h2>
+                    <article class="contents">
+                        <h3 class="title--m">스터디모임 개설 신청 완료 팝업</h3>
+                        
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample')">모달창 오픈</button>
+                        
+                        <!-- 스터디모임 개설 신청 완료 팝업 -->
+                        <div id="modal-sample" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">스터디 모임 신청이 완료 되었습니다.</h4>
+                                    <p>관리자 승인 후 최종 개설 됩니다.</p>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button type="button" class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <h3 class="title--m">스터디모임 신청 결과 팝업</h3>
+                        
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample2')">모달창 오픈</button>
+                        
+                        <!-- 스터디모임 신청 결과 팝업 -->
+                        <div id="modal-sample2" class="modal">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">스터디 모임에 참여를 신청하는 이유를 간략하게 적어주십시오.</h4>
+                                    <p>참여신청을 하시면 방장님 승인 후 스터디 모임에 참여하실 수 있습니다. </p>
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button type="button" class="btn btn--primary btn-s" onclick="closeModal('modal-sample2')">신청</button>
+                                    <button type="button" class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <h3 class="title--m">스터디모임 참여 신청 결과 팝업</h3>
+
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample3')">모달창 오픈</button>
+                        
+                        <!-- 스터디모임 참여 신청 결과 팝업 -->
+                        <div id="modal-sample3" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample3')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">스터디모임에 참여 신청을 해 주셔서 감사합니다.</h4>
+                                    <p>승인 여부는 마이페이지에서 확인해주십시오.</p>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button type="button" class="btn btn--primary btn-s" onclick="closeModal('modal-sample3')">마이페이지</button>
+                                    <button type="button" class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample3')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <!-- footer -->
+    <footer class="footer"></footer>
+</body>
+</html>

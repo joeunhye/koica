@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head data-include-path="/html/x_dev_lab/include/head.html">
+    
+</head>
+
+<body data-include-path="/html/x_dev_lab/include/body.html">
+    
+    <!-- content -->
+    <main id="contentSkip" class="">
+        <div class="wrap-inner">
+            <div class="sub-content-wrap">
+
+                <!-- content -->
+                <section class="content-wrpper">
+                    <h2 class="content-title">Default</h2>
+                    <article class="contents">
+                        <p class="sub-title">지원서 제출</p>
+                        <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample2')">팝업버튼</button>
+                        <div id="modal-sample2" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">지원서가 제출 되었습니다.
+                                    </h4>
+                                    <p>제출 된 지원서는 마이페이지 > WFK 장학금 > 장학생 선발 메뉴에서 접수 종료일까지 확인 및 수정이 가능합니다.</p>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--secondaly btn-l" onclick="closeModal('modal-sample2')">확인</button>
+                                    <button class="btn btn--primary btn-l" onclick="">제출한 지원서 확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <p class="sub-title">이미 제출 했을때</p>
+                        <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample2')">팝업버튼</button>
+                        <div id="modal-sample2" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">이미 지원서를 제출하셨습니다.</h4>
+                                    <p>제출 된 지원서는 마이페이지 > WFK 장학금 > 장학생 선발 메뉴에서 접수 종료일까지 확인 및 수정이 가능합니다.</p>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--secondaly btn-l" onclick="closeModal('modal-sample2')">확인</button>
+                                    <button class="btn btn--primary btn-l" onclick="">제출한 지원서 확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+
+
+   
+
+     <!-- script --> 
+     
+     <script src="/js/jquery-3.6.0.min.js"></script>
+     <script src="/html/x_dev_lab/js/devCommon.js"></script>        
+     <script src="/js/wvScript.js"></script>
+</body>
+  
+</html>
+

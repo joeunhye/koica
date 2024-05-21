@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 > 이력관리 > 팝업</title>
+        <!-- css -->
+        <link rel="stylesheet" href="../../../css/reset.css" />
+        <link rel="stylesheet" href="../../../css/wvCommon.css" />
+        <link rel="stylesheet" href="../../../css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="../../../css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="../../../css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="../../../js/jquery-3.6.0.min.js"></script>
+        <script defer src="../../../js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- 스킵 메뉴 시작 -->
+        <div class="skipMenu">
+            <a href="#headSkip">메뉴로 이동</a>
+            <a href="#contentSkip" class="contentSkip">본문 바로가기</a>
+        </div>
+        <!-- 스킵 메뉴 종료 -->
+
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title">이력 관리 팝업 유형 모음</h2>
+                        <article class="contents">
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample1')">자기소개서 팝업</button>
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample2')">교육이력 팝업</button>
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample3')">파견이력 추가신청</button>
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample4')">파견이력 반려</button>
+
+                            <!-- 자기소개서 팝업 -->
+                            <div id="modal-sample1" class="modal">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-head">
+                                        자기소개서
+                                        <button type="button" class="btn btn--line btn-s">새 자기소개서 작성</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            이력서에 넣고자 하는 자기소개서를 선택 버튼으로 넣을 수 있습니다.<br />
+                                            자기소개서 수정이나 추가가 필요한 경우에는 '마이페이지>이력관리>자소서관리'에서 수정 · 추가하신 후 다시 불러오시면 됩니다.
+                                        </p>
+                                        <div class="responsive-table">
+                                            <table class="table center">
+                                                <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                                <colgroup class="pc-only">
+                                                    <col style="width: 25%" />
+                                                    <col style="width: 10%" />
+                                                    <col style="width: 8%" />
+                                                </colgroup>
+                                                <caption>
+                                                    자기소개서 리스트
+                                                </caption>
+                                                <thead>
+                                                    <tr>
+                                                        <th>자기소개서 제목</th>
+                                                        <th>작성일</th>
+                                                        <th>선택</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <!-- m-show 클래스 : pc에서만 보이는 요소 -->
+                                                        <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                        <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                        <!-- m-font-s 클래스 : 모바일에서 폰트 크기 작아지는 요소 -->
+                                                        <td class="m-show m-full al">
+                                                            <a href="" class="ellipsis2 table-title"
+                                                                >여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이
+                                                                찾는 바로 그 인재 홍길동입니다.
+                                                            </a>
+                                                        </td>
+                                                        <td class="m-show m-small m-font-s">2023-09-15</td>
+                                                        <td class="m-show m-small m-right">
+                                                            <div class="btn-group ac">
+                                                                <button type="button" class="btn btn--secondaly btn-s">자기소개서 수정</button>
+                                                                <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="m-show m-full al"><a href="" class="ellipsis2 table-title">여러분이 찾는 바로 그 인재 홍길동입니다. </a></td>
+                                                        <td class="m-show m-small m-font-s">2023-09-15</td>
+                                                        <td class="m-show m-small m-right">
+                                                            <div class="btn-group ac">
+                                                                <button type="button" class="btn btn--secondaly btn-s">자기소개서 수정</button>
+                                                                <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- 리스트 항목이 없을 경우 -->
+                                                    <tr>
+                                                        <td colspan="3" class="m-show m-full ac">
+                                                            <p>
+                                                                작성된 자기소개서가 없습니다. <br />
+                                                                자기소개서를 작성해주십시오.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button class="btn btn--primary btn-s">확인</button>
+                                        <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample1')">취소</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 교육이력 팝업 -->
+                            <div id="modal-sample2" class="modal">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-head">
+                                        교육이력
+                                        <button type="button" class="btn btn--line btn-s">교육이력 추가</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            이력서에 넣고자 하는 자기소개서를 선택 버튼으로 넣을 수 있습니다.<br />
+                                            자기소개서 수정이나 추가가 필요한 경우에는 '마이페이지>이력관리>자소서관리'에서 수정 · 추가하신 후 다시 불러오시면 됩니다.
+                                        </p>
+                                        <table class="table mb-column-table">
+                                            <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                            <colgroup class="pc-only">
+                                                <col style="width: 5%" />
+                                                <col style="width: 10%" />
+                                                <col style="width: 25%" />
+                                                <col style="width: 10%" />
+                                            </colgroup>
+                                            <caption>
+                                                교육이력 리스트
+                                            </caption>
+                                            <thead>
+                                                <tr>
+                                                    <th class="ac">선택</th>
+                                                    <th class="ac">일정</th>
+                                                    <th class="ac">교육명</th>
+                                                    <th class="ac">교육기관</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <!-- m-show 클래스 : pc에서만 보이는 요소 -->
+                                                    <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                    <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                    <!-- m-font-s 클래스 : 모바일에서 폰트 크기 작아지는 요소 -->
+                                                    <td class="m-show m-small ac m-left">
+                                                        <div class="checkbox-inline">
+                                                            <input type="checkbox" name="" id="check-box2" checked="" />
+                                                            <label for="check-box2" class="visually-hidden">체크박스</label>
+                                                        </div>
+                                                    </td>
+                                                    <td data-title="일정" class="m-show m-small ac m-left">1992.02~1998.02</td>
+                                                    <td data-title="교육명" class="m-show m-small al">ITIL Foundation 과정</td>
+                                                    <td data-title="교육기관" class="m-show m-small ac m-left">멀티캠퍼스</td>
+                                                </tr>
+
+                                                <!-- 리스트 항목이 없을 경우 -->
+                                                <tr>
+                                                    <td colspan="4" class="m-show m-full ac">
+                                                        <p>
+                                                            작성된 교육이력이 없습니다.<br />
+                                                            마이페이지 > 이력관리 > 교육이력에서 작성해 주세요.
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button class="btn btn--primary btn-s">선택 입력</button>
+                                        <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">취소</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PUB: 파견이력 추가신청 모달 -->
+                            <div id="modal-sample3" class="modal modal--big">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample3')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-head">파견이력 추가신청</div>
+                                    <div class="modal-body">
+                                        <h3 class="fs-m">활동정보</h3>
+                                        <div class="resume-item mr-top-xs pd-0">
+                                            <div class="label-input-group">
+                                                <!-- 정보입력 select -->
+                                                <div class="drop-select-wrap">
+                                                    <!-- 보여지는 select -->
+                                                    <div class="dropdown-select input--s">
+                                                        <div class="select-main-box">
+                                                            <button type="button" class="select-btn" title="단원형태">
+                                                                <span class="visually-hidden">열기</span>
+                                                            </button>
+                                                            <p class="select-title">
+                                                                <span class="essential select-lebel">단원형태</span>
+                                                                <strong class="select-text">선택</strong>
+                                                            </p>
+                                                        </div>
+                                                        <div class="select-menu-box">
+                                                            <ul class="select-menu">
+                                                                <li class="select-item"><a href="">글로벌새마을청년전문봉사단</a></li>
+                                                                <li class="select-item"><a href="">아르바이트</a></li>
+                                                                <li class="select-item"><a href="">동아리</a></li>
+                                                                <li class="select-item"><a href="">자원봉사</a></li>
+                                                                <li class="select-item"><a href="">사회활동</a></li>
+                                                                <li class="select-item"><a href="">활동</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 실제 select -->
+                                                    <select name="" id="" class="real_select_list" title="단원형태">
+                                                        <option value="1">글로벌새마을청년전문봉사단</option>
+                                                        <option value="2">아르바이트</option>
+                                                        <option value="3">동아리</option>
+                                                        <option value="4">자원봉사</option>
+                                                        <option value="5">사회활동</option>
+                                                        <option value="6">활동</option>
+                                                    </select>
+                                                </div>
+                                                <div class="label-search input--s">
+                                                    <button type="button" class="label-search-btn" title="국가"></button>
+                                                    <div class="label-search-title">
+                                                        <span class="essential select-lebel">국가</span>
+                                                        <strong class="select-text">대한민국</strong>
+                                                    </div>
+                                                </div>
+                                                <div class="label-date">
+                                                    <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                                    <label for="DATE_C3" class="essential">활동시작년월</label>
+                                                </div>
+                                                <div class="label-date">
+                                                    <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                                    <label for="DATE_C3" class="essential">활동종료년월</label>
+                                                </div>
+                                                <div class="label-input input--m">
+                                                    <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                    <input id="label-input" type="text" placeholder="기관" />
+                                                    <label for="label-input" class="essential">기관</label>
+                                                </div>
+                                                <div class="label-input input--m">
+                                                    <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                    <input id="label-input" type="text" placeholder="직종" />
+                                                    <label for="label-input" class="essential">직종</label>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-block">
+                                                <input type="checkbox" name="" id="check-box2" />
+                                                <label for="check-box2">활동중</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button type="button" class="btn btn--primary btn-l">신청</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PUB: 파견이력 반려 모달 -->
+                            <div id="modal-sample4" class="modal modal--alert">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample4')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <h4 class="modal--title">파견이력 추가가 반려되었습니다.</h4>
+                                        <dl class="dl-group mr-top-s flex--center">
+                                            <dt>반려사유</dt>
+                                            <dd>활동기간 확인 불가 활동기간이 확인을 할 수 없습니다. 활동기간을 다시 확인하고 신청해 주시기 바랍니다.</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">확인</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer"></footer>
+    </body>
+</html>

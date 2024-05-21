@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>만족도조사 팝업</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script src="/js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title title--l"></h2>
+                        <article class="contents">
+                            <button class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample1')">만족도 조사</button>
+
+                            <!-- 소감문 작성 팝업 -->
+                            <div id="modal-sample1" class="modal on">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-head ac">만족도 조사</div>
+                                    <div class="modal-body">
+                                        <ul class="border-list">
+                                            <li class="border-item pd-s">
+                                                <h3 class="fs-m fw-m">1. 커리어센터에서 무슨일을 하고 있는지 잘 알고 있나요?</h3>
+                                                <div class="radio-group mr-top-xs">
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="yesorno" id="yesorno1" checked="">
+                                                        <label for="yesorno1">매우 그렇지 않다.</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="yesorno" id="yesorno2">
+                                                        <label for="yesorno2">그렇지 않다.</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="yesorno" id="yesorno3">
+                                                        <label for="yesorno3">보통이다.</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="yesorno" id="yesorno4">
+                                                        <label for="yesorno4">그렇다.</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="yesorno" id="yesorno5">
+                                                        <label for="privacy5">매우 그렇다.</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="border-item pd-s">
+                                                <h3 class="fs-m fw-m">2. 어떤 커리어센터 서비스에 관심을 가지고 있나요?</h3>
+                                                <div class="radio-group mr-top-xs">
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="privacy" id="privacy1" checked="">
+                                                        <label for="privacy1">직무적합도 자가진단</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="privacy" id="privacy2">
+                                                        <label for="privacy2">NCS 모의테스트</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="privacy" id="privacy2">
+                                                        <label for="privacy2">AI 모의면접</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="privacy" id="privacy2">
+                                                        <label for="privacy2">취/창업 상담</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="privacy" id="privacy2">
+                                                        <label for="privacy2">이력서/자소서 컨설팅</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="border-item pd-s">
+                                                <h3 class="fs-m fw-m">3. 필요한 서비스에 모두 체크해 주세요.</h3>
+                                                <div class="radio-group mr-top-xs">
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy1" checked="">
+                                                        <label for="privacy1">NCS 특강</label>
+                                                    </div>
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy2">
+                                                        <label for="privacy2">STEP-UP</label>
+                                                    </div>
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy2">
+                                                        <label for="privacy2">리턴프로젝트</label>
+                                                    </div>
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy2">
+                                                        <label for="privacy2">논술</label>
+                                                    </div>
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy2">
+                                                        <label for="privacy2">행사정보</label>
+                                                    </div>
+                                                    <div class="checkbox-inline">
+                                                        <input type="checkbox" name="privacy" id="privacy2">
+                                                        <label for="privacy2">세</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="border-item pd-s">
+                                                <h3 class="fs-m fw-m">4. 개발협력 경험공유회가 어떻게 진행 되면 좋을지 의견을 적어 주세요.</h3>
+                                                <div class="input-wrap">
+                                                    <textarea name="" id="" cols="1" rows="5" class="textarea mr-top-xs" placeholder="" title="개발협력 경험공유회가 어떻게 진행 되면 좋을지 의견을 적어 주세요."></textarea>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button type="button" class="btn btn--primary btn-m">작성완료</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer"></footer>
+    </body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Koica sub 기본틀</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script src="/js/swiper-bundle.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+        <script>
+            let gallerySlider;
+            document.addEventListener('DOMContentLoaded', () => {
+                // 팝업 슬라이더
+                gallerySlider = new Swiper(".modal--gallery .swiper-container", {
+                    autoHeight: true,
+                    spaceBetween: 20,
+                    navigation: {
+                        nextEl: ".modal--gallery .swiper-button-next",
+                        prevEl: ".modal--gallery .swiper-button-prev"
+                    },
+                    pagination: {
+                        el: ".modal--gallery .swiper-pagination",
+                        clickable: true,
+                    },
+                });
+            });
+
+            // 갤러리 모달창 열기
+            function openGalleryModal(name, index) {
+                const modalTarget = document.querySelector(`#${name}`);
+                const modalCloseBtn = modalTarget.querySelector('.modal-close-btn');
+                modalTarget.classList.add('on');
+                modalTarget.classList.remove('effect--out');
+                modalCloseBtn.focus();
+                document.body.classList.add('scroll-off');
+                
+                gallerySlider.slideTo(index)
+            }
+
+            
+        </script>
+    </head>
+    <body>
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- left menu -->
+                    <aside class="left-menu">
+                        <ul class="left-menu__list">
+                            <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                            <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                            <li class="left-menu__item is-on">
+                                <h2 class="depth-title"><a href="" aria-expanded="true">menu</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                                <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                                <h2 class="depth-title"><a href="" aria-expanded="false">menu</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title">국제개발협력</h2>
+                        <article class="contents">
+
+                            <!-- 메인 사진 슬라이더 -->
+                            <div class="gallery-box">
+                                <div class="gallery-image">
+                                    <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 0)">
+                                        <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="gallery-image">
+                                    <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 1)">
+                                        <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="gallery-image">
+                                    <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 2)">
+                                        <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 사진 슬라이더 팝업 -->
+                            <div id="galleryPop" class="modal modal--gallery">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('galleryPop')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="swiper-button-next"></button>
+                                            <button type="button" class="swiper-button-prev"></button>
+                                            <!-- <div class="swiper-pagination"></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="wrap-inner">
+                <button type="button" class="btn-top" title="맨위로 가기"></button>
+                <h2 class="foot-logo">
+                    <img src="/images/logo-foot-main.svg" class="pc-only" alt="koica 개발협력 커리어센터" />
+                    <img src="/images/logo-foot-mobile.svg" class="mb-only" alt="koica 개발협력 커리어센터" />
+                </h2>
+                <div class="foot-meddle-group">
+                    <ul class="foot-link-list">
+                        <li><a href="">개인정보처리방침</a></li>
+                        <li><a href="">이메일무단수집거부</a></li>
+                        <li><a href="">책임의 한계 및 법적고지</a></li>
+                        <li><a href="">회원정책안내</a></li>
+                        <li><a href="">찾아오시는 길</a></li>
+                        <li><a href="">사이트맵</a></li>
+                    </ul>
+                    <div class="family-select">
+                        <select name="" id="">
+                            <option value="" hidden>Family Site</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                        </select>
+                        <button type="button">이동</button>
+                    </div>
+                </div>
+                <div class="foot-info-group">
+                    <dl>
+                        <dt>본사주소</dt>
+                        <dd>
+                            (13449) 경기도 성남시 수정구 대왕판교로 825 한국국제협력단
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>방문상담</dt>
+                        <dd>
+                            (06792) 서울시 서초구 헌릉로 15-18 (구 염곡동 304-3) 글로벌인재교육원 교육본부 1층 코이카봉사단 모집상담파트
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>문의</dt>
+                        <dd>kov1@koica.go.kr</dd>
+                    </dl>
+                    <dl>
+                        <dt>대표번호</dt>
+                        <dd>1588 - 0434 / 평일 09:00 ~ 18:00</dd>
+                    </dl>
+                </div>
+
+                <p class="copyright">Copyrights ⓒ by 2017 KOICA. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

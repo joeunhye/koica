@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지>컨설팅>상담홈</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- 스킵 메뉴 시작 -->
+        <div class="skipMenu">
+            <a href="#headSkip">메뉴로 이동</a>
+            <a href="#contentSkip" class="contentSkip">본문 바로가기</a>
+        </div>
+        <!-- 스킵 메뉴 종료 -->
+
+        <!-- header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="wrap-inner">
+                    <h1 class="head-logo">
+                        <a href="main.html">
+                            <img src="/images/logo-main.svg" class="pc-only" alt="koica 개발협력커리어센터 로고" />
+                            <img src="/images/logo-main-mobile.svg" class="mb-only" alt="koica 개발협력커리어센터 로고" />
+                        </a>
+                    </h1>
+                    <div class="pc-right-group">
+                        <ul class="small-nav__list pc-only">
+                            <li><a href="" title="로그인"><span class="icon ic-login"></span></a></li>
+                            <li><a href="" title="마이페이지"><span class="icon ic-user2"></span></a></li>
+                            <li>
+                                <!-- 알림 있을 시 -->
+                                <a href="" title="알림" class="btn--alarm">
+                                    <span class="icon ic-alert2"></span>
+                                    <span class="alarm-num">99</span>
+                                </a>
+                            </li>
+                            <li><a href="" title="저사향모드" class="btn--low">Low</a></li>
+                            <li><a href="" title="사이트맵"><span class="icon ic-menu"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-right-group mb-only">
+                        <button type="button" class="mb-menu-btn">
+                            <span class="bar1"></span>
+                            <span class="bar2"></span>
+                            <span class="bar3"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- 헤더 하단 메뉴 -->
+            <div id="headSkip" class="header-bottom mb-side-nav">
+                <div class="wrap-inner">
+                    <!-- //////////////////////////// -->
+                    <!-- pc 전용 메뉴 시작 -->
+                    <div class="gnb-depth-wrap pc-menu-wrap">
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Center <br><small>소개</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">센터 개요 및 연혁</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">개요</a></li>
+                                                <li><a href="">연혁</a></li>
+                                                <li><a href="">센터직원 소개</a></li>
+                                                <li><a href="">오시는 길</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">센터 서비스 안내</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">지원 대상</a></li>
+                                                <li><a href="">지원 절차</a></li>
+                                                <li><a href="">취업지원 프로그램</a></li>
+                                                <li><a href="">창업지원 프로그램</a></li>
+                                                <li><a href="">연간일정</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 진출 로드맵</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">단계별 KOICA 사업 소개</a></li>
+                                                <li><a href="">취업처별 진출 로드맵</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">취창업 성공수기 및 통계</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">귀국인재 취창업 통계</a></li>
+                                                <li><a href="">취업 성공사례</a></li>
+                                                <li><a href="">창업 성공사례</a></li>
+                                                <li><a href="">연도별 취창업 수기집</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Application<br><small>채용</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">취업, 창업 상담</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">1:1 상담 신청</a></li>
+                                                <li><a href="">1:N 상담 신청</a></li>
+                                                <li><a href="">현직자 멘토링 신청</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="">입사서류 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">NCS 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">논술 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">면접 컨설팅</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Reinforcement <br><small>취업</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="">창업지원 신청</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 교육/행사</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Enterprise <br><small>창업</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">KOICA 개발협력 좋은 일자리</a></li>
+                                                <li><a href="">정부 및 공공기관 </a></li>
+                                                <li><a href="">국제기구</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">비개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">정부 및 공공기관</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">인재추천 및 매칭</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">(구직자) 자기소개</a></li>
+                                                <li><a href="">(고용주) 인재구함</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Environment <br><small>소식</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="#">개발협력 교육</a></li>
+                                        <li class="depth2-item"><a href="#">개발협력 행사</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">취창업 성공수기 공모</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">기타 행사 및 교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Resources <br><small>공유</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">스터디모임 소개</a></li>
+                                                <li><a href="">스터디 목록</a></li>
+                                                <li><a href="">자율 소통공간</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">자료실/ 이용가이드</a></li>
+                                        <li class="depth2-item"><a href="#">Q&A 및 건의사항</a></li>
+                                        <li class="depth2-item"><a href="#">자주하는 질문(FAQ)</a></li>
+                                        <li class="depth2-item"><a href="#">설문조사</a></li>
+                                        <li class="depth2-item"><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pc 전용 메뉴 종료 -->
+                    <!-- mobile 전용 메뉴 시작 -->
+                    <div class="gnb-depth-wrap mb-menu-wrap">
+                        <div class="mb-side-top-wrap">
+                            <div class="top-box"><a href="" title="저사향모드" class="btn--low">Low</a></div>
+                            <div class="bottom-box">
+                                <li class="mb-top__item"><a href=""><span class="icon ic-login"></span>로그인</a></li>
+                                <li class="mb-top__item"><a href=""><span class="icon ic-user2"></span>마이페이지</a></li>
+                                <li class="mb-top__item">
+                                    <!-- 알림 있을 시 -->
+                                    <a href="" title="알림" class="btn--alarm">
+                                        <span class="icon ic-alert2"></span>
+                                        <span class="alarm-num">99</span>
+                                    </a>
+                                </li>
+                                <li class="mb-top__item"><a href=""><span class="icon ic-vector"></span>사이트맵</a></li>
+                            </div>
+                        </div>
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">커리어센터</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">센터 개요 및 연혁</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">개요</a></li>
+                                                <li><a href="">연혁</a></li>
+                                                <li><a href="">센터직원 소개</a></li>
+                                                <li><a href="">오시는 길</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">센터 서비스 안내</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">지원 대상</a></li>
+                                                <li><a href="">지원 절차</a></li>
+                                                <li><a href="">취업지원 프로그램</a></li>
+                                                <li><a href="">창업지원 프로그램</a></li>
+                                                <li><a href="">연간일정</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 진출 로드맵</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">단계별 KOICA 사업 소개</a></li>
+                                                <li><a href="">취업처별 진출 로드맵</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">취창업 성공수기 및 통계</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">귀국인재 취창업 통계</a></li>
+                                                <li><a href="">취업 성공사례</a></li>
+                                                <li><a href="">창업 성공사례</a></li>
+                                                <li><a href="">연도별 취창업 수기집</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">취업지원</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">취업, 창업 상담</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">1:1 상담 신청</a></li>
+                                                <li><a href="">1:N 상담 신청</a></li>
+                                                <li><a href="">현직자 멘토링 신청</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="">입사서류 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">NCS 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">논술 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">면접 컨설팅</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">창업지원</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="">창업지원 신청</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 교육/행사</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">채용정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">KOICA 개발협력 좋은 일자리</a></li>
+                                                <li><a href="">정부 및 공공기관 </a></li>
+                                                <li><a href="">국제기구</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">비개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">정부 및 공공기관</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">인재추천 및 매칭</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">(구직자) 자기소개</a></li>
+                                                <li><a href="">(고용주) 인재구함</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">개발협력 교육 · 행사</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="#">개발협력 교육</a></li>
+                                        <li class="depth2-item"><a href="#">개발협력 행사</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">취창업 성공수기 공모</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">기타 행사 및 교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">장학생</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="#">장학생</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">커뮤니티</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">스터디모임 소개</a></li>
+                                                <li><a href="">스터디 목록</a></li>
+                                                <li><a href="">자율 소통공간</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">자료실/ 이용가이드</a></li>
+                                        <li class="depth2-item"><a href="#">Q&A 및 건의사항</a></li>
+                                        <li class="depth2-item"><a href="#">자주하는 질문(FAQ)</a></li>
+                                        <li class="depth2-item"><a href="#">설문조사</a></li>
+                                        <li class="depth2-item"><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- mobile 전용 메뉴 종료 -->
+                </div>
+                <div class="head-line-bar"></div>
+            </div>
+        </header>
+
+    <!-- visual banner -->
+    <!-- 마이페이지 베너 -->
+    <section class="visual-banner">
+        <div class="wrap-inner banner-inner">
+            <h2 class="banner-title">마이페이지</h2>
+            <div class="visual-img pc-only">
+                <img src="/images/banner-illust-mypage.png" alt="" />
+            </div>
+            <div class="location-group">
+                <ul class="location-list">
+                    <li class="location-item"><span class="icon ic-home"></span><span class="visually-hidden">홈</span></li>
+                    <li class="location-item">센터소개</li>
+                    <li class="location-item">커리어센터 소개</li>
+                </ul>
+                <div class="sns-toggle-group">
+                    <button type="button" class="sns-toggle-btn" title="sns공유 열기"><span>공유</span></button>
+                    <div class="sns-menu-box">
+                        <ul class="sns-menu">
+                            <li class="menu-item sns-01"><a href="" title="gmail"></a></li>
+                            <li class="menu-item sns-02"><a href="" title="카카오톡"></a></li>
+                            <li class="menu-item sns-03"><a href="" title="트위터"></a></li>
+                            <li class="menu-item sns-04"><a href="" title="페이스북"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- left menu --> 
+                    <aside class="left-menu">
+                        <ul class="left-menu__list">
+                            <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                            <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                            <li class="left-menu__item is-on">
+                                <h2 class="depth-title"><a href="" aria-expanded="true">menu</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">menu</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                                <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                                <h2 class="depth-title"><a href="" aria-expanded="false">menu</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item is-active"><a href="">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                    <li class="depth-item"><a href="#">depth-menu</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title">1:1 취업상담</h2>
+                        <article class="contents">
+
+                            <div class="flex--start gap-s">
+                                <div class="country--round">
+                                    <img src="/images/country.png" alt="사우스 아프리카">
+                                </div>
+                                <a href="" class="fs-l fw-b ellipsis">홍길동 상담사</a>
+                            </div>
+
+                            <!-- tab -->
+                            <div id="tab">
+                                <ul class="tab-btn-list">
+                                    <li class="tab-btn on"><a href="./consulting-home.html">상담 홈</a></li>
+                                    <li class="tab-btn"><a href="./message.html">쪽지함</a></li>
+                                    <li class="tab-btn"><a href="">자료실</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="home-container mr-top-s">
+                                <div class="left home-item">
+                                    <div class="state-box">
+                                        <li class="state-item">
+                                            <span class="title">출석율</span>
+                                            <em>0%</em>
+                                            <button type="button" class="btn btn--line btn-s btn-f mr-top-xxs modal-open-btn" onclick="openModal('modal-modal-sample4')">출석체크</button>
+                                        </li>
+                                        <li class="state-item">
+                                            <span class="title">진행상황</span>
+                                            <em>신청완료</em>
+                                        </li>
+                                    </div>
+                                    <button type="button" class="btn btn--line btn-f mr-top-xs">활동 계획서 다운로드</button>
+                                </div>
+                                <div class="right home-item">
+                                    <h3 class="fs-l">알림</h3>
+                                    <div class="responsive-table mr-top-xxs">
+                                        <table class="table small">
+                                            <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                            <colgroup class="pc-only">
+                                                <col style="width: 5%">
+                                                <col style="width: auto">
+                                                <col style="width: 12%">
+                                            </colgroup>
+                                            <caption>쪽지 알림 목록입니다.</caption>
+                                            <thead class="visually-hidden">
+                                                <tr>
+                                                    <th>분류</th>
+                                                    <th>제목</th>
+                                                    <th>날짜</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                                    <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                    <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                    <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                                    <td class="m-small ac fw-b">쪽지함</td>
+                                                    <td class="m-full al"><a href="./message.html" class="ellipsis2 table-title">이번 교육에 대한 소감문 등록해 주시기 바랍니다.</a></td>
+                                                    <td class="m-small ac m-right">2023-09-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                                    <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                    <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                    <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                                    <td class="m-small ac fw-b">쪽지함</td>
+                                                    <td class="m-full al"><a href="./message.html" class="ellipsis2 table-title">이번 교육에 대한 소감문 등록해 주시기 바랍니다.</a></td>
+                                                    <td class="m-small ac m-right">2023-09-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                                    <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                    <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                    <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                                    <td class="m-small ac fw-b">자료실</td>
+                                                    <td class="m-full al"><a href="./message.html" class="ellipsis2 table-title">이번 교육에 대한 소감문 등록해 주시기 바랍니다.</a></td>
+                                                    <td class="m-small ac m-right">2023-09-15</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box--line keep-line mr-top-m">
+                                <div class="flex--between">
+                                    <h3 class="fs-l">상담일정</h3>
+                                    <ul class="color-guide">
+                                        <li class="gray">진행완료</li>
+                                        <li class="blue">진행예정</li>
+                                    </ul>
+                                </div>
+                                <ul class="episode-list mr-top-xs">
+                                    <!-- 진행완료시 bg__gray 클래스 추가 -->
+                                    <li class="episode-item bg__gray">
+                                        <div class="text-group">
+                                            <div class="episode-title">
+                                                <strong class="number">1회차</strong>
+                                                <p class="title">각 회차별 주제가 간략히 노출됩니다.</p>
+                                            </div>
+                                            <p class="info">
+                                                <time>2024.02.26(월) 13:00</time>
+                                                <a href="" class="text--underline">https://zoom.us/ko</a>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn btn--line btn-m" disabled>소감문 작성완료</button>
+                                    </li>
+                                    <li class="episode-item">
+                                        <div class="text-group">
+                                            <div class="episode-title">
+                                                <strong class="number">2회차</strong>
+                                                <p class="title">각 회차별 주제가 간략히 노출됩니다.</p>
+                                            </div>
+                                            <p class="info">
+                                                <time>2024.02.26(월) 13:00</time>
+                                                <a href="" class="text--underline">https://zoom.us/ko</a>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn btn--line btn-m modal-open-btn" onclick="openModal('modal-sample1')">소감문 작성</button>
+                                    </li>
+                                    <li class="episode-item bg__gray">
+                                        <div class="text-group">
+                                            <div class="episode-title">
+                                                <strong class="number">2회차</strong>
+                                                <p class="title">각 회차별 주제가 간략히 노출됩니다.</p>
+                                            </div>
+                                            <p class="info">
+                                                <time>2024.02.26(월) 13:00</time>
+                                                <a href="" class="text--underline">https://zoom.us/ko</a>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn btn--gray btn-m modal-open-btn" onclick="openModal('modal-sample2')">소감문 확인</button>
+                                    </li>
+                                    <!-- 상담일정 등록 -->
+                                    <li class="episode-item bg__gray">
+                                        <div class="text-group flex-wrap-group wrap">
+                                            <strong class="number">1회차</strong>
+                                            <div class="full-item">
+                                                <div class="input-wrap">
+                                                    <label for="input-text" class="visually-hidden">주제</label>
+                                                    <input type="text" id="input-text" class="normal-input input--full" placeholder="주제">
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <div class="date">
+                                                        <label for="input-text" class="visually-hidden">상담 날짜</label>
+                                                        <input type="date" id="input-date" class="normal-input">
+                                                    </div>
+                                                    <select name="" id="" class="input--xs" title="시간">
+                                                        <option selected="" disabled="" hidden="">시간</option>
+                                                        <option value="">13:00</option>
+                                                        <option value="">13:00</option>
+                                                        <option value="">13:00</option>
+                                                        <option value="">13:00</option>
+                                                        <option value="">13:00</option>
+                                                    </select>
+                                                    <label for="input-text" class="visually-hidden">ZOOM URL 또는 모임 장소</label>
+                                                    <input type="text" id="input-text" class="normal-input" placeholder="ZOOM URL 또는 모임 장소">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn--line btn-m"><i class="icon ic-plus-bold"></i> 일정등록</button>
+                                    </li>
+
+                                    <!-- 상담일정 수정 -->
+                                    <li class="episode-item">
+                                        <div class="text-group">
+                                            <div class="episode-title">
+                                                <strong class="number">2회차</strong>
+                                                <p class="title">각 회차별 주제가 간략히 노출됩니다.</p>
+                                            </div>
+                                            <p class="info">
+                                                <time>2024.02.26(월) 13:00</time>
+                                                <a href="" class="text--underline">https://zoom.us/ko</a>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn btn--line btn-m"><i class="icon ic-plus-bold"></i> 일정수정</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 상담일정 없을 시 -->
+                            <div class="box--line keep-line">
+                                <h3 class="fs-l">상담일정</h3>
+                                <div class="ac alert-box">
+                                    상담 일정이 정해지지 않았습니다.
+                                </div>
+                            </div>
+
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- 소감문 작성 팝업 -->
+        <div id="modal-sample1" class="modal">
+            <div class="modal-box">
+                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                    <span class="icon ic-close"></span>
+                    <span class="visually-hidden">닫기버튼</span>
+                </button>
+                <div class="modal-head ac">소감문 작성</div>
+                <div class="modal-body">
+                    <div class="">
+                        <div class="input-wrap">
+                            <label for="" class="fs-m fw-m">제목</label>
+                            <input type="text" id="input-text" class="normal-input w-full" placeholder="제목은28자이내로작성해주십시." />
+                        </div>
+                        <h3 class="fs-m fw-m mr-top-xxs">참여소감</h3>
+                        <small class="">※이번 회차에서 진행한 내용 요약 및 다음 회차에 반영하여 운영 될 수 있도록 느낀 점, 깨달은 점, 좋았던 점, 아쉬웠던 점 등 자유롭게 작성 바랍니다.</small>
+                        <textarea name="" id="label-input7" class="mr-top-xxs" cols="1" rows="5"></textarea>
+                        
+                        <h3 class="fs-m fw-m mr-top-xxs">다음 회차에 다루길 바라는 주제나 내용</h3>
+                        <small class="">※특별히 없으시면"없음"이라고적어주시면됩니다.</small>
+                        <textarea name="" id="label-input7" class="mr-top-xxs" cols="1" rows="5"></textarea>
+                        <div class="style--line pd-s bg__white">
+                            <div class="btn--upload-wrap">
+                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                <!-- 업로드 파일 있을 때 -->
+                                <ul class="file-list">
+                                    <li class="file-item">
+                                        <span class="file-item-name">업로드된 파일1</span>
+                                        <button type="button" class="file-item-delete">
+                                            <span class="visually-hidden">삭제</span>
+                                            <span class="icon ic-close"></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mr-top-s">
+                        <h3 class="sub-title">만족도 조사</h3>
+                        <ul class="border-list mr-top-xs">
+                            <li class="border-item pd-s">
+                                <h3 class="fs-m fw-m">1. 커리어센터에서 무슨일을 하고 있는지 잘 알고 있나요?</h3>
+                                <div class="radio-group mr-top-xs">
+                                    <div class="radio-inline">
+                                        <input type="radio" name="yesorno" id="yesorno1" checked="">
+                                        <label for="yesorno1">매우 그렇지 않다.</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="yesorno" id="yesorno2">
+                                        <label for="yesorno2">그렇지 않다.</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="yesorno" id="yesorno3">
+                                        <label for="yesorno3">보통이다.</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="yesorno" id="yesorno4">
+                                        <label for="yesorno4">그렇다.</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="yesorno" id="yesorno5">
+                                        <label for="privacy5">매우 그렇다.</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <h3 class="fs-m fw-m">2. 어떤 커리어센터 서비스에 관심을 가지고 있나요?</h3>
+                                <div class="radio-group mr-top-xs">
+                                    <div class="radio-inline">
+                                        <input type="radio" name="privacy" id="privacy1" checked="">
+                                        <label for="privacy1">직무적합도 자가진단</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="privacy" id="privacy2">
+                                        <label for="privacy2">NCS 모의테스트</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="privacy" id="privacy2">
+                                        <label for="privacy2">AI 모의면접</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="privacy" id="privacy2">
+                                        <label for="privacy2">취/창업 상담</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="privacy" id="privacy2">
+                                        <label for="privacy2">이력서/자소서 컨설팅</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <h3 class="fs-m fw-m">3. 필요한 서비스에 모두 체크해 주세요.</h3>
+                                <div class="radio-group mr-top-xs">
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy1" checked="">
+                                        <label for="privacy1">NCS 특강</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy2">
+                                        <label for="privacy2">STEP-UP</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy2">
+                                        <label for="privacy2">리턴프로젝트</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy2">
+                                        <label for="privacy2">논술</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy2">
+                                        <label for="privacy2">행사정보</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="privacy" id="privacy2">
+                                        <label for="privacy2">세</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <h3 class="fs-m fw-m">4. 개발협력 경험공유회가 어떻게 진행 되면 좋을지 의견을 적어 주세요.</h3>
+                                <div class="input-wrap">
+                                    <textarea name="" id="" cols="1" rows="5" class="textarea mr-top-xs" placeholder="" title="개발협력 경험공유회가 어떻게 진행 되면 좋을지 의견을 적어 주세요."></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-foot ac">
+                    <button type="button" class="btn btn--primary btn-m">소감문 제출</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 소감문 확인 팝업 -->
+        <div id="modal-sample2" class="modal">
+            <div class="modal-box">
+                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                    <span class="icon ic-close"></span>
+                    <span class="visually-hidden">닫기버튼</span>
+                </button>
+                <div class="modal-head ac">소감문</div>
+                <div class="modal-body">
+                    <div class="horizon-wrap">
+                        <div class="horizon-item">
+                            <div class="horizon__right">
+                                <h3 class="fs-m  fw-m">안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.</h3>
+                            </div>
+                        </div>
+                        <div class="horizon-item">
+                            <div class="horizon__right">
+                                <h4 class="fw-m fs-m">참여소감</h4>
+                                <pre class="text--darkgray mr-top-xxs">
+                                    안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+                                    현재 IT 회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고 있습니다.
+                                    현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인제외), 배치개발, 윈도우 앱 개발회사 규모는 180명 정도되는 중소기업입니다.
+                                    입사 하기전에 인턴을 4개월 정도 진행한 후 세전 연봉 4000에 정식 직원이 되었습니다.
+                                </pre>
+                            </div>
+                        </div>
+                        <div class="horizon-item">
+                            <div class="horizon__right">
+                                <h4 class="fw-m fs-m">다음 회차에 다루길 바라는 주제나 내용</h4>
+                                <pre class="text--darkgray mr-top-xxs">
+                                    없음
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="board__item">
+                        <dt>첨부파일</dt>
+                        <dd>
+                            <div class="btn--upload-wrap">
+                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                <!-- 업로드 파일 있을 때 -->
+                                <ul class="file-list">
+                                    <li class="file-item">
+                                        <span class="file-item-name">업로드된 파일1</span>
+                                        <button type="button" class="file-item-delete">
+                                            <span class="visually-hidden">삭제</span>
+                                            <span class="icon ic-close"></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-foot ac">
+                    <button type="button" class="btn btn--primary btn-m">확인</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 출석체크 팝업 -->
+        <div id="modal-modal-sample4" class="modal modal-auto">
+            <div class="modal-box">
+                <button type="button" class="modal-close-btn" onclick="closeModal('modal-modal-sample4')">
+                    <span class="icon ic-close"></span>
+                    <span class="visually-hidden">닫기버튼</span>
+                </button>
+                <div class="modal-head ac">출석체크</div>
+                <div class="modal-body">
+                    <ul class="attend-list">
+                        <li class="attend-item">
+                            <p class="name">김토끼</p>
+                            <ul class="attend-check-group">
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-01" class="visually-hidden" checked>
+                                    <label for="attend-check-01">1<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-02" class="visually-hidden">
+                                    <label for="attend-check-02">2<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-03" class="visually-hidden">
+                                    <label for="attend-check-03">3<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-04" class="visually-hidden">
+                                    <label for="attend-check-04">4<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-05" class="visually-hidden">
+                                    <label for="attend-check-05">5<span class="visually-hidden">회차</span></label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="attend-item">
+                            <p class="name">이기린</p>
+                            <ul class="attend-check-group">
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-01" class="visually-hidden">
+                                    <label for="attend-check-01">1<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-02" class="visually-hidden">
+                                    <label for="attend-check-02">2<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-03" class="visually-hidden">
+                                    <label for="attend-check-03">3<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-04" class="visually-hidden">
+                                    <label for="attend-check-04">4<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-05" class="visually-hidden">
+                                    <label for="attend-check-05">5<span class="visually-hidden">회차</span></label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="attend-item">
+                            <p class="name">박곰</p>
+                            <ul class="attend-check-group">
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-01" class="visually-hidden">
+                                    <label for="attend-check-01">1<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-02" class="visually-hidden">
+                                    <label for="attend-check-02">2<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-03" class="visually-hidden">
+                                    <label for="attend-check-03">3<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-04" class="visually-hidden">
+                                    <label for="attend-check-04">4<span class="visually-hidden">회차</span></label>
+                                </li>
+                                <li class="attend-check">
+                                    <input type="checkbox" id="attend-check-05" class="visually-hidden">
+                                    <label for="attend-check-05">5<span class="visually-hidden">회차</span></label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-foot ac">
+                    <button type="button" class="btn btn--blue btn-f">저장</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="wrap-inner">
+                <h2 class="foot-logo">
+                    <img src="/images/logo-foot-main.svg" class="pc-only" alt="koica 개발협력 커리어센터">
+                    <img src="/images/logo-foot-mobile.svg" class="mb-only" alt="koica 개발협력 커리어센터">
+                </h2>
+                <div class="foot-meddle-group">
+                    <ul class="foot-link-list">
+                        <li><a href="">개인정보처리방침</a></li>
+                        <li><a href="">이메일무단수집거부</a></li>
+                        <li><a href="">책임의 한계 및 법적고지</a></li>
+                        <li><a href="">회원정책안내</a></li>
+                        <li><a href="">찾아오시는 길</a></li>
+                        <li><a href="">사이트맵</a></li>
+                    </ul>
+                    <div class="family-select">
+                        <select name="" id="">
+                            <option value="" hidden>Family Site</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                        </select>
+                        <button type="button">이동</button>
+                    </div>
+                </div>
+                <div class="foot-info-group">
+                    <dl>
+                        <dt>본사주소</dt>
+                        <dd>
+                            (13449) 경기도 성남시 수정구 대왕판교로 825 한국국제협력단
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>방문상담</dt>
+                        <dd>
+                            (06792) 서울시 서초구 헌릉로 15-18 (구 염곡동 304-3) 글로벌인재교육원 교육본부 1층 코이카봉사단 모집상담파트
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>문의</dt>
+                        <dd>kov1@koica.go.kr</dd>
+                    </dl>
+                    <dl>
+                        <dt>대표번호</dt>
+                        <dd>1588 - 0434 / 평일 09:00 ~ 18:00</dd>
+                    </dl>
+                </div>
+
+                <p class="copyright">Copyrights ⓒ by 2017 KOICA. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

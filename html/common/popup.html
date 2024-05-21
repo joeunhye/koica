@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼요소 모음</title>
+    <!-- css -->
+<link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/wvCommon.css" />
+    <link rel="stylesheet" href="/css/wvUser.css" />
+    <!-- 모바일 css -->
+    <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+    <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+    <!-- script -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script defer src="/js/wvScript.js"></script>
+</head>
+
+<body>
+    <!-- content -->
+    <main id="contentSkip" class="">
+        <div class="wrap-inner">
+            <div class="sub-content-wrap">
+                <!-- content -->
+                <section class="content-wrpper">
+                    <h2 class="content-title">모달 모음</h2>
+                    <article class="contents">
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample1')">알림 팝업1</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample2')">알림 팝업2</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample3')">사유작성 팝업</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample4')">참여 승인 팝업</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample5')">사용내역 팝업</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample6')">알림 팝업</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample7')">알림 팝업</button>
+                        <button type="button" class="btn btn--primary btn-m modal-open-btn" onclick="openModal('modal-sample8')">알림 팝업</button>
+
+
+                        <!-- 알림 팝업 1 -->
+                        <div id="modal-sample1" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">스터디모임에서 탈퇴처리가 완료 되었습니다.</h4>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--primary btn-s">마이페이지</button>
+                                    <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample1')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 알림 팝업 1 -->
+                        <div id="modal-sample2" class="modal modal--alert">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">00님이 스터디 모임에서 제외되었습니다.</h4>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 사유작성 팝업 -->
+                        <div id="modal-sample3" class="modal effect--out">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample3')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-head">
+                                    팀원 내보내기
+                                </div>
+                                <div class="modal-body">
+                                    <h4 class="modal--title">창업 프로그램에서 회원을 내보내는 이유를 간략하게 적어 주세요.</h4>
+                                    <select name="" id="" class="" title="내보내는 사유 선택">
+                                        <option selected="" disabled="" hidden="">내보내는 사유 선택</option>
+                                        <option value="고등학교">고등학교</option>
+                                        <option value="대학(2,3년)">대학(2,3년)</option>
+                                        <option value="대학교(4년)">대학교(4년)</option>
+                                        <option value="대학원">대학원</option>
+                                    </select>
+                                    <textarea name="" class="mr-top-xs" cols="30" rows="10" placeholder="내용 입력" title="내용 입력"></textarea>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--primary btn-s">내보내기</button>
+                                    <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample3')">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 참여승인 팝업 -->
+                        <div id="modal-sample4" class="modal">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample4')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-head">
+                                    참여신청 승인
+                                </div>
+                                <div class="modal-body">
+                                    <h4 class="modal--title"><span class="icon ic-user2"></span> 홍길동</h4>
+                                    <pre>
+                                        저도 교육의 미래 국제 포럼 추진단을 준비하고 있습니다.
+안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협
+상이 이번이 처음이기도하고.. 주의에 저연차분도 없고.. 알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도
+부장님과 사수께서도
+                                    </pre>
+                                    
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--primary btn-s">승인</button>
+                                    <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample4')">거절</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 사용내역 팝업 -->
+                        <div id="modal-sample5" class="modal effect--out">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample5')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-head">
+                                    사용내역 등록
+                                </div>
+                                <div class="modal-body">
+                                    <div class="resume-item mr-top-xs pd-0">
+                                        <div class="label-input-group">
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--xs">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="목">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">목</span>
+                                                            <strong class="select-text">대학교(4년)</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">고등학교</a></li>
+                                                        <li class="select-item"><a href="">대학(2,3년)</a></li>
+                                                        <li class="select-item"><a href="">대학교(4년)</a></li>
+                                                        <li class="select-item"><a href="">대학원</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="목 구분">
+                                                    <option value="고등학교">고등학교</option>
+                                                    <option value="대학(2,3년)">대학(2,3년)</option>
+                                                    <option value="대학교(4년)">대학교(4년)</option>
+                                                    <option value="대학원">대학원</option>
+                                                </select>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--xs">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="세목">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">세목</span>
+                                                            <strong class="select-text">대학교(4년)</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">고등학교</a></li>
+                                                        <li class="select-item"><a href="">대학(2,3년)</a></li>
+                                                        <li class="select-item"><a href="">대학교(4년)</a></li>
+                                                        <li class="select-item"><a href="">대학원</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="세목 구분">
+                                                    <option value="고등학교">고등학교</option>
+                                                    <option value="대학(2,3년)">대학(2,3년)</option>
+                                                    <option value="대학교(4년)">대학교(4년)</option>
+                                                    <option value="대학원">대학원</option>
+                                                </select>
+                                            </div>
+                                            <div class="label__group">
+                                                <div class="label-input input--s">
+                                                    <input id="label-input5" type="text" placeholder="" required="">
+                                                    <label for="label-input5" class="essential">적요</label>
+                                                </div>
+                                                <div class="label-input input--s">
+                                                    <input id="home-number3" type="text" placeholder="" required="">
+                                                    <label for="home-number3" class="essential">금액(원)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="label-input-group mr-top-xxs">
+                                            <div class="file-upload__group flex--1">
+                                                <p class="file-upload__name fw-m">증빙영수증</p>
+                                                <div class="file-upload__box">
+                                                    <div class="btn--upload-wrap">
+                                                        <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                        <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                        <!-- 업로드 파일 있을 때 -->
+                                                        <ul class="file-list">
+                                                            <li class="file-item">
+                                                                <span class="file-item-name">업로드된 파일1</span>
+                                                                <button type="button" class="file-item-delete">
+                                                                    <span class="visually-hidden">삭제</span>
+                                                                    <span class="icon ic-close"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button class="btn btn--primary btn-s">업로드</button>
+                                    <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample5')">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PUB: 기업검색 모달 -->
+                        <div id="modal-sample1" class="modal modal--big">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-head">기업검색</div>
+                                <div class="modal-body">
+                                    <div class="content-search">
+                                        <form action="">
+                                            <div class="content-search__inner flex--1">
+                                                <div class="search-group">
+                                                    <label for="nameInp" class="visually-hidden">창업 업체 명</label>
+                                                    <input type="search" id="nameInp" placeholder="창업 업체 명을 입력하세요.">
+                                                    <button type="button" class="search__btn" title="검색"><span class="icon ic-search"></span></button>
+                                                </div>
+                                                <button type="button" class="btn btn--primary btn-s">신규등록</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- PUB: 창업 정보 등록 목록 -->
+                                    <div>
+                                        <p class="mr-top-xs">* 해당하는 회사가 없는 경우에는 신규로 등록하실 수 있습니다.</p>
+                                        <table class="table mb-column-table mr-top-xs">
+                                            <caption>
+                                                창업 현황 정보입니다. 업체명, 사업자등록번호, 전화번호, 운영상태에 대한 내용이 있습니다.
+                                            </caption>
+                                            <thead class="pc-only">
+                                                <tr>
+                                                    <th class="al">업체명</th>
+                                                    <th>사업자등록번호</th>
+                                                    <th>전화번호</th>
+                                                    <th>운영상태</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td data-title="업체명"><a href="" class="ellipsis2 text--underline">(재)한국고고환경연구소</a></td>
+                                                    <td data-title="사업자등록번호">307-82-06823</td>
+                                                    <td data-title="전화번호">044-123-4567</td>
+                                                    <td data-title="운영상태">정상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td data-title="업체명"><a href="" class="ellipsis2 text--underline">(주)대츅환경제어시스템 </a></td>
+                                                    <td data-title="사업자등록번호">307-82-06823</td>
+                                                    <td data-title="전화번호">044-123-4567</td>
+                                                    <td data-title="운영상태">폐업</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- PUB: 신규등록 -->
+                                    <div class="resume-item bg__blue mr-top-xs">
+                                        <div class="label-input-group">
+                                            <div class="label-input input--full">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업체명</label>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">대표자명</label>
+                                            </div>
+                                            <div class="left-label-input input--xxl">
+                                                <p class="label-text essential">사업자등록번호</p>
+                                                <div class="business-num">
+                                                    <label for="businessRegistration01" class="visually-hidden">일련번호코드</label>
+                                                    <input id="businessRegistration01" type="text" placeholder="" />
+                                                    <label for="businessRegistration02" class="visually-hidden">개인법인구분코드</label>
+                                                    <input id="businessRegistration02" type="text" placeholder="" />
+                                                    <label for="businessRegistration03" class="visually-hidden">일련번호코드 와 검증코드</label>
+                                                    <input id="businessRegistration03" type="text" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업태명</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업종명</label>
+                                            </div>
+                                            <div class="label-date input--xl">
+                                                <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                                <label for="DATE_C3">법인설립일자</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">종업원수(명)</label>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="국내 외 구분">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">국내 외 구분</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="국내 외 구분">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="기관 대분류">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">기관 대분류</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="기관 대분류">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="기관 중분류">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">기관 중분류</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="기관 중분류">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="label-search input--s">
+                                                <button type="button" class="label-search-btn" title="우편번호"></button>
+                                                <div class="label-search-title">
+                                                    <span class="essential select-lebel">우편번호</span>
+                                                    <strong class="select-text">02111</strong>
+                                                </div>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <input id="adress" type="text" placeholder="" />
+                                                <label for="adress" class="essential">주소</label>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <input id="home-number" type="text" placeholder="" />
+                                                <label for="home-number" class="essential">상세주소</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">전화번호</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">팩스번호</label>
+                                            </div>
+                                            <div class="label-input-box input--m">
+                                                <p class="label-title">사회적기업유무</p>
+                                                <div class="radio-inline"><input id="RADIO_B3_1" type="radio" value="1" name="B3"><label for="RADIO_B3_1">예</label></div>
+                                                <div class="radio-inline"><input id="RADIO_B3_2" type="radio" value="2" name="B3"><label for="RADIO_B3_2">아니오</label></div>
+                                            </div>
+                                        </div>
+                                        <ul class="resume-file-list mr-top-s">
+                                            <li>
+                                                <p class="file-title essential fw-m">로고파일</p>
+                                                <div class="right-group">
+                                                    <div class="file-name-group">
+                                                        <p class="file-name">
+                                                            로고파일.png
+                                                            <button type="button">
+                                                                <span class="visually-hidden">삭제</span>
+                                                                <span class="icon ic-close"></span>
+                                                            </button>
+                                                        </p>
+                                                    </div>
+                                                    <div class="btn--upload-wrap">
+                                                        <label for="file-upload" class="btn btn--secondaly btn-s btn--upload">파일첨부</label>
+                                                        <input type="file" name="" id="file-upload" class="visually-hidden" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button type="button" class="btn btn--primary btn-l">등록</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PUB: 창업정보 등록, 수정 모달 -->
+                        <div id="modal-sample1" class="modal modal--big">
+                            <div class="modal-box">
+                                <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                                    <span class="icon ic-close"></span>
+                                    <span class="visually-hidden">닫기버튼</span>
+                                </button>
+                                <div class="modal-head">창업 정보 등록</div>
+                                <div class="modal-body">
+                                    <div class="content-search">
+                                        <form action="">
+                                            <div class="content-search__inner">
+                                                <div class="search-group">
+                                                    <label for="nameInp" class="visually-hidden">창업 업체명 입력</label>
+                                                    <input type="search" id="nameInp" placeholder="창업 업체명" />
+                                                    <button type="button" class="search__btn" title="검색"><span class="icon ic-search"></span></button>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn--line btn-m">신규등록</button>
+                                        </form>
+                                    </div>
+                                    <!-- PUB: 창업 정보 등록 목록 -->
+                                    <div>
+                                        <p class="mr-top-xs">* 해당하는 회사가 없는 경우에는 신규로 등록하실 수 있습니다.</p>
+                                        <table class="table mb-column-table mr-top-xs">
+                                            <caption>
+                                                창업 현황 정보입니다. 업체명, 사업자등록번호, 전화번호, 운영상태에 대한 내용이 있습니다.
+                                            </caption>
+                                            <thead class="pc-only">
+                                                <tr>
+                                                    <th class="al">업체명</th>
+                                                    <th>사업자등록번호</th>
+                                                    <th>전화번호</th>
+                                                    <th>운영상태</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td data-title="업체명"><a href="" class="ellipsis2 text--underline">(재)한국고고환경연구소</a></td>
+                                                    <td data-title="사업자등록번호">307-82-06823</td>
+                                                    <td data-title="전화번호">044-123-4567</td>
+                                                    <td data-title="운영상태">정상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td data-title="업체명"><a href="" class="ellipsis2 text--underline">(주)대츅환경제어시스템 </a></td>
+                                                    <td data-title="사업자등록번호">307-82-06823</td>
+                                                    <td data-title="전화번호">044-123-4567</td>
+                                                    <td data-title="운영상태">폐업</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- PUB: 신규등록 -->
+                                    <div class="resume-item bg__blue mr-top-xs">
+                                        <div class="label-input-group">
+                                            <div class="label-input input--full">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업체명</label>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">대표자명</label>
+                                            </div>
+                                            <div class="left-label-input input--xxl">
+                                                <p class="label-text essential">사업자등록번호</p>
+                                                <div class="business-num">
+                                                    <label for="businessRegistration01" class="visually-hidden">일련번호코드</label>
+                                                    <input id="businessRegistration01" type="text" placeholder="" />
+                                                    <label for="businessRegistration02" class="visually-hidden">개인법인구분코드</label>
+                                                    <input id="businessRegistration02" type="text" placeholder="" />
+                                                    <label for="businessRegistration03" class="visually-hidden">일련번호코드 와 검증코드</label>
+                                                    <input id="businessRegistration03" type="text" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업태명</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">업종명</label>
+                                            </div>
+                                            <div class="label-date input--xl">
+                                                <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                                <label for="DATE_C3">법인설립일자</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">종업원수(명)</label>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="국내 외 구분">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">국내 외 구분</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="국내 외 구분">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="기관 대분류">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">기관 대분류</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="기관 대분류">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="drop-select-wrap">
+                                                <!-- 보여지는 select -->
+                                                <div class="dropdown-select input--m">
+                                                    <div class="select-main-box">
+                                                        <button type="button" class="select-btn" title="기관 중분류">
+                                                            <span class="visually-hidden">열기</span>
+                                                        </button>
+                                                        <p class="select-title">
+                                                            <span class="essential select-lebel">기관 중분류</span>
+                                                            <strong class="select-text">선택</strong>
+                                                        </p>
+                                                    </div>
+                                                    <ul class="select-menu-box">
+                                                        <li class="select-item"><a href="">국내</a></li>
+                                                        <li class="select-item"><a href="">해외</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- 실제 select -->
+                                                <select name="" id="" class="real_select_list" title="기관 중분류">
+                                                    <option value="국내">국내</option>
+                                                    <option value="해외">해외</option>
+                                                </select>
+                                            </div>
+                                            <div class="label-search input--s">
+                                                <button type="button" class="label-search-btn" title="우편번호"></button>
+                                                <div class="label-search-title">
+                                                    <span class="essential select-lebel">우편번호</span>
+                                                    <strong class="select-text">02111</strong>
+                                                </div>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <input id="adress" type="text" placeholder="" />
+                                                <label for="adress" class="essential">주소</label>
+                                            </div>
+                                            <div class="label-input input--l">
+                                                <input id="home-number" type="text" placeholder="" />
+                                                <label for="home-number" class="essential">상세주소</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">전화번호</label>
+                                            </div>
+                                            <div class="label-input input--xl">
+                                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                                <input id="name" type="text" placeholder="" />
+                                                <label for="name" class="essential">팩스번호</label>
+                                            </div>
+                                        </div>
+                                        <ul class="resume-file-list mr-top-s">
+                                            <li>
+                                                <p class="file-title essential fw-m">로고파일</p>
+                                                <div class="right-group">
+                                                    <div class="file-name-group">
+                                                        <p class="file-name">
+                                                            로고파일.png
+                                                            <button type="button">
+                                                                <span class="visually-hidden">삭제</span>
+                                                                <span class="icon ic-close"></span>
+                                                            </button>
+                                                        </p>
+                                                    </div>
+                                                    <div class="btn--upload-wrap">
+                                                        <label for="file-upload" class="btn btn--secondaly btn-s btn--upload">파일첨부</label>
+                                                        <input type="file" name="" id="file-upload" class="visually-hidden" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-foot ac">
+                                    <button type="button" class="btn btn--primary btn-l">등록</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 > 장학금 결정금액 통지서</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+        <style>
+            @media print {
+                @page {
+                    margin: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 컨텐츠영역 -->
+        <main>
+            <div class="print--container">
+                <!-- 프린트 버튼 -->
+                <button type="button" class="btn btn--line btn-s btn--print" title="프린트하기" onclick="printPageArea()"><span class="icon ic-print"></span></button>
+                
+                <div class="print--inner">
+                    <!-- <img class="print--logo" src="./images/print/pring-logo.png" alt=""> -->
+
+                    <h1 class="print--title font-myeongjo ac" style="font-size: 3rem;">장학금 결정금액 통지서</h1>
+                    <table class="table mb-column-table mr-top-xs">
+                        <colgroup>
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>장학기수</th>
+                                <td>12기</td>
+                                <th>지급차수</th>
+                                <td>2차</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table mb-column-table mr-top-xs">
+                        <colgroup>
+                            <col style="width: 15%;">
+                            <col style="width: 30%;">
+                            <col style="width: 30%;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>홍길동</th>
+                                <td colspan="2">1999-12-15 (남)</td>
+                            </tr>
+                            <tr>
+                                <th>등록금(A)</th>
+                                <td colspan="2">￦ 6,944,113</td>
+                            </tr>
+                            <tr>
+                                <th>타장학금(B) (근로성 장학금 제외)</th>
+                                <td colspan="2">￦ 0</td>
+                            </tr>
+                            <tr>
+                                <th>KOICA 장학금 (C)</th>
+                                <td colspan="2">￦ 5,000,000</td>
+                            </tr>
+                            <tr>
+                                <th>재정보증보험료 (D)</th>
+                                <td colspan="2">￦ 0</td>
+                            </tr>
+                            <tr>
+                                <th>실지급액 (E=C-D)</th>
+                                <td colspan="2">￦ 6,944,113</td>
+                            </tr>
+                            <tr>
+                                <th>적용환율</th>
+                                <td colspan="2">￦ 1,200</td>
+                            </tr>
+                            <tr>
+                                <th>[KOICA 장학금 (C)계산방법]</th>
+                                <td colspan="2">
+                                    <pre>
+                                        1) A*75%+B > A 경우, A-B 만큼 지급
+                                        2) A*75%+B ≤ A 경우, A*75% 만큼 지급
+                                        - 1학기(6개월 기준) 500만 원 상한
+                                        - 1년(12개월 기준) 1,000만 원 상한
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="print--description fs-l">
+                        본인은 상기와 같이 장학금 결정금액을 확인하였으며<br />
+                        상기 내용대로 장학금을 지급하는 데 이의가 없음을 확인합니다.
+                    </p>
+                    <p class="pring--date font-myeongjo">2023년&nbsp; 09월&nbsp; 01일</p>
+
+                    <div class="print--signature-wrap">
+                        <small class="font-myeongjo ar">장학생 <span style="margin-left: 2rem;">홍 길 동 (인)</span></small>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

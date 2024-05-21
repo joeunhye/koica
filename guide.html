@@ -1,0 +1,3257 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Koica Guide</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/wvCommon.css" />
+        <link rel="stylesheet" href="./css/wvUser.css" />
+        <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="./css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="./css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/swiper-bundle.min.js"></script>
+        <script defer src="./js/wvScript.js"></script>
+        <script>
+            let gallerySlider;
+            document.addEventListener("DOMContentLoaded", () => {
+                new Tab("#normal-tab");
+                new Tab("#small-tab");
+                sortList(); // 정렬 기능
+                accordionSlide(".accordion-wrap"); //아코디언
+
+                //필터 옵션 추가 버튼
+                const addBtnEl = $(".option__add button");
+                const skipEl = addBtnEl.find(".visually-hidden");
+                addBtnEl.click(function () {
+                    $(".option__bottom").slideUp();
+                    skipEl.text("열기");
+                    if (!$(this).parent().parent().next().is(":visible")) {
+                        skipEl.text("닫기");
+                        $(this).parent().parent().next().stop().slideDown();
+                    }
+                });
+
+                // 필터 옵션버튼 선택
+                const tagEls = document.querySelectorAll(".option__tag");
+                tagEls.forEach((el) => {
+                    el.addEventListener("click", function () {
+                        const tagName = this.tagName;
+                        if (tagName === "BUTTON") {
+                            this.classList.toggle("on");
+                            if (this.classList.contains("on")) {
+                                let spanEl = document.createElement("span");
+                                let spanText = document.createTextNode("선택됨");
+                                spanEl.classList.add("visually-hidden");
+                                spanEl.appendChild(spanText);
+                                this.append(spanEl);
+                            } else {
+                                this.querySelector(".visually-hidden").remove();
+                            }
+                        }
+                    });
+                });
+
+                // 팝업 슬라이더
+                gallerySlider = new Swiper(".modal--gallery .swiper-container", {
+                    autoHeight: true,
+                    spaceBetween: 20,
+                    navigation: {
+                        nextEl: ".modal--gallery .swiper-button-next",
+                        prevEl: ".modal--gallery .swiper-button-prev"
+                    },
+                    pagination: {
+                        el: ".modal--gallery .swiper-pagination",
+                        clickable: true,
+                    },
+                });
+
+            });
+
+            // 갤러리 모달창 열기
+            function openGalleryModal(name, index) {
+                const modalTarget = document.querySelector(`#${name}`);
+                const modalCloseBtn = modalTarget.querySelector('.modal-close-btn');
+                modalTarget.classList.add('on');
+                modalTarget.classList.remove('effect--out');
+                modalCloseBtn.focus();
+                document.body.classList.add('scroll-off');
+                
+                gallerySlider.slideTo(index)
+            }
+        </script>
+        <style>
+            .guide-title {
+                margin: 4rem 0 1rem;
+            }
+
+            .guide-title::before {
+                content: "👉";
+            }
+
+            code {
+                display: inline-block;
+                margin: 5px !important;
+                background: var(--color-black);
+                color: #fd9800;
+                padding: 2px 5px !important;
+                border-radius: 5px;
+                font-family: "Pretendard", sans-serif;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <h1>📌 Front Style Guide</h1>
+
+                <br />
+
+                <!-- 👉 title -->
+                <h2 class="guide-title">typo</h2>
+                <h2 class="content-title">컨텐츠페이지 타이틀 <code>content-title</code></h2>
+                <h2 class="sub-title">서브 타이틀 <code>sub-title</code></h2>
+                <h2 class="content-title">타이틀 L<code>title--l</code></h2>
+                <h2 class="title--m">타이틀 m<code>title--m</code></h2>
+                <h2 class="title--ms">타이틀 ms<code>title--ms</code></h2>
+
+                <p class="fs-xl">본문 텍스트 xl<code>fs-xl</code></p>
+                <p class="fs-l">본문 텍스트 l<code>fs-l</code></p>
+                <p class="fs-m">본문 텍스트 m<code>fs-m</code></p>
+
+                <p class="text--black">text black<code>text--black</code></p>
+                <p class="text--blue">text red<code>text--blue</code></p>
+                <p class="text--darkgray">text gray<code>text--darkgray</code></p>
+                <p class="text--red">text red<code>text--red</code></p>
+                <p class="text--underline">text underline<code>text--underline</code></p>
+                <p class="text--border">text border<code>text--border</code></p>
+                <hr />
+
+                <!-- 👉 Button -->
+                <h2 class="guide-title">Big Button <code>btn-l</code></h2>
+
+                <!-- smaple code -->
+                <button type="button" class="btn btn--primary btn-l">버튼</button>
+                <button type="button" class="btn btn--secondaly btn-l">버튼</button>
+                <button type="button" class="btn btn--blue btn-l">버튼</button>
+                <button type="button" class="btn btn--line btn-l">버튼</button>
+                <button type="button" class="btn btn--navy btn-l">버튼</button>
+                <button type="button" class="btn btn--danger btn-l">버튼</button>
+                <button type="button" class="btn btn--danger btn-l" disabled>버튼</button>
+                <button type="button" class="btn btn--gray btn-l">삭제</button>
+                <a href="" class="btn--link">링크버튼</a>
+
+                <h2 class="guide-title">Midium Button<code>btn-m</code></h2>
+                <!-- smaple code -->
+                <button type="button" class="btn btn--primary btn-m">버튼</button>
+                <button type="button" class="btn btn--secondaly btn-m">버튼</button>
+                <button type="button" class="btn btn--danger btn-m">버튼</button>
+                <button type="button" class="btn btn-m" disabled>버튼</button>
+                <button type="button" class="btn btn--gray btn-m">삭제</button>
+
+                <h2 class="guide-title">Small Button<code>btn-s</code></h2>
+                <!-- smaple code -->
+                <button type="button" class="btn btn--primary btn-s">버튼</button>
+                <button type="button" class="btn btn--secondaly btn-s">버튼</button>
+                <button type="button" class="btn btn--danger btn-s">버튼</button>
+                <button type="button" class="btn btn-s" disabled>버튼</button>
+                <button type="button" class="btn btn--gray btn-s">삭제</button>
+
+                <h2 class="guide-title">관심버튼<code>btn--like</code> 기본</h2>
+                <div class="btn--like">
+                    <input type="checkbox" name="like" id="like" title="관심">
+                    <label for="like"><span class="icon ic-star"></span></label>
+                </div>
+
+                <h2 class="guide-title">관심버튼<code>btn--like btn-style</code> <span class="text--red">버튼형태</span></h2>
+                <div class="btn--like btn-style">
+                    <input type="checkbox" name="like" id="like-check23" checked="" title="관심기업">
+                    <label for="like-check23"><span class="icon ic-star"></span>관심기업</label>
+                </div>
+                
+                <h2 class="guide-title">호버 링크 버튼<code>hover-text</code></h2>
+                <a href="" class="hover-text" target="_blank">http://www.naver.com</a>
+
+                <h2 class="guide-title">인풋 옆에 나오는 Small Button<code>btn-xs</code></h2>
+
+                <div class="form--inline">
+                    <p class="form__title">아이디</p>
+                    <label for="input-text" class="visually-hidden">내용입력</label>
+                    <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                </div>
+                <button type="button" class="btn btn--primary btn-xs">조회</button>
+
+                <h2 class="guide-title">Group Button center <code>btn-group ac</code></h2>
+                <!-- smaple code -->
+                <div class="btn-group ac">
+                    <button type="button" class="btn btn--primary btn-s">확인</button>
+                    <button type="button" class="btn btn--secondaly btn-s">취소</button>
+                </div>
+
+                <h2 class="guide-title">Group Button left <code>btn-group</code></h2>
+                <!-- smaple code -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn--primary btn-s">확인</button>
+                    <button type="button" class="btn btn--secondaly btn-s">취소</button>
+                </div>
+
+                <h2 class="guide-title">Group Button right <code>btn-group ar</code></h2>
+                <!-- smaple code -->
+                <div class="btn-group ar">
+                    <button type="button" class="btn btn--primary btn-s">확인</button>
+                    <button type="button" class="btn btn--secondaly btn-s">취소</button>
+                </div>
+
+                <h2 class="guide-title">Full Button <code>btn-f</code></h2>
+
+                <!-- smaple code -->
+                <button type="button" class="btn btn--primary btn-f">버튼</button>
+
+                <hr />
+
+                <!-- 여백 -->
+                <h2 class="guide-title">margin 클래스</h2>
+                <div>
+                    <code>mr-top-l</code>
+                    <code>mr-top-m</code>
+                    <code>mr-top-ms</code>
+                    <code>mr-top-s</code>
+                    <code>mr-top-xs</code>
+                    <code>mr-top-0</code>: margin-top: 0px <code>ml-auto</code>: margin-left: auto
+                </div>
+
+                <h2 class="guide-title">padding 클래스</h2>
+                <div>
+                    <code>pd-xs</code>
+                    <code>pd-s</code>
+                    <code>pd-m</code>
+                </div>
+
+                <!-- 👉 Dropdown Toggle -->
+                <h2 class="guide-title">Dropdown Toggle</h2>
+
+                <!-- smaple code -->
+                <div class="dropdown-toggle-group">
+                    <button type="button" class="dropdown-toggle btn btn--secondaly">드롭다운</button>
+                    <div class="dropdown-menu-box">
+                        <ul class="dropdown-menu">
+                            <li class="menu-item"><a href="">옵션 1</a></li>
+                            <li class="menu-item"><a href="">옵션 2</a></li>
+                            <li class="menu-item"><a href="">옵션 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown-toggle-group">
+                    <button type="button" class="dropdown-toggle btn btn--secondaly">드롭다운</button>
+                    <div class="dropdown-menu-box">
+                        <ul class="dropdown-menu">
+                            <li class="menu-item"><a href="">옵션 1</a></li>
+                            <li class="menu-item"><a href="">옵션 2</a></li>
+                            <li class="menu-item"><a href="">옵션 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- 👉 Zoom -->
+                <h2 class="guide-title">Zoom</h2>
+
+                <!-- smaple code -->
+                <div class="zoom-btn-group">
+                    <span class="zoom-text">화면크기</span>
+                    <ul class="btn-list">
+                        <li>
+                            <button type="button" title="화면축소" class="zoom-btn" onclick="javascript:zoomControl.zoomOut()">-</button>
+                        </li>
+                        <li class="zoom-text">
+                            <button type="button" title="화면확대축소 초기화" class="" onclick="javascript:zoomControl.zoomReset()">100%</button>
+                        </li>
+                        <li>
+                            <button type="button" title="화면확대" class="zoom-btn" onclick="javascript:zoomControl.zoomIn()">+</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr />
+
+                <!-- 👉 Top Button -->
+                <h2 class="guide-title">Top Button</h2>
+
+                <!-- smaple code -->
+                <button type="button" class="top-btn">top</button>
+
+                <hr />
+
+                <!-- 👉 list -->
+                <h2 class="guide-title">list</h2>
+
+                <code>ul</code> 태그에 <code>bullet-list</code>클래스
+                <ul class="bullet-list">
+                    <li>리스트1</li>
+                    <li>리스트2</li>
+                    <li>리스트3</li>
+                </ul>
+
+                <hr />
+
+                <code>ol</code> 태그에 <code>order-list</code>클래스
+                <ol class="order-list">
+                    <li>리스트1</li>
+                    <li>리스트2</li>
+                    <li>리스트3</li>
+                </ol>
+
+                <hr />
+
+                <!-- 👉 Tab -->
+                <h2 class="guide-title">Tab</h2>
+
+                <!-- smaple code -->
+                <div id="normal-tab">
+                    <ul class="tab-btn-list">
+                        <li class="tab-btn on"><a href="javascript:void(0)">tab1</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab2</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab3</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab4</a></li>
+                    </ul>
+                    <div class="tab-contents-wrap">
+                        <div class="tab-content on">
+                            <div class="tab-text">
+                                탭 내용입니다.1 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.2 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.3 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.4 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div id="small-tab">
+                    <ul class="tab-btn-list style--small">
+                        <li class="tab-btn on"><a href="javascript:void(0)">tab1</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab2</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab3</a></li>
+                        <li class="tab-btn"><a href="javascript:void(0)">tab4</a></li>
+                    </ul>
+                    <div class="tab-contents-wrap">
+                        <div class="tab-content on">
+                            <div class="tab-text">
+                                탭 내용입니다.1 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.2 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.3 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-text">
+                                탭 내용입니다.4 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다.탭 내용입니다.탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭 내용입니다. 탭
+                                내용입니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- 👉 Step Tab -->
+                <h2 class="guide-title">Step Tab</h2>
+
+                <p>각 탭 콘텐츠에 <code>data-connectTab</code> 번호값 입력</p>
+                <p>step 탭 버튼에 <code>moveTab(data-connectTab 번호)</code> 호출</p>
+
+                <ul class="step-box">
+                    <li class="tab-btn on">
+                        <a href="javascript:void(0)" onclick="moveTab(1)">
+                            <span class="step">STEP01</span>
+                            <strong>동의제출</strong>
+                            <span class="visually-hidden">선택됨</span>
+                        </a>
+                    </li>
+                    <li class="tab-btn">
+                        <a href="javascript:void(0)" onclick="moveTab(2)">
+                            <span class="step">STEP02</span> 
+                            <strong>작품등록</strong>
+                        </a>
+                    </li>
+                    <li class="tab-btn">
+                        <a href="javascript:void(0)" onclick="moveTab(3)">
+                            <span class="step">STEP03</span>
+                            <strong>신청서 작성</strong>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-contents-wrap">
+                    <div class="tab-content on" data-connectTab="1">
+                        connectTab 1
+
+                        <div class="btn-group ar mr-top-m">
+                            <button type="button" class="btn btn--primary btn-m" onclick="moveTab(2)">다음</button>
+                        </div>
+                    </div>
+                    <div class="tab-content" data-connectTab="2">
+                        connectTab 2
+
+                        <div class="btn-group ar mr-top-m">
+                            <button type="button" class="btn btn--secondaly btn-m" onclick="moveTab(1)">이전</button>
+                            <button type="button" class="btn btn--primary btn-m" onclick="moveTab(3)">다음</button>
+                        </div>
+                    </div>
+                    <div class="tab-content" data-connectTab="3">
+                        connectTab 3
+
+                        <div class="btn-group ar mr-top-m">
+                            <button type="button" class="btn btn--secondaly btn-m" onclick="moveTab(2)">이전</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- 👉 Pagination -->
+                <h2 class="guide-title">Pagination</h2>
+
+                <!-- smaple code -->
+                <div class="pagination">
+                    <a href="#none" class="page-btn first" title="처음으로">
+                        <span class="icon ic-angles-left-solid"></span>
+                    </a>
+                    <a href="#none" class="page-btn prev" title="이전으로">
+                        <span class="icon ic-left"></span>
+                    </a>
+                    <ol class="page-list">
+                        <li class="page-item active">
+                            <a href="#none" class="page" title="현재 페이지">
+                                <strong class="current">1</strong>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#none">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#none">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#none">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#none">5</a>
+                        </li>
+                    </ol>
+                    <!-- 페이지 넘어갈 수 있는 상태일 때 active클래스 추가 -->
+                    <a href="#none" class="page-btn next active" title="다음으로">
+                        <span class="icon ic-right"></span>
+                    </a>
+                    <a href="#none" class="page-btn last active" title="끝으로">
+                        <span class="icon ic-angles-right-solid"></span>
+                    </a>
+                </div>
+
+                <hr />
+
+                <!-- 👉 Modal -->
+                <h2 class="guide-title">Modal</h2>
+                <p>팝업 호출 버튼에는 <code>modal-open-btn</code> 클래스 추가 및 함수 부여 <code>onclick="openModal('팝업ID')"</code></p>
+                <p>팝업 닫기 버튼에는 <code>onclick="closeModal('팝업ID')"</code> 함수 부여</p>
+                <p>
+                    팝업에는 두가지 유형이 있다. (일반 팝업, 알럿 팝업)<br />
+                    일반 팝업은 팝업 아이디와 클래스를 추가한다.
+                    <code> id="modal-sample1"</code>
+                    <code>class="modal"</code>
+                    알럿 팝업은 팝업 아이디와 클래스를 추가한다.
+                    <code> id="modal-sample2"</code>
+                    <code>class="modal modal--alert"</code>
+                </p>
+
+                <!-- smaple code -->
+                <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample1')">일반 모달</button>
+                <div id="modal-sample1" class="modal">
+                    <div class="modal-box">
+                        <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample1')">
+                            <span class="icon ic-close"></span>
+                            <span class="visually-hidden">닫기버튼</span>
+                        </button>
+                        <div class="modal-head">
+                            타이틀
+                            <button type="button" class="btn btn--line btn-s">버튼</button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="modal--title">본문 타이틀</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, temporibus unde voluptatem voluptatibus quaerat accusamus ratione modi iure architecto optio natus
+                                magni ducimus?
+                            </p>
+                            <div class="responsive-table">
+                                <table class="table center">
+                                    <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                    <colgroup class="pc-only">
+                                        <col style="width: 25%" />
+                                        <col style="width: 10%" />
+                                        <col style="width: 8%" />
+                                    </colgroup>
+                                    <caption>
+                                        자기소개서 리스트
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>자기소개서 제목</th>
+                                            <th>작성일</th>
+                                            <th>선택</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!-- m-show 클래스 : pc에서만 보이는 요소 -->
+                                            <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                            <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                            <!-- m-font-s 클래스 : 모바일에서 폰트 크기 작아지는 요소 -->
+                                            <td class="m-show m-full al">
+                                                <a href="" class="ellipsis2 table-title"
+                                                    >여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그
+                                                    인재 홍길동입니다.
+                                                </a>
+                                            </td>
+                                            <td class="m-show m-small m-font-s">2023-09-15</td>
+                                            <td class="m-show m-small m-right">
+                                                <div class="btn-group ac">
+                                                    <button type="button" class="btn btn--secondaly btn-s">자기소개서 수정</button>
+                                                    <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="m-show m-full al">
+                                                <a href="" class="ellipsis2 table-title">여러분이 찾는 바로 그 인재 홍길동입니다. </a>
+                                            </td>
+                                            <td class="m-show m-small m-font-s">2023-09-15</td>
+                                            <td class="m-show m-small m-right">
+                                                <div class="btn-group ac">
+                                                    <button type="button" class="btn btn--secondaly btn-s">자기소개서 수정</button>
+                                                    <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- 리스트 항목이 없을 경우 -->
+                                        <tr>
+                                            <td colspan="3" class="m-show m-full ac">
+                                                <p>
+                                                    작성된 자기소개서가 없습니다. <br />
+                                                    자기소개서를 작성해주십시오.
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-foot ac">
+                            <button class="btn btn--primary btn-s">확인</button>
+                            <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample1')">취소</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample2')">알럿 모달</button>
+                <div id="modal-sample2" class="modal modal--alert">
+                    <div class="modal-box">
+                        <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                            <span class="icon ic-close"></span>
+                            <span class="visually-hidden">닫기버튼</span>
+                        </button>
+                        <div class="modal-body">
+                            <h4 class="modal--title">해당 컨설팅은 글로벌 인재를 대상으로 합니다.</h4>
+                            <p>본인이 글로벌 인재인지 확인 하신 후 다시 신청해 주십시오</p>
+                        </div>
+                        <div class="modal-foot ac">
+                            <button class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">확인</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 👉 table -->
+                <h2 class="guide-title">table</h2>
+
+                <p>기본 테이블 <code>table</code></p>
+                <p>모든 테이블 셀 가운데 정렬은 <code>center</code>클래스 추가</p>
+                <p>
+                    각 셀 정렬은 정렬 클래스 추가<br />
+                    <code>al</code> : 좌측 정렬 <code>ac</code> : 가운데 정렬 <code>ar</code> : 우측 정렬
+                </p>
+
+                <p>
+                    pc에서 가운데 정렬이었다가 모바일에서 좌측 정렬로 변경 시엔
+                    <code>m-left</code> 클래스를 추가한다.
+                </p>
+                <p>
+                    pc에서 가운데 정렬이었다가 모바일에서 우측 정렬로 변경 시엔
+                    <code>m-right</code> 클래스를 추가한다.
+                </p>
+
+                <!-- smaple code -->
+                <table class="table center">
+                    <caption hidden="">
+                        테이블 설명
+                    </caption>
+                    <colgroup>
+                        <col style="width: 10%" />
+                        <col style="width: 50%" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">첨부파일</th>
+                            <th scope="col">날짜</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="">게시판 제목입니다</a></td>
+                            <td>yes</td>
+                            <td>2023.07.05</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">반응형에서 수직정렬 테이블(내용 수직 형식)</h2>
+                <p><code>mb-row-table</code></p>
+                <table class="table mb-row-table">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="pin">구분</th>
+                            <th scope="col">내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">타이틀</th>
+                            <td>
+                                <!-- td-text 클래스 : 리스트 위에 텍스트 -->
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀</th>
+                            <td>
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">반응형에서 중복 타이틀 있는 수직정렬 테이블</h2>
+                <p>tbody 내부<code>&lt;td data-title=""&gt;</code>타이틀 내용추가</p>
+                <table class="table mb-row-table">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">구분</th>
+                            <th scope="col">평가항목</th>
+                            <th scope="col">내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">타이틀</th>
+                            <td data-title="테이블 타이틀">
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                            <td data-title="테이블 타이틀">
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀</th>
+                            <td data-title="테이블 타이틀">
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                            <td data-title="테이블 타이틀">
+                                <p class="td-text">테이블 내부 리스트 위에 있는 내용</p>
+                                <ul class="bullet-list">
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                    <li>테이블 내용 테이블 내용 테이블 내용 테이블 내용</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">반응형에서 수직정렬 테이블(내용 수평정렬 형식)</h2>
+                <p><code>mb-column-table</code>tbody 내부<code>&lt;td data-title=""&gt;</code>타이틀 내용추가</p>
+                <table class="table mb-column-table">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">평가항목</th>
+                            <th scope="col">내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                        </tr>
+                        <tr>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">내용 수평정렬 형식 2</h2>
+                <table class="table mb-column-table">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">구분</th>
+                            <th scope="col">평가항목</th>
+                            <th scope="col">내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">구분</th>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">구분</th>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                            <td data-title="테이블 타이틀">내용내용</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">타이틀 여러개 있는 테이블 (타이틀 수직)</h2>
+                <p><code>mb-row-table</code><code>depth-table-row</code></p>
+                <table class="table mb-row-table depth-table-row">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <tbody>
+                        <tr>
+                            <th scope="colgroup" colspan="6">큰 타이틀</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀 1</th>
+                            <td>내용내용 1</td>
+                            <th scope="row">타이틀 2</th>
+                            <td>내용내용 2</td>
+                            <th scope="row">타이틀 3</th>
+                            <td>내용내용 3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀 4</th>
+                            <td colspan="2">내용내용 4</td>
+                            <th scope="row">타이틀 5</th>
+                            <td colspan="2">내용내용 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">타이틀 여러개 있는 테이블 (타이틀 수평)</h2>
+                <p><code>mb-column-table</code><code>depth-table-column</code></p>
+                <table class="table mb-column-table depth-table-column">
+                    <caption hidden="">
+                        테이블 내용입니다
+                    </caption>
+                    <tbody>
+                        <tr>
+                            <th scope="colgroup" colspan="6">큰 타이틀</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀 1</th>
+                            <td data-title="타이틀 1">내용내용 1</td>
+                            <th scope="row">타이틀 2</th>
+                            <td data-title="타이틀 2">내용내용 2</td>
+                            <th scope="row">타이틀 3</th>
+                            <td data-title="타이틀 3">내용내용 3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">타이틀 4</th>
+                            <td colspan="2" data-title="타이틀 4">내용내용 4</td>
+                            <th scope="row">타이틀 5</th>
+                            <td colspan="2" data-title="타이틀 5">내용내용 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="guide-title">게시판 형식 테이블</h2>
+                <p>이 외 추가 유형은 <code>common/board-list.html</code> 참고</p>
+                <div class="list-accessories">
+                    <div class="list-length">총 <span class="text--blue">20</span>건</div>
+                    <div class="current-page">현재페이지 <span class="text--blue">1</span>/8</div>
+                </div>
+
+                <div class="list-accessories">
+                    <div class="list-length">총 <span class="text--blue">20</span>건</div>
+                    <button type="button" class="btn btn--primary btn-xs">버튼</button>
+                </div>
+
+                <div class="list-accessories">
+                    <div class="list-length">총 <span class="text--blue">20</span>건</div>
+                    <div class="sort-list">
+                        <a href="javascript:void(0)" class="sort-item down on">최신 순<span class="visually-hidden">선택됨</span></a>
+                        <span class="line">|</span>
+                        <a href="javascript:void(0)" class="sort-item down">조회수 순</a>
+                    </div>
+                </div>
+
+                <div class="list-accessories">
+                    <div class="list-length">총 <span class="text--blue">20</span>건</div>
+                    <div class="select-category">
+                        <select title="년도 선택">
+                            <option selected="" disabled="" hidden="">년도 선택</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <button type="submit" title="검색">
+                            <span class="icon ic-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="responsive-table">
+                    <table class="table center">
+                        <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                        <colgroup class="pc-only">
+                            <col style="width: 7%" />
+                            <col style="width: 15%" />
+                            <col style="width: auto" />
+                            <col style="width: 10%" />
+                            <col style="width: 10%" />
+                            <col style="width: 10%" />
+                            <col style="width: 8%" />
+                        </colgroup>
+                        <caption>
+                            테이블 설명글 작성
+                        </caption>
+                        <thead class="visually-hidden">
+                            <tr>
+                                <th>번호</th>
+                                <th>분류</th>
+                                <th>제목</th>
+                                <th>파일유무</th>
+                                <th>작성자</th>
+                                <th>등록일</th>
+                                <th>조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 게시판에서 고정되는 목록 td에  fix-item 클래스 추가  -->
+                            <tr class="fix-table-item">
+                                <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                <td class="ac m-hide"><span class="icon ic-pin"></span><span class="visually-hidden">공지</span></td>
+                                <td>분류명</td>
+                                <td class="m-full al">
+                                    <a href="" class="ellipsis2 table-title fs-m"
+                                        >2023년 제4기(9월) 석면해체작업 고급감리원 과정 교육 수료자 명단 공지 2023년 제4기(9월) 석면해체작업 고급감리원 과정 교육 수료자 명단 공지 고급감리원 과정 교육
+                                        수료자 명단 공지</a
+                                    >
+                                </td>
+                                <td class="m-small ac"><span class="icon ic-clip"></span><span class="visually-hidden">첨부파일 있음</span></td>
+                                <td>윤주원</td>
+                                <td class="m-small ac">2023-09-15</td>
+                                <td class="m-small ac m-right">
+                                    <button type="button" class="btn btn--primary btn-xs">버튼</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ac m-hide">1</td>
+                                <td>분류명</td>
+                                <td class="m-full al">
+                                    <a href="" class="ellipsis2 table-title fs-m">2023년 제4기(9월) 석면해체작업 고급감리원 과정 교육 </a>
+                                </td>
+                                <td class="m-small ac"><span class="icon ic-clip"></span><span class="visually-hidden">첨부파일 있음</span></td>
+                                <td>윤주원</td>
+                                <td class="m-small ac">2023-09-15</td>
+                                <td class="m-small ac m-right">
+                                    <button type="button" class="btn btn--primary btn-xs">버튼</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ac m-hide">1</td>
+                                <td>분류명</td>
+                                <td class="m-full al">
+                                    <a href="" class="table-title fs-m" title="새 창 열림" target="_blank">
+                                        <span class="ellipsis"
+                                            >2023년 코이카 커리어센터 사이트 만족도 조사에 참여해 주세요. 2023년 코이카 커리어센터 사이트 만족도 조사에 참여해 주세요. 2023년 코이카 커리어센터 사이트
+                                            만족도 조사에 참여해 주세요. 2023년 코이카 커리어센터 사이트 만족도 조사에 참여해 주세요.</span
+                                        >
+                                        <span class="icon ic-share text--blue"></span>
+                                    </a>
+                                </td>
+                                <td class="m-small ac"><span class="icon ic-clip"></span><span class="visually-hidden">첨부파일 있음</span></td>
+                                <td>윤주원</td>
+                                <td class="m-small ac">2023-09-15</td>
+                                <td class="m-small ac m-right">
+                                    <button type="button" class="btn btn--primary btn-xs">버튼</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ac empty" colspan="7">
+                                    <span class="icon ic-unknown"></span>
+                                    <p>리스트가 없습니다.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="guide-title">게시판 상세페이지(읽기)</h2>
+                <div class="board">
+                    <div class="board__head">
+                        <div class="board__info">
+                            <ul>
+                                <li><strong class="text--navy">홍길동</strong></li>
+                                <li>2023.00.00</li>
+                                <li>
+                                    <span class="icon ic-eye"> <span class="visually-hidden">조회수</span></span>
+                                    <span>77</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="title__tag tag--blue">진행중</span>
+                        <h3 class="board__title">게시판 제목</h3>
+                    </div>
+                    <dl class="board__item">
+                        <dt>주최</dt>
+                        <dd>굿네이버스</dd>
+                    </dl>
+                </div>
+                <dl class="board__item">
+                    <dt>행사기간</dt>
+                    <dd>
+                        <span>2024.01.29~2024.02.26</span>&nbsp;
+                        <span class="text--red">D-10</span>
+                    </dd>
+                </dl>
+                <dl class="board__item">
+                    <dt>출처</dt>
+                    <dd class="text--underline">http://www.naver.com</dd>
+                </dl>
+                <div class="board__item-wrap">
+                    <dl class="board__item">
+                        <dt>행사기간</dt>
+                        <dd>
+                            <span>2024.01.29~2024.02.26</span>&nbsp;
+                            <span class="text--red">D-10</span>
+                        </dd>
+                    </dl>
+                    <dl class="board__item">
+                        <dt>출처</dt>
+                        <dd class="text--underline">http://www.naver.com</dd>
+                    </dl>
+                </div>
+                <!-- PUB : 첨부파일 영역 없을 경우엔 삭제 -->
+                <div class="board__file">
+                    <div class="board__file-item"><span class="icon ic-download"></span><a href="/" download="" title="다운로드">첨부파일.pdf </a></div>
+                    <div class="board__file-item"><span class="icon ic-download"></span><a href="/" download="" title="다운로드">첨부파일.pdf </a></div>
+                </div>
+                <div class="board__body">
+                    <pre>
+                        "최고가 되기 위해서"
+
+금융결제원은 국내 다양한 금융 관련 서비스를 지원하는 최고의 기업입니다.
+
+이런 여러 서비스 운영에 있어 중요한 것은 사용자에게 적절한 UI의 표출, 그리고 효율적인 데이터 처리를 통한 빠른 속도 제공입니다.
+
+저는 이를 배우기 위해 매일 진행 중인 알고리즘 풀이 외에도 기존에 공부했던 JSP에 대해 조금 더 파악하고, spring에 활용하기 전에 배우기 위해 관련 학원에 다니며 공부하였고, 여러 예제를 사용한 Spring 프로젝트를 진행했습니다.
+
+그리고 JPA를 사용하는 여러 방식과 주의점, querydsl 등 많은 부분에의 공부를 해 보았습니다.
+
+백엔드 이외에도 front-end에 활용되는 javascript의 기능 활용을 더 잘 알기 위해, vanilla JS를 사용하여 조금씩 난도를 높여가며 프로젝트를 진행 중입니다.
+
+그렇게 실력을 쌓아 가던 중 운이 좋게도 그동안 제가 공부하였고 앞으로의 진로로 결정하게 된 java spring이 기반이 되는 전산직 사무원을 채용한다는 소식을 들었고, 최고의 기업에서 가장 좋아하는 공부를 할 수 있을 것이라는 기대감을 품고 지원하게 되었습니다.
+                   </pre
+                    >
+                </div>
+
+                <div class="board__foot">
+                    <!-- 게시물 이전다음글 영역 시작 -->
+                    <div class="board-ctrl">
+                        <div class="board-ctrl__l">
+                            <a href="javascript:;">
+                                <span class="icon ic-left"></span>
+                                <div class="board-ctrl__prev">
+                                    <strong>이전글</strong>
+                                    <span class="ellipsis"
+                                        >이전 글이 존재하지 않습니다.이전 글이 존재하지 않습니다.이전 글이 존재하지 않습니다.이전 글이 존재하지 않습니다.이전 글이 존재하지 않습니다.이전 글이 존재하지
+                                        않습니다.이전 글이 존재하지 않습니다.</span
+                                    >
+                                </div>
+                            </a>
+                        </div>
+                        <div class="board-ctrl__r">
+                            <a href="javascript:;">
+                                <span class="icon ic-right"></span>
+                                <div class="board-ctrl__next">
+                                    <strong>다음글</strong>
+                                    <span class="ellipsis ar">다음 글이 존재하지 않습니다.</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 게시물 이전다음글 영역 종료 -->
+                </div>
+
+                <div class="btn-group ac mr-top-m">
+                    <button type="button" class="btn btn--secondaly btn-l">목록</button>
+                </div>
+
+                <h2 class="guide-title">아코디언</h2>
+                <p>함수 <code>accordionSlide('.accordion-wrap')</code> 호출 필요</p>
+
+                <div class="accordion-wrap">
+                    <div class="accordion-group">
+                        <div class="accordion-title flex--between">
+                            <button type="button" class="accordion-btn">
+                                <strong
+                                    >귀국인재입니다. OPIC 지원이 되나요? 귀국인재입니다. OPIC 지원이 되나요? 귀국인재입니다. OPIC 지원이 되나요? 귀국인재입니다. OPIC 지원이 되나요? 귀국인재입니다.
+                                    OPIC 지원이 되나요? 귀국인재입니다. OPIC 지원이 되나요?
+                                </strong>
+                                <span class="visually-hidden">열기</span>
+                            </button>
+                            <span class="icon ic-up2"></span>
+                        </div>
+                        <div class="accordion-cont scr-custom tag__bg--answer" tabindex="0">
+                            <pre class="text--darkgray">
+                            ㈜코웍스(이하 ‘코웍스’)는 개인정보 보호법 및 관련 법령에 따라 개인정보 보호에 최선을 다하고 있습니다. 아래의 안내된 내용을 상세히 읽어보신 후에 동의 여부를 결정하여 주시기 바랍니다.
+                
+                            ------------- 아                래 -------------
+                
+                            1. 개인 정보의 수집 및 이용목적
+                            ○ 코웍스는 개인 정보를 다음 목적을 위해서 수집 및 활용합니다.
+                            - 개발협력 경험공유 프로그램(개사이다)의 운영 참가자 글로벌인재 참여경험  확인
+                
+                            2. 수집하는 개인 정보의 항목
+                            ○ 수집·이용 항목
+                            - 필수 정보: 성명,  성별,  이메일 주소, 연락처,
+                
+                            글로벌인재양성사업참여 정보 등
+                
+                            3. 개인 정보의 보유 및 이용 기간
+                            ○ 코웍스는 수집·조회·이용된 개인정보를 취업지원서비스를 제공하는 동안 보관하며 이후 본인 개인정보 파기 요청시 관계 법령에 따라 폐기합니다
+                
+                            ※ 귀하는 이상과 같은 코웍스의 개인 정보 수집 및 이용 사항에 대하여 동의를 거부할 권리가 있으며, 다만, 동의하지 않을 경우 수집·이용 목적과 관련된 업무를 처리할 수 없습니다.
+                        </pre
+                            >
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-title flex--between">
+                            <button type="button" class="accordion-btn">
+                                <strong>귀국인재입니다. OPIC 지원이 되나요?</strong>
+                                <span class="visually-hidden">닫기</span>
+                            </button>
+                            <span class="icon ic-up2"></span>
+                        </div>
+                        <div class="accordion-cont scr-custom" tabindex="0">
+                            <pre class="text--darkgray"><strong>초상권 사용 동의서</strong>
+                            한국국제협력단(KOICA)은 2023 KOICA 개발협력 경험공유 프로그램 촬영 및 홍보 콘텐츠 제작을 위해 초상권 사용에 대한 동의를 받고자 합니다.
+                            ------------- 아                래 -------------
+                
+                            ○ 사용범위 : KOICA 홍보 목적 활용
+                            ○ 사용내용 : KOICA 홍보콘텐츠 제작을 위한 사진/영상
+                            ○ 사용매체 : KOICA 온라인 홍보 매체
+                            ○ 사 용 자 : 한국국제협력단(KOICA)
+                
+                            위의 사항에 따른 초상권 사용에 동의하며, 그 권리를 귀 기관에 위임합니다.                                    </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="">
+                    <h2 class="guide-title">입력폼 유형 모음</h2>
+
+                    <table class="table mb-row-table board--write">
+                        <caption hidden="">
+                            테이블 내용입니다
+                        </caption>
+                        <colgroup>
+                            <col style="width: 15%" />
+                            <col style="width: auto" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><span class="essential">인풋 긴 버전</span></th>
+                                <td>
+                                    <code>input--full</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 긴 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                    </div>
+
+                                    <select name="" id="" class="mr-top-xs input--full" title="진행중인 공고">
+                                        <option selected="" disabled="" hidden="">진행중인 공고 선택</option>
+                                        <option value="고등학교">고등학교</option>
+                                        <option value="대학(2,3년)">대학(2,3년)</option>
+                                        <option value="대학교(4년)">대학교(4년)</option>
+                                        <option value="대학원">대학원</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">인풋 짧은 버전</span>
+                                </th>
+                                <td>
+                                    <code>input--xxs</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--xxs" placeholder="내용" />
+                                        <span>명</span>
+                                    </div>
+                                    <code>input--xs</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--xs" placeholder="내용을 입력하세요." />
+                                    </div>
+                                    <code>input--s</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--s" placeholder="내용을 입력하세요." />
+                                    </div>
+                                    <code>input--m</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--m" placeholder="내용을 입력하세요." />
+                                    </div>
+                                    <code>input--l</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--l" placeholder="내용을 입력하세요." />
+                                    </div>
+                                    <code>input--xl</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--xl" placeholder="내용을 입력하세요." />
+                                    </div>
+                                    <code>input--xxl</code>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input input--xxl" placeholder="내용을 입력하세요." />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span class="essential">인풋 범위</span></th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input" placeholder="내용을 입력하세요." />
+                                        <span class="hyphen">~</span>
+                                        <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                        <input type="text" id="input-text" class="normal-input" placeholder="내용을 입력하세요." />
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row"><span class="essential">셀랙트</span></th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-wrap mr-top-xs">
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="input-wrap">
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                        <select name="" id="" class="" title="장애등급 구분">
+                                            <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                            <option value="고등학교">고등학교</option>
+                                            <option value="대학(2,3년)">대학(2,3년)</option>
+                                            <option value="대학교(4년)">대학교(4년)</option>
+                                            <option value="대학원">대학원</option>
+                                        </select>
+                                        <div class="form--inline flex--1">
+                                            <p class="form__title">아이디</p>
+                                            <label for="input-text" class="visually-hidden">내용입력</label>
+                                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                            <button type="button" class="btn btn--primary btn-xs">조회</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">텍스트 + 인풋 + 버튼</span>
+                                </th>
+                                <td>
+                                    <div class="form-group group--inline">
+                                        <div class="form--inline">
+                                            <p class="form__title">이름</p>
+                                            <label for="input-text" class="visually-hidden">내용입력</label>
+                                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                        </div>
+
+                                        <div class="form--inline">
+                                            <p class="form__title">아이디</p>
+                                            <label for="input-text" class="visually-hidden">내용입력</label>
+                                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                        </div>
+                                        <button type="button" class="btn btn--primary btn-xs">조회</button>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="form-group group--inline">
+                                        <div class="form--inline">
+                                            <p class="form__title">서류명</p>
+                                            <label for="input-text" class="visually-hidden">서류명 입력</label>
+                                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                        </div>
+
+                                        <div class="form--inline">
+                                            <p class="form__title">서류내용</p>
+                                            <label for="input-text" class="visually-hidden">서류내용 입력</label>
+                                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                                        </div>
+                                        <button type="button" class="item-delete-btn mr-left-xxs fs-s" title="삭제">
+                                            <span class="icon ic-close"></span>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group ac mr-top-s">
+                                        <button class="btn btn--secondaly btn-m btn--add">추가</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">라디오 - 인라인 정렬</span>
+                                </th>
+                                <td>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="radio" id="radio-box2" checked="" />
+                                        <label for="radio-box2">라디오</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="radio" id="radio-box2" checked="" />
+                                        <label for="radio-box2">라디오</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">라디오 - 블록 정렬</span>
+                                </th>
+                                <td>
+                                    <div class="radio-block">
+                                        <input type="radio" name="radio" id="radio-box2" checked="" />
+                                        <label for="radio-box2">라디오</label>
+                                    </div>
+                                    <div class="radio-block">
+                                        <input type="radio" name="radio" id="radio-box2" checked="" />
+                                        <label for="radio-box2">라디오</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">체크박스 - 인라인 정렬</span>
+                                </th>
+                                <td>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="" id="check-box2" checked="" />
+                                        <label for="check-box2">체크박스</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="" id="check-box2" checked="" />
+                                        <label for="check-box2">체크박스</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">체크박스 - 블록 정렬</span>
+                                </th>
+                                <td>
+                                    <div class="checkbox-block">
+                                        <input type="checkbox" name="" id="check-box2" checked="" />
+                                        <label for="check-box2">체크박스</label>
+                                    </div>
+                                    <div class="checkbox-block">
+                                        <input type="checkbox" name="" id="check-box2" checked="" />
+                                        <label for="check-box2">체크박스</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    라디오 + 인풋 <br />
+                                    체크박스 + 인풋
+                                </th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">신입</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">경력</label>
+                                        </div>
+
+                                        <p>
+                                            <label for="input-text" class="visually-hidden">년도</label>
+                                            <input type="text" id="input-text" class="normal-input input--xxs mr-left-xxs" placeholder="내용" />
+                                            <span>년</span>
+                                            <label for="input-text" class="visually-hidden">년도</label>
+                                            <input type="text" id="input-text" class="normal-input input--xxs mr-left-xxs" placeholder="내용" />
+                                            <span>년</span>
+                                        </p>
+                                    </div>
+                                    <hr />
+
+                                    <div class="input-wrap">
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" name="" id="check-box2" />
+                                            <label for="check-box2">체크박스</label>
+                                        </div>
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" name="" id="check-box2" />
+                                            <label for="check-box2">체크박스</label>
+                                        </div>
+                                        <p>
+                                            <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                            <input type="text" id="input-text" class="normal-input input--xxs mr-left-xxs" placeholder="내용" />
+                                            <span>명</span>
+                                            <label for="input-text" class="visually-hidden">인풋 짧은 버전</label>
+                                            <input type="text" id="input-text" class="normal-input input--xxs mr-left-xxs" placeholder="내용" />
+                                            <span>명</span>
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">라디오 + 셀랙트<br />체크박스 + 셀랙트</th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <p>
+                                            <select name="" id="" class="" title="장애등급 구분">
+                                                <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                                <option value="고등학교">고등학교</option>
+                                                <option value="대학(2,3년)">대학(2,3년)</option>
+                                                <option value="대학교(4년)">대학교(4년)</option>
+                                                <option value="대학원">대학원</option>
+                                            </select>
+                                            <select name="" id="" class="" title="장애등급 구분">
+                                                <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                                <option value="고등학교">고등학교</option>
+                                                <option value="대학(2,3년)">대학(2,3년)</option>
+                                                <option value="대학교(4년)">대학교(4년)</option>
+                                                <option value="대학원">대학원</option>
+                                            </select>
+                                        </p>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="input-wrap">
+                                        <div class="checkbox-inline"><input id="CHECKBOX_C10_Y" type="checkbox" value="Y" name="C6" /><label for="CHECKBOX_C10_Y">장애</label></div>
+                                        <p>
+                                            <select name="" id="" class="" title="장애등급 구분">
+                                                <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                                <option value="고등학교">고등학교</option>
+                                                <option value="대학(2,3년)">대학(2,3년)</option>
+                                                <option value="대학교(4년)">대학교(4년)</option>
+                                                <option value="대학원">대학원</option>
+                                            </select>
+                                            <select name="" id="" class="" title="장애등급 구분">
+                                                <option selected="" disabled="" hidden="">장애등급 구분</option>
+                                                <option value="고등학교">고등학교</option>
+                                                <option value="대학(2,3년)">대학(2,3년)</option>
+                                                <option value="대학교(4년)">대학교(4년)</option>
+                                                <option value="대학원">대학원</option>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">라디오 - 다중 정렬</span>
+                                </th>
+                                <td>
+                                    <ul class="check-list-inline">
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">라디오</label>
+                                        </div>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span class="essential">체크박스 - 다중 정렬</span>
+                                </th>
+                                <td>
+                                    <ul class="check-list-inline">
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box1" />
+                                                <label for="check-box1">6개월 이내</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box2" />
+                                                <label for="check-box2">1년 이내</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box2" />
+                                                <label for="check-box2">보건(수자원 보건의료 보건위생)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box1" />
+                                                <label for="check-box1">6개월 이내</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box2" />
+                                                <label for="check-box2">ICT(과학기술혁신/통신/디지털/산업)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box2" />
+                                                <label for="check-box2">보건(수자원 보건의료 보건위생)</label>
+                                            </div>
+                                        </li>
+                                        <li class="check__item">
+                                            <div class="checkbox-inline">
+                                                <input type="checkbox" name="" id="check-box3" />
+                                                <label for="check-box3">기타</label>
+                                                <label for="input-text" class="visually-hidden">내용입력</label>
+                                                <input type="text" id="input-text" class="normal-input" placeholder="내용을 입력하세요." />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span class="essential">토글 버튼</span></th>
+                                <td>
+                                    <label class="switch">
+                                        <label for="" class="visually-hidden">기업정보에 등록</label>
+                                        <input type="checkbox" checked="" />
+                                        <span class="slider"><span class="visually-hidden">스위치 버튼</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span class="essential">툴팁</span> </th>
+                                <td>
+                                    <div class="tooltip">
+                                        <button type="button" class="question-mark" title="툴팁 열기">?</button>
+                                        <!-- 툴팁 내용 -->
+                                        <div class="tooltip-cont">
+                                            <p>최상 : 현지인 수준의 의사소통 가능</p>
+                                            <p>상 : 업무관련 거의 모든 상황에서 만족할 만한 의사소통 가능</p>
+                                            <p>중상 : 업무와 관련된 제한적인 의사소통 가능</p>
+                                            <p>중 : 일상에서 제한적인 의사소통 가능</p>
+                                            <p>하 : 일상에서 간단한 의사소통 가능</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tooltip mb-left">
+                                        <button type="button" class="question-mark" title="툴팁 열기">?</button>
+                                        <!-- 툴팁 내용 -->
+                                        <div class="tooltip-cont">
+                                            <p>최상 : 현지인 수준의 의사소통 가능</p>
+                                            <p>상 : 업무관련 거의 모든 상황에서 만족할 만한 의사소통 가능</p>
+                                            <p>중상 : 업무와 관련된 제한적인 의사소통 가능</p>
+                                            <p>중 : 일상에서 제한적인 의사소통 가능</p>
+                                            <p>하 : 일상에서 간단한 의사소통 가능</p>
+                                        </div>
+                                    </div>
+
+                                    모바일에서 왼쪽에 뜨는 툴팁은 <code>mb-left</code>클래스 추가
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">검색영역</th>
+                                <td>
+                                    <form action="">
+                                        <div class="content-search">
+                                            <div class="content-search__inner">
+                                                <select title="분류 선택">
+                                                    <option selected="" disabled="" hidden="">분류</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                                <span class="division">|</span>
+                                                <select title="분류 선택">
+                                                    <option selected="" disabled="" hidden="">분류</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                                <span class="division">|</span>
+                                                <div class="search-group">
+                                                    <label for="nameInp" class="visually-hidden">검색어 입력</label>
+                                                    <input type="search" id="nameInp" placeholder="검색어를 입력하세요." />
+                                                    <button type="button" class="search__btn" title="검색">
+                                                        <span class="icon ic-search"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <hr />
+
+                                    <p>
+                                        검색 영역이 와이드하게 들어갈 경우
+                                        <code>flex--1</code> 클래스를 부여한다.
+                                    </p>
+
+                                    <form action="">
+                                        <div class="content-search">
+                                            <div class="content-search__inner flex--1">
+                                                <div class="search-group">
+                                                    <label for="nameInp" class="visually-hidden">창업 업체 명</label>
+                                                    <input type="search" id="nameInp" placeholder="창업 업체 명을 입력하세요." />
+                                                    <button type="button" class="search__btn" title="검색">
+                                                        <span class="icon ic-search"></span>
+                                                    </button>
+                                                </div>
+                                                <button type="button" class="btn btn--primary btn-s">신규등록</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">날짜</th>
+                                <td>
+                                    <div class="date">
+                                        <label for="input-text" class="visually-hidden">상담 예약 날짜</label>
+                                        <input type="date" id="input-date" class="normal-input input--auto" />
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="input-group date">
+                                        <label for="input-text" class="visually-hidden">날짜 시작 입력</label>
+                                        <input type="date" id="input-date" class="normal-input" />
+                                        <span class="hyphen">~</span>
+                                        <label for="input-text" class="visually-hidden">날짜 종료 입력</label>
+                                        <input type="date" id="input-date" class="normal-input" />
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">첨부파일</th>
+                                <td>
+                                    <div class="file-upload__box">
+                                        <div class="btn--upload-wrap">
+                                            <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                            <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                            <!-- 업로드 파일 있을 때 -->
+                                            <ul class="file-list">
+                                                <li class="file-item">
+                                                    <span class="file-item-name">업로드된 파일1</span>
+                                                    <button type="button" class="file-item-delete">
+                                                        <span class="visually-hidden">삭제</span>
+                                                        <span class="icon ic-close"></span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="input-wrap mr-top-s">
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">소제목 위</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">내용 위</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="radio" id="radio-box2" checked="" />
+                                            <label for="radio-box2">내용 아래</label>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+                                    <p>첨부파일 반려된 경우 <code>state--reject</code> 클래스 추가</p>
+                                    <div class="file-upload__box">
+                                        <div class="btn--upload-wrap">
+                                            <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                            <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                            <!-- 업로드 파일 있을 때 -->
+                                            <ul class="file-list">
+                                                <li class="file-item">
+                                                    <span class="text--red">[반려]</span>
+                                                    <span class="file-item-name state--reject">업로드된 파일1</span>
+                                                    <button type="button" class="file-item-delete">
+                                                        <span class="visually-hidden">삭제</span>
+                                                        <span class="icon ic-close"></span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="text--red mr-top-xxs">(PDF파일만 첨부가 가능합니다.)</p>
+
+                                    <hr />
+                                    <div class="file-upload__box">
+                                        <div class="input-wrap">
+                                            <div class="btn--upload-wrap">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name">업로드된 파일1</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <textarea
+                                                name=""
+                                                id=""
+                                                cols="1"
+                                                rows="1"
+                                                onkeydown="resize(this)"
+                                                onkeyup="resize(this)"
+                                                class="textarea"
+                                                placeholder="내용을 적어주세요"
+                                                title="내용을 적어주세요"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">파일업로드</th>
+                                <td>
+                                    <div class="file-upload__group">
+                                        <p class="file-upload__name fw-m">예산지출 내역서</p>
+                                        <div class="file-upload__box">
+                                            <div class="btn--upload-wrap">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name">업로드된 파일1</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn--blue btn-s btn--upload">업로드</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">파일업로드 2</th>
+                                <td>
+                                    <div class="btn--upload-wrap">
+                                        <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                        <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                        <!-- 업로드 파일 있을 때 -->
+                                        <ul class="file-list">
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일1</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일2</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="btn--upload-wrap">
+                                        <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                        <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                        <!-- 업로드 파일 있을 때 -->
+                                        <ul class="file-list">
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일1</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일2</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" class="btn btn--blue btn-s btn--upload">업로드</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">기본 textarea</th>
+                                <td>
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="내용 입력" title="내용 입력"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">작성시 높이조절 되는 textarea</th>
+                                <td>
+                                    <textarea
+                                        name=""
+                                        id=""
+                                        cols="1"
+                                        rows="1"
+                                        onkeydown="resize(this)"
+                                        onkeyup="resize(this)"
+                                        class="textarea"
+                                        placeholder="내용을 적어주세요"
+                                        title="내용을 적어주세요"
+                                    ></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="secret__message">
+                                        <div class="checkbox-block">
+                                            <input type="checkbox" name="" id="check-box2" />
+                                            <label for="check-box2"><span class="text--blue">비밀글</span> (비밀글로 등록을 원하시면 체크해 주세요.)</label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 class="guide-title">정보입력 label + input</h2>
+
+                    <div>
+                        인풋 크기별로
+                        <code>input--xs</code>
+                        <code>input--s</code>
+                        <code>input--m</code>
+                        <code>input--l</code>
+                        <code>input--xl</code>
+                        <code>input--xxl</code>
+                    </div>
+
+                    <div class="resume-item bg__blue">
+                        <div class="label-input-group">
+                            <!-- 정보입력 select -->
+                            <div class="drop-select-wrap">
+                                <!-- 보여지는 select -->
+                                <div class="dropdown-select input--xs">
+                                    <div class="select-main-box">
+                                        <button type="button" class="select-btn" title="학교구분">
+                                            <span class="visually-hidden">열기</span>
+                                        </button>
+                                        <p class="select-title">
+                                            <span class="essential select-lebel">학교구분</span>
+                                            <strong class="select-text">대학교(4년)</strong>
+                                        </p>
+                                    </div>
+                                    <ul class="select-menu-box">
+                                        <li class="select-item"><a href="">고등학교</a></li>
+                                        <li class="select-item"><a href="">대학(2,3년)</a></li>
+                                        <li class="select-item"><a href="">대학교(4년)</a></li>
+                                        <li class="select-item"><a href="">대학원</a></li>
+                                    </ul>
+                                </div>
+                                <!-- 실제 select -->
+                                <select name="" id="" class="real_select_list" title="학교구분">
+                                    <option value="고등학교">고등학교</option>
+                                    <option value="대학(2,3년)">대학(2,3년)</option>
+                                    <option value="대학교(4년)">대학교(4년)</option>
+                                    <option value="대학원">대학원</option>
+                                </select>
+                            </div>
+                            <div class="label-input input--s">
+                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                <input id="label-input" type="text" placeholder="이름" />
+                                <label for="label-input" class="essential">이름</label>
+                            </div>
+                            <div class="label-input input--m">
+                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                <input id="label-input2" type="text" placeholder="02-1234-5678" />
+                                <label for="label-input2" class="essential">전화번호</label>
+                            </div>
+
+                            <!-- 정보입력 select -->
+                            <div class="dropdown-select input--l">
+                                <div class="select-main-box">
+                                    <button type="button" class="select-btn" title="학교구분">
+                                        <span class="visually-hidden">열기</span>
+                                    </button>
+                                    <p class="select-title">
+                                        <span class="essential select-lebel">학교구분</span>
+                                        <strong class="select-text">대학교(4년)</strong>
+                                    </p>
+                                </div>
+                                <div class="select-menu-box">
+                                    <ul class="select-menu">
+                                        <li class="">
+                                            <a href="" class="select-item">고등학교</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="" class="select-item">대학(2,3년)</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="" class="select-item">대학교(4년)</a>
+                                        </li>
+                                        <li class=""><a href="" class="select-item">대학원</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="label-input input--xl">
+                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                <input id="label-input2" type="text" placeholder="02-1234-5678" />
+                                <label for="label-input2" class="essential">학과(전공)</label>
+                            </div>
+                            <div class="label-input input--xxl">
+                                <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                <input id="label-input2" type="text" placeholder="주소" />
+                                <label for="label-input2" class="essential">주소</label>
+                            </div>
+
+                            <!-- 이력서 검색 -->
+                            <div class="label-search input--xs">
+                                <button type="button" class="label-search-btn" title="국가"></button>
+                                <div class="label-search-title">
+                                    <span class="essential select-lebel">국가</span>
+                                    <strong class="select-text">대한민국</strong>
+                                </div>
+                            </div>
+                            <div class="label-date">
+                                <input id="DATE_C3" type="date" class="normal-input input--auto" />
+                                <label for="DATE_C3">입학년월</label>
+                            </div>
+                            <div class="label-input-box">
+                                <p class="label-title">성별</p>
+                                <div class="radio-inline"><input id="RADIO_B3_1" type="radio" value="1" name="B3" /><label for="RADIO_B3_1">남</label></div>
+                                <div class="radio-inline"><input id="RADIO_B3_2" type="radio" value="2" name="B3" /><label for="RADIO_B3_2">여</label></div>
+                            </div>
+                            <div class="checkbox-inline"><input id="CHECKBOX_C6_Y" type="checkbox" value="Y" name="C6" /><label for="CHECKBOX_C6_Y">편입</label></div>
+                        </div>
+                        <button type="button" class="item-delete-btn">
+                            <span class="visually-hidden">삭제버튼</span>
+                        </button>
+                    </div>
+
+                    <p>여백없이 와이드하게 들어가는 경우 <code>label-input</code>을 <code>label__group</code>로 감싸주어야 한다.</p>
+                    <div class="resume-item bg__blue mr-top-xs">
+                        <div class="label-input-group">
+                            <div class="label__group">
+                                <div class="label-input input--xl">
+                                    <input id="label-input5" type="text" placeholder="" required="" />
+                                    <label for="label-input5" class="essential">팀명</label>
+                                </div>
+                                <div class="label-input input--s">
+                                    <input id="home-number3" type="text" placeholder="" required="" />
+                                    <label for="home-number3" class="essential">인원(명)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="label-input-group mr-top-xxs">
+                            <div class="label__group">
+                                <div class="label-input input--xxl">
+                                    <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                    <input id="label-input2" type="text" placeholder="주소" />
+                                    <label for="label-input2" class="essential">주소</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>div 형태의 경우 <code>label-div-box</code>클래스를 사용한다.</p>
+                    <div class="resume-item bg__blue mr-top-xs">
+                        <div class="label-input-group mr-top-xxs">
+                            <div class="label__group">
+                                <div class="label-div-box input--full flex--between">
+                                    <p>PR 보고서</p>
+                                    <button type="button" class="btn btn--secondaly btn-s">선택하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>인풋과 div 조합의 유형은 <code>label-input-box</code>클래스를 사용한다.</p>
+                    <div class="resume-item bg__blue mr-top-xs">
+                        <div class="label-input-group">
+                            <div class="label__group">
+                                <div class="label-input-box input--s flex--end">
+                                    <p class="label-title">파일추가</p>
+                                    <div class="btn--upload-wrap">
+                                        <!-- 업로드 파일 있을 때 -->
+                                        <ul class="file-list">
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일1</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                            <li class="file-item">
+                                                <span class="file-item-name">업로드된 파일2</span>
+                                                <button type="button" class="file-item-delete">
+                                                    <span class="visually-hidden">삭제</span>
+                                                    <span class="icon ic-close"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+
+                                        <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                        <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="label-input-group mr-top-xxs">
+                            <div class="label__group">
+                                <div class="label-input-box input--s flex--end h--auto">
+                                    <p class="label-title">URL</p>
+                                    <a href="http://www.naver.com">http://www.naver.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="label-input-group mr-top-xxs mb-direction--col">
+                            <div class="label__group">
+                                <div class="label-input-box input--s flex--end h--auto">
+                                    <p class="label-title">URL</p>
+                                    <a href="http://www.naver.com" target="_blank" title="새 창 열림">http://www.naver.com</a>
+                                </div>
+                            </div>
+                            <div class="label__group">
+                                <div class="label-input-box input--s flex--end h--auto">
+                                    <p class="label-title">첨부파일</p>
+                                    <a href="http://www.naver.com" download="">프로젝트 테스트 + 계획서.pdf</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <fieldset class="mr-top-ms">
+                        <p class="sub-title flex--between wrap">지원자 기본정보</p>
+                        <span class="sub-text">* 개발협력커리어센터에서 진행된 교육이력은 삭제가 불가합니다.</span>
+                        <div class="info-box resume-item bg__blue mr-top-xs">
+                            <dl class="user-name-group add--profile">
+                                <dt class="fs-m fw-m">사진추가</dt>
+                                <dd>
+                                    <input type="file" name="" id="upload-file" class="visually-hidden" />
+                                    <label for="upload-file" class="btn btn--secondaly btn-xs btn--add"><span class="visually-hidden">사진 추가하기</span></label>
+                                </dd>
+                            </dl>
+
+                            <!-- 이력서 사진 추가된 경우 -->
+                            <!-- <div class="user-name-group add--profile">
+                        <div class="profile-img">
+                            <img src="/images/profile-sample.png" alt="">
+                        </div>
+                    </div> -->
+                            <div>
+                                <div class="label-input-group">
+                                    <div class="label__group">
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="label-input" type="text" placeholder="" />
+                                            <label for="label-input" class="essential">이름</label>
+                                        </div>
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="mobile-number" type="text" placeholder="" />
+                                            <label for="mobile-number" class="essential">생년월일</label>
+                                        </div>
+                                    </div>
+                                    <div class="label__group">
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="home-number" type="text" placeholder="" />
+                                            <label for="home-number" class="essential">성별</label>
+                                        </div>
+                                        <div class="label-input input--xl">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="adress" type="text" placeholder="" />
+                                            <label for="adress" class="essential">이메일</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="label-input-group mr-top-xxs">
+                                    <div class="label__group">
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="label-input" type="text" placeholder="" />
+                                            <label for="label-input" class="essential">전화번호</label>
+                                        </div>
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="mobile-number" type="text" placeholder="" />
+                                            <label for="mobile-number" class="essential">휴대폰</label>
+                                        </div>
+                                    </div>
+                                    <div class="label__group">
+                                        <div class="label-input input--s">
+                                            <!-- PUB: 필수 입력사항에 essential 클래스 추가 -->
+                                            <input id="home-number" type="text" placeholder="" />
+                                            <label for="home-number" class="essential">주소</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="mr-top-m">
+                        <p class="sub-title">신청목적 및 희망사항 기재</p>
+                        <button type="button" class="btn btn--secondaly btn-s style--float-r">선택하기</button>
+                        <div class="resume-item bg__blue mr-top-xs">
+                            <div class="label-input input--full">
+                                <textarea name="" id="label-input6" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea hide-scrollbar" style="height: 78px"></textarea>
+                                <label for="label-input6" class="essential">본 과정이 본인에게 꼭 필요한 이유를 기재해주세요.</label>
+                            </div>
+                            <div class="label-input input--full">
+                                <textarea name="" id="label-input7" cols="1" rows="1" onkeydown="resize(this)" onkeyup="resize(this)" class="textarea hide-scrollbar" style="height: 78px"></textarea>
+                                <label for="label-input7" class="essential">본 과정에서 다루어주었으면 하는 내용이 있으시면 기재해주세요.</label>
+                            </div>
+                        </div>
+                        <div class="resume-item bg__blue mr-top-s">
+                            <p class="fs-m fw-m">자기소개 (상담시 참고할 수 있도록 자기소개 및 하고 싶은 말)</p>
+                            <textarea
+                                name=""
+                                id=""
+                                cols="1"
+                                rows="1"
+                                onkeydown="resize(this)"
+                                onkeyup="resize(this)"
+                                class="textarea mr-top-xs"
+                                placeholder=""
+                                title="자기소개 (상담시 참고할 수 있도록 자기소개 및 하고 싶은 말)"
+                            ></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- 👉 첨부파일 -->
+                    <h2 class="guide-title">첨부파일</h2>
+                    <fieldset class="mr-top-ms">
+                        <div class="flex--between flex--center wrap">
+                            <legend class="sub-title">첨부파일</legend>
+                            <a href="" class="btn btn-l btn--line btn--download"><span class="icon ic-download"></span>장학금 중복수혜확인서 양식 다운로드</a>
+                        </div>
+                        <ul class="resume-file-list mr-top-s">
+                            <li>
+                                <p class="file-title essential fw-m">졸업증명서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">
+                                            졸업증명서.pdf
+                                            <button type="button">
+                                                <span class="visually-hidden">삭제</span>
+                                                <span class="icon ic-close"></span>
+                                            </button>
+                                        </p>
+                                        <p class="file-name">
+                                            졸업증명서2.pdf
+                                            <button type="button">
+                                                <span class="visually-hidden">삭제</span>
+                                                <span class="icon ic-close"></span>
+                                            </button>
+                                        </p>
+                                        <p class="file-name">
+                                            졸업증명서.pdf
+                                            <button type="button">
+                                                <span class="visually-hidden">삭제</span>
+                                                <span class="icon ic-close"></span>
+                                            </button>
+                                        </p>
+                                    </div>
+                                    <div class="btn--upload-wrap">
+                                        <label for="file-upload" class="btn btn--secondaly btn-s btn--upload">파일찾기</label>
+                                        <input type="file" name="" id="file-upload" class="visually-hidden" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="file-title essential fw-m">경력증명서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">졸업증명서.pdf</p>
+                                        <p class="file-name">졸업증명서2.pdf</p>
+                                        <p class="file-name">졸업증명서.pdf</p>
+                                    </div>
+                                    <a href="" class="btn btn--secondaly btn-s ml-auto btn--download" download=""
+                                        >다운로드
+                                        <span class="icon ic-download"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+
+                <h2 class="guide-title">Form - 연도, 월 선택</h2>
+
+                <!-- smaple code -->
+                <div class="form form--year-category form--line">
+                    <form>
+                        <div class="from-box">
+                            <!-- 년도 선택 -->
+                            <div class="select-year">
+                                <button type="button" title="이전 년도">
+                                    <span class="icon ic-left"></span>
+                                </button>
+                                <strong>2024</strong>
+                                <button type="button" title="다음 년도">
+                                    <span class="icon ic-right"></span>
+                                </button>
+                            </div>
+
+                            <!-- 분류 카테고리 -->
+                            <div class="select-category">
+                                <select title="분류 선택">
+                                    <option selected="" disabled="" hidden="">분류</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+
+                                <select title="분류 선택">
+                                    <option selected="" disabled="" hidden="">분류</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                                <button type="submit" title="조회">
+                                    <span class="icon ic-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 👉 List -->
+                <h2 class="guide-title">List</h2>
+
+                <!-- smaple code -->
+                <div class="list__caption ar">
+                    <p>리스트 설명글</p>
+                </div>
+                <div class="list-item-group">
+                    <!-- 유형 1 -->
+                    <div class="normal-list__item">
+                        <div class="info-group">
+                            <a href="" class="info-group__title ellipsis2"
+                                >환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수
+                                늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남</a
+                            >
+                            <ul class="info-detail list--inline">
+                                <li>
+                                    <span class="info__title">행사일시 : </span>
+                                    <span class="info-detail__cont">2024.04.10(월) 14:00~16:00</span>
+                                </li>
+                                <li>
+                                    <span class="info__title">신청기간 : </span>
+                                    <span class="info-detail__cont">2024.03.01~2024.04.05</span>
+                                </li>
+                                <li>
+                                    <span class="info__title">모집인원 : </span>
+                                    <span class="info-detail__cont">30명</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="side-group">
+                            <button type="button" class="btn btn--primary btn-m">신청</button>
+                            <!-- <button type="button" class="btn btn--secondaly btn-m" disabled>신청마감</button>
+                        <button type="button" class="btn btn--secondaly btn-m" disabled>행사종료</button> -->
+                        </div>
+                    </div>
+
+                    <!-- 유형 2 -->
+                    <div class="normal-list__item">
+                        <div class="info-group">
+                            <div class="head-group">
+                                <div class="flex--start gap-s">
+                                    <div class="btn--like">
+                                        <input type="checkbox" name="like" id="like-check23" checked="" title="관심버튼" />
+                                        <label for="like-check23"><span class="icon ic-star"></span></label>
+                                    </div>
+                                    <p class="fw-m">대한민국</p>
+                                </div>
+                                <p><a href="" class="company">열매나눔인터내셔널</a></p>
+                            </div>
+                            <a href="" class="info-group__title ellipsis2"
+                                >환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수
+                                늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남환경실무전문인력직무향상 (2기) 환경실무전문인력직무향상 (2기) 글자 수 늘어남</a
+                            >
+                            <ul class="info-detail list--inline">
+                                <li>
+                                    <span class="info-detail__cont">인턴</span>
+                                </li>
+                                <li>
+                                    <span class="info-detail__cont">학력무관</span>
+                                </li>
+                                <li>
+                                    <span class="info-detail__cont">경력무관</span>
+                                </li>
+                            </ul>
+                            <p class="info-group__cont">국제협력, 역구기획, 시설관리</p>
+                        </div>
+                        <div class="side-group mb-reverse">
+                            <button type="button" class="btn btn--primary btn-m">홈페이지 지원</button>
+                            <div class="side-detail">
+                                <strong class="text--red">D-30</strong>
+                                <span>~02/23(금)</span>
+                                <div class="side-detail__list">
+                                    <p>현재 지원자 2명</p>
+                                    <span class="slash">/</span>
+                                    <p>스크랩 20명</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 유형 3 -->
+                    <div class="normal-list__item">
+                        <div class="info-group thumbnail-wrap-group">
+                            <div class="thumbnail-img">
+                                <img src="./images/dummy/dummy_thumbnail.png" alt="" />
+                            </div>
+                            <div>
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2">[NCS특강] 창업지원 교육명</a>
+                                <ul class="info-detail list--inline">
+                                    <li>
+                                        <span class="info__title">교육기간 : </span>
+                                        <span class="info-detail__cont">2024.04.10 ~ 2024.04.30</span>
+                                    </li>
+                                    <li>
+                                        <span class="info__title">신청기간 : </span>
+                                        <span class="info-detail__cont">2024.04.10 ~ 2024.04.30</span>
+                                    </li>
+                                    <li>
+                                        <span class="info__title">모집인원 : </span>
+                                        <span class="info-detail__cont">30명</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side-group">
+                            <a href="./consulting_multi-detail.html" class="btn btn--primary btn-m">신청</a>
+                        </div>
+                    </div>
+
+                    <!-- 유형 4 -->
+                    <div class="normal-list__item">
+                        <div class="first-group ac">
+                            <p class="first-group__title">지원완료</p>
+                            <span class="first-group__text">2024.02.29</span>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-group__item">
+                                <div class="head-group">
+                                    <a href="" class="company">열매나눔인터내셔널</a>
+                                </div>
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2 mr-top-xxs">[NCS특강] 창업지원 교육명</a>
+                                <ul class="info-detail list--inline">
+                                    <li>
+                                        <span class="info__title">현재 지원자 : </span>
+                                        <span class="info-detail__cont">2명</span>
+                                    </li>
+                                    <li>
+                                        <span class="info__title">관심 : </span>
+                                        <span class="info-detail__cont">20명</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side-group">
+                            <div class="side-detail">
+                                <p>공고진행중 <strong class="text--red">D-30</strong></p>
+                                <p>열람</p>
+                            </div>
+
+                            <a href="./consulting_multi-detail.html" class="btn btn--primary btn-m">지원취소</a>
+                        </div>
+                    </div>
+
+                    <!-- 유형 5 -->
+                    <div class="normal-list__item">
+                        <div class="first-group">
+                            <div class="flex--start gap-s">
+                                <div class="btn--like">
+                                    <input type="checkbox" name="like" id="like-check23" checked title="관심버튼" />
+                                    <label for="like-check23"><span class="icon ic-star"></span></label>
+                                </div>
+                                <p class="fw-m">대한민국</p>
+                            </div>
+                            <p class="mr-top-xxs ml-auto">
+                                <a href="" class="company">열매나눔인터내셔널</a>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-group__item">
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2">[NCS특강] 창업지원 교육명</a>
+                                <ul class="info-detail list--inline">
+                                    <li>
+                                        <span class="info__title">현재 지원자 : </span>
+                                        <span class="info-detail__cont">2명</span>
+                                    </li>
+                                    <li>
+                                        <span class="info__title">관심 : </span>
+                                        <span class="info-detail__cont">20명</span>
+                                    </li>
+                                </ul>
+                                <p class="info-group__cont">국제협력, 역구기획, 시설관리</p>
+                            </div>
+                        </div>
+                        <div class="side-group mb-reverse">
+                            <button type="button" class="btn btn--primary btn-m">이메일 지원</button>
+                            <div class="side-detail">
+                                <strong class="text--red">D-30</strong>
+                                <span>~02/23(금)</span>
+                                <div class="side-detail__list">
+                                    <p>현재 지원자 2명</p>
+                                    <span class="slash">/</span>
+                                    <p>스크랩 20명</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 유형 6 -->
+                    <div class="normal-list__item">
+                        <div class="first-group">
+                            <div class="flex--start gap-s">
+                                <div class="btn--like">
+                                    <input type="checkbox" name="like" id="like-check23" checked title="관심버튼" />
+                                    <label for="like-check23"><span class="icon ic-star"></span></label>
+                                </div>
+                                <p class="fw-m">대한민국</p>
+                            </div>
+                            <p class="mr-top-xxs ml-auto">
+                                <a href="" class="company">열매나눔인터내셔널</a>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-group__item">
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2">[NCS특강] 창업지원 교육명</a>
+                                <ul class="info-detail list--inline">
+                                    <li>
+                                        <span class="info__title">현재 지원자 : </span>
+                                        <span class="info-detail__cont">2명</span>
+                                    </li>
+                                    <li>
+                                        <span class="info__title">관심 : </span>
+                                        <span class="info-detail__cont">20명</span>
+                                    </li>
+                                </ul>
+                                <p class="info-group__cont">국제협력, 역구기획, 시설관리</p>
+                            </div>
+                        </div>
+                        <div class="side-group mb-reverse">
+                            <div>
+                                <button type="button" class="text--underline modal-open-btn"><span class="icon ic-crown"></span>제안 확인</button>
+                                <button type="button" class="btn btn--primary btn-m">이메일 지원</button>
+                            </div>
+                            <div class="side-detail">
+                                <strong class="text--red">D-30</strong>
+                                <span>~02/23(금)</span>
+                                <div class="side-detail__list">
+                                    <p>현재 지원자 2명</p>
+                                    <span class="slash">/</span>
+                                    <p>스크랩 20명</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 유형 7 -->
+                    <div class="normal-list__item">
+                        <div class="first-group">
+                            <div class="flex--start gap-s">
+                                <div class="btn--like">
+                                    <input type="checkbox" name="like" id="like-check23" checked title="관심버튼" />
+                                    <label for="like-check23"><span class="icon ic-star"></span></label>
+                                </div>
+                                <p class="fw-m">대한민국</p>
+                            </div>
+                            <p class="mr-top-xxs ml-auto">
+                                <a href="" class="company">열매나눔인터내셔널</a>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <p>진행중 공고 <strong class="text--red">5</strong>개</p>
+                        </div>
+                        <div class="side-group">
+                            <div class="checkbox-inline">
+                                <input type="checkbox" name="" id="check-box25" checked="" />
+                                <label for="check-box25">채용소식 알림</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="normal-list__item">
+                        <div class="first-group ac">
+                            <p class="first-group__title">
+                                <span class="bg--round style--navy">작성완료</span>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-group__item">
+                                <div class="head-group">
+                                    <span class="text--blue">PR보고서</span>
+                                </div>
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2">[NCS특강] 창업지원 교육명</a>
+                                <p>2024-03-11</p>
+                            </div>
+                        </div>
+                        <div class="side-group">
+                            <div class="btn-group ac">
+                                <button type="button" class="btn btn--blue btn-s">수정</button>
+                                <button type="button" class="btn btn--line btn-s">복사</button>
+                                <button type="button" class="btn btn--danger btn-s">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="normal-list__item">
+                        <div class="info-group">
+                            <div class="info-group__item">
+                                <a href="./consulting_multi-detail.html" class="info-group__title ellipsis2">[NCS특강] 창업지원 교육명</a>
+                                <p>2024-03-11</p>
+                            </div>
+                        </div>
+                        <div class="side-group">
+                            <div class="btn-group ac">
+                                <button type="button" class="btn btn--blue btn-s">수정</button>
+                                <button type="button" class="btn btn--line btn-s">복사</button>
+                                <button type="button" class="btn btn--danger btn-s">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 유형 8 -->
+                    <div class="normal-list__item">
+                        <div class="info-group">
+                            <div class="head-group">
+                                <span class="text--blue">진행중</span>
+                            </div>
+                            <a href="" class="info-group__title ellipsis2">코스피상장사 신차 구매팀 인재채용 (라오스 근무)</a>
+                            <ul class="info-detail list--inline">
+                                <li>
+                                    <span class="info__title">홍길동</span>
+                                </li>
+                                <li>
+                                    <span class="info__title">기간 </span>
+                                    <span class="info-detail__cont">2024.04.02 ~ 2024.05.02</span>
+                                </li>
+                                <li>
+                                    <span class="info__title">등록 : </span>
+                                    <span class="info-detail__cont">04.02</span>
+                                </li>
+                            </ul>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn--blue btn-s">수정</button>
+                                <button type="button" class="btn btn--line btn-s">복사</button>
+                                <button type="button" class="btn btn--secondaly btn-s">마감</button>
+                                <button type="button" class="btn btn--danger btn-s">삭제</button>
+                            </div>
+                        </div>
+                        <div class="side-group ac">
+                            <ul class="list--counter">
+                                <li class="ac">
+                                    <p>전체 지원자</p>
+                                    <strong>10</strong>
+                                </li>
+                                <li class="ac">
+                                    <p>미열람</p>
+                                    <strong class="text--red">8</strong>
+                                </li>
+                                <li class="ac">
+                                    <p>미심사</p>
+                                    <strong>10</strong>
+                                </li>
+                                <li class="ac">
+                                    <p>최종합격</p>
+                                    <strong>10</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 리스트가 없는 경우 -->
+                    <div class="normal-list__item empty">
+                        <div class="ac">
+                            <span class="icon ic-unknown"></span>
+                            <p>리스트가 없습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="guide-title">Grid List</h2>
+
+                <!-- smaple code -->
+                <div class="thumbnail-list">
+                    <div class="thumbnail-item">
+                        <span class="ribbon style--navy"><span>리본</span></span>
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다</a>
+                                <div class="thumbnail__info">
+                                    <p>이지민</p>
+                                    <div class="thumbnail__date">
+                                        <span>23.10.25</span>
+                                        <div>
+                                            <span class="icon ic-eye"> <span class="visually-hidden">조회수</span></span>
+                                            <span>77</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다</a>
+                                <div class="thumbnail__info">
+                                    <p>이지민</p>
+                                    <div class="thumbnail__date">
+                                        <span>23.10.25</span>
+                                        <div>
+                                            <span class="icon ic-eye"> <span class="visually-hidden">조회수</span></span>
+                                            <span>77</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다 제목 입니다</a>
+                                <div class="thumbnail__info">
+                                    <p>이지민</p>
+                                    <div class="thumbnail__date">
+                                        <span>23.10.25</span>
+                                        <div>
+                                            <span class="icon ic-eye"> <span class="visually-hidden">조회수</span></span>
+                                            <span>77</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다</a>
+                                <p class="text__content ellipsis2">
+                                    컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다</a>
+                                <p class="text__content ellipsis2">컨텐츠 내용입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="thumbnail-img">
+                                <img src="https://picsum.photos/id/1036/500/300" alt="" />
+                            </div>
+                            <div class="item-info-group">
+                                <a href="" class="text__title fs-m ellipsis">제목 입니다</a>
+                                <p class="text__content ellipsis2">
+                                    컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title">
+                                <a href="" class="text__title fs-m ellipsis">홍길동 멘토</a>
+                                <span class="country__title">사우스 아프리카</span>
+                            </div>
+                            <ul class="item__cont">
+                                <li>
+                                    <strong>분야</strong>
+                                    <p class="ellipsis">엔지니어링 · 기계설계 · 기계장비 · 플랜트 엔지니어링 · 기계설계 · 기계장비 · 플랜트 엔지니어링 · 기계설계 · 기계장비 · 플랜트</p>
+                                </li>
+                                <li>
+                                    <strong>직무</strong>
+                                    <p class="ellipsis">엔지니어링 · 기계설계 · 기계장비 · 플랜트 기계설계 엔지니어링 · 플랜트 엔지니어링 엔지니어링 · 기계설계 · 기계장비 · 플랜트</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title">
+                                <div class="country--round">
+                                    <img src="./images/country.png" alt="사우스 아프리카" />
+                                </div>
+                                <a href="" class="text__title fs-m ellipsis">홍길동 멘토 홍길동 멘토 홍길동 멘토 홍길동 멘토 홍길동 멘토 홍길동 멘토 홍길동 멘토 홍길동 멘토</a>
+                                <span class="country__title">사우스 아프리카</span>
+                            </div>
+                            <ul class="item__cont">
+                                <li>
+                                    <strong>분야</strong>
+                                    <p class="ellipsis">엔지니어링 · 기계설계 · 기계장비 · 플랜트</p>
+                                </li>
+                                <li>
+                                    <strong>직무</strong>
+                                    <p class="ellipsis">기계설계 엔지니어링 · 플랜트 엔지니어링</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title">
+                                <div class="country--round">
+                                    <img src="./images/country.png" alt="사우스 아프리카" />
+                                </div>
+                                <a href="" class="text__title fs-m ellipsis">홍길동 멘토</a>
+                                <span class="country__title">사우스 아프리카</span>
+                            </div>
+                            <ul class="item__cont">
+                                <li>
+                                    <strong>분야</strong>
+                                    <p class="ellipsis">엔지니어링 · 기계설계 · 기계장비 · 플랜트</p>
+                                </li>
+                                <li>
+                                    <strong>직무</strong>
+                                    <p class="ellipsis">기계설계 엔지니어링 · 플랜트 엔지니어링</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title">
+                                <span class="ellipsis">모임이름 나오는 자리</span>
+                                <div class="fs-l text--bold ellipsis2">개설 목적이 나오는 자리 입니다. 개설 목적이 나오는 자리 입니다. 개설 목적이 나오는 자리 입니다.</div>
+                                <p class="text__content ellipsis2">
+                                    컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다.
+                                </p>
+                            </div>
+                            <div class="thumbnail__info">
+                                <div>
+                                    <p>이지민</p>
+                                    <span>23.10.25</span>
+                                </div>
+                                <button type="button" class="btn btn--primary btn-s">참여신청</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title">
+                                <span class="ellipsis">모임이름 나오는 자리</span>
+                                <a href="" class="fs-l text--bold ellipsis2">개설 목적이 나오는 자리 입니다. </a>
+                                <p class="text__content ellipsis2">
+                                    컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다. 컨텐츠 내용입니다.
+                                </p>
+                            </div>
+                            <div class="thumbnail__info">
+                                <div>
+                                    <p>이지민</p>
+                                    <span>23.10.25</span>
+                                </div>
+                                <button type="button" class="btn btn--primary btn-s">참여신청</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item">
+                        <div class="item-wrapper">
+                            <div class="item__title ac h--fixed">학력</div>
+                            <div class="text__content ac text--bold">
+                                대전대학교<br />
+                                대학교(4년)<br />
+                                졸업
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 👉 box -->
+                <h2 class="guide-title">라인있는 박스</h2>
+                <div class="box--line">라인있는 박스 (모바일에서는 하단 테두리)</div>
+                <div class="style--line pd-l">라인있는 박스</div>
+                <div class="box--line style--round">라인있는 박스</div>
+
+                <div class="box--bg__gray">
+                    회색배경 박스
+                    <div class="box--bg__white">흰색박스</div>
+                </div>
+
+                <!-- 👉 위아래 라인있는 목록 -->
+                <h2 class="guide-title">위아래 라인있는 목록</h2>
+                <ul class="border-list mr-top-xs">
+                    <li class="border-item pd-s">
+                        <p class="fs-m fw-m">(1) 해외봉사 활동성과 (활동소개, 국제개발협력 관련 전문성 등)</p>
+                        <div class="mr-top-s">
+                            <pre>
+                            안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협상이 이번이 처음이기도하고.. 주의에 저연차분도 없고..  알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도 부장님과 사수께서도
+                        </pre
+                            >
+                        </div>
+                    </li>
+                    <li class="border-item pd-s">
+                        <ul class="flex--start wrap gap-m">
+                            <li class="badge-item">국가유공자</li>
+                            <li class="badge-item">저소득층</li>
+                            <li class="badge-item">장애인</li>
+                            <li class="badge-item">기타사유</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- 👉 옵션 설정창 -->
+                <h2 class="guide-title">옵션 설정창</h2>
+                <div class="option__box">
+                    <div class="option__top">
+                        <p class="option__title">관심 분야</p>
+                        <div class="option__tags">
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                            <span class="option__tag"
+                                >옵션명
+                                <button type="button" title="삭제">
+                                    <span class="icon ic-close"></span></button
+                            ></span>
+                        </div>
+                    </div>
+                    <div class="option__body">
+                        <div class="option__add ac">
+                            <button type="button" class="btn btn--blue btn-s">
+                                + 추가
+                                <span class="visually-hidden">열기</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="option__bottom">
+                        <div class="option__tags">
+                            <button type="button" class="option__tag on">옵션명</button>
+                            <button type="button" class="option__tag">옵션명</button>
+                            <button type="button" class="option__tag">옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명 옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명 옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명 옵션명 옵션</button>
+                            <button type="button" class="option__tag">옵션명</button>
+                            <button type="button" class="option__tag">옵션명</button>
+                            <button type="button" class="option__tag">옵션명</button>
+                        </div>
+
+                        <div class="option__bottom--ctrl">
+                            <div class="select-option__list">
+                                <div class="option__tags">
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명 옵션명 옵션명<button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                    <span class="option__tag"
+                                        >옵션명
+                                        <button type="button" title="삭제">
+                                            <span class="icon ic-close"></span></button
+                                    ></span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="button" class="btn btn--secondaly btn-s"><span class="icon ic-refresh"></span>초기화</button>
+                                <button type="button" class="btn btn--primary btn-s">선택된 조건 추가</button>
+                                <button type="button" class="btn btn--line btn-s">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="style--line mr-top-s">
+                    <ul class="option__lists">
+                        <li>
+                            <div class="option-tags__wrap">
+                                <strong>기본조건</strong>
+                                <div class="option__tags">
+                                    <span class="option__tag">옵션명</span>
+                                    <span class="option__tag">옵션명 옵션</span>
+                                    <span class="option__tag">옵션명 옵션명 옵션</span>
+                                    <span class="option__tag">옵션명</span>
+                                    <span class="option__tag">옵션명</span>
+                                    <span class="option__tag">옵션명</span>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn--secondaly btn-s btn--edit">수정</button>
+                        </li>
+                        <li>
+                            <div class="option-tags__wrap">
+                                <strong>추가조건</strong>
+                                <div class="option__tags">
+                                    <span class="option__tag">글로벌인재 : YP</span>
+                                    <span class="option__tag">경력 : 3년~5년</span>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn--secondaly btn-s btn--edit">수정</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 class="guide-title">상세 정보 리스트 유형</h2>
+
+                <div class="horizon-wrap">
+                    <div class="horizon-item">
+                        <div class="horizon__left">
+                            <p class="fw-m fs-m">개발도상국인재개발사업</p>
+                        </div>
+                        <div class="horizon__right">
+                            <ul class="normal-list">
+                                <li>분야 : 인재양성</li>
+                                <li>대상국가 : 방글라데시</li>
+                                <li>종업원수 : 20명</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="horizon-item">
+                        <div class="horizon__left">
+                            <p class="fw-m fs-m">1992.03 ~ 1998.02</p>
+                            <span class="text--blue">졸업</span>
+                        </div>
+                        <div class="horizon__right">
+                            <ul class="info__detail">
+                                <li>
+                                    <span class="info__title">오픈메이트</span>
+                                    <span class="info__text">사업개발팀 수석연구원</span>
+                                </li>
+                            </ul>
+                            <p class="info__text mr-top-xs">
+                                권정보시스템 2023 기능개선 용역 PM (2023.08 ~ 2023.12) 발주처 : 소상공인시장진흥공단<br />
+                                주요사업내용 : 기능개선 및 위치기반 빅데이터 분석 사업<br />
+                                업무 : PM, 사업관리, 품질관리, GIS분석데이터 검토 담당
+                            </p>
+                            <ul class="info__detail mr-top-s fs-s">
+                                <li>
+                                    <span class="info__title">담당직무</span>
+                                    <span class="info__text">PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="item-delete-btn">
+                            <span class="visually-hidden">삭제</span>
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class="guide-title">왼쪽 오른쪽 나뉜유형</h2>
+                <div class="flex-wrap-group">
+                    <div class="full-item">
+                        <div class="input-wrap">
+                            <label for="input-text" class="visually-hidden">문의 제목</label>
+                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                        </div>
+                        <!-- PUB: 추가버튼 클릭시 추가 -->
+                        <div class="input-wrap">
+                            <label for="input-text" class="visually-hidden">문의 제목</label>
+                            <input type="text" id="input-text" class="normal-input input--full" placeholder="내용을 입력하세요." />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn--secondaly btn-s"><i class="icon ic-plus-bold"></i> 추가</button>
+                </div>
+
+                <h2 class="guide-title">경고박스</h2>
+                <div class="ac alert-box">마감기한이 지났습니다.</div>
+                
+                <hr>
+
+                <h2 class="guide-title">갤러리 썸네일 팝업</h2>
+
+                <!-- 메인 사진 슬라이더 -->
+                <div class="gallery-box">
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 0)">
+                            <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 1)">
+                            <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 2)">
+                            <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 0)">
+                            <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 1)">
+                            <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 2)">
+                            <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 0)">
+                            <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 1)">
+                            <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                        </a>
+                    </div>
+                    <div class="gallery-image">
+                        <a href="javascript:void(0)" onclick="openGalleryModal('galleryPop', 2)">
+                            <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 사진 슬라이더 팝업 -->
+                <div id="galleryPop" class="modal modal--gallery">
+                    <div class="modal-box">
+                        <button type="button" class="modal-close-btn" onclick="closeModal('galleryPop')">
+                            <span class="icon ic-close"></span>
+                            <span class="visually-hidden">닫기버튼</span>
+                        </button>
+                        <div class="modal-body">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="/images/dummy/dummy_thumbnail.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="/images/dummy/dummy_thumbnail-2.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="/images/dummy/dummy_thumbnail-3.png" alt="">
+                                    </div>
+                                </div>
+                                <button type="button" class="swiper-button-next"></button>
+                                <button type="button" class="swiper-button-prev"></button>
+                                <!-- <div class="swiper-pagination"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

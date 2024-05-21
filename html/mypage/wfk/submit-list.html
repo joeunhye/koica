@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 장학생신청 목록</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- 스킵 메뉴 시작 -->
+        <div class="skipMenu">
+            <a href="#headSkip">메뉴로 이동</a>
+            <a href="#contentSkip" class="contentSkip">본문 바로가기</a>
+        </div>
+        <!-- 스킵 메뉴 종료 -->
+
+        <!-- header --> 
+        <header class="header">
+            <div class="header-top">
+                <div class="wrap-inner">
+                    <h1 class="head-logo">
+                        <a href="main.html">
+                            <img src="../../images/logo-main.svg" alt="koica 개발협력커리어센터 로고" />
+                        </a>
+                    </h1>
+                    <div class="pc-right-group mb-search-group">
+                        <div class="header-search">
+                            <button type="button" class="mb-head-btn search-close-btn"><span class="visually-hidden">메뉴 닫기</span></button>
+                            <input type="search" name="" id="" placeholder="검색어를 입력하세요" />
+                            <button type="button" class="search-submit-btn">검색버튼</button>
+                        </div>
+                        <ul class="small-nav__list pc-only">
+                            <li><a href="">로그인</a></li>
+                            <li><a href="">회원가입</a></li>
+                            <li><a href="">마이페이지</a></li>
+                            <li><a href="">알림</a></li>
+                            <li><a href="">LOW</a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-right-group mb-only">
+                        <button type="button" class="mb-head-btn mb-search-btn"><span class="visually-hidden">검색버튼</span></button>
+                        <button type="button" class="mb-head-btn mb-menu-btn"><span class="visually-hidden">메뉴열기</span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- 헤더 하단 메뉴 -->
+            <div id="headSkip" class="header-bottom mb-side-nav">
+                <div class="wrap-inner">
+                    <!-- PUB:  모바일에서만 노출됩니다 -->
+                    <div class="mb-side-top">
+                        <div class="mb-side-top-wrap">
+                            <a href="./login.html" class="mb-top__item">로그인</a>
+                            <a href="" class="mb-top__item">회원가입</a>
+                        </div>
+                        <button type="button" class="mb-head-btn menu-close-btn"><span class="visually-hidden">메뉴 닫기</span></button>
+                    </div>
+                    <!-- //////////////////////////// -->
+                    <div class="gnb-depth-wrap">
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">센터소개</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li>
+                                            <a href="#">커리어센터 소개</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">국제개발협력이란?</a></li>
+                                                <li><a href="">KOICA 개발협력 커리어센터</a></li>
+                                                <li><a href="">경력사다리</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">정책/제도 안내</a></li>
+                                        <li><a href="#">연간일정</a></li>
+                                        <li><a href="#">조직도</a></li>
+                                        <li><a href="#">오시는 길 </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">취업컨설팅</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">취업, 창업 상담</a></li>
+                                        <li><a href="#">입사서류 컨설팅 </a></li>
+                                        <li><a href="#">면접 컨설팅 </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">채용정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">채용정보</a></li>
+                                        <li><a href="#">주간채용정보</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">교육정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">NCS특강</a></li>
+                                        <li><a href="#">논술</a></li>
+                                        <li><a href="#">NCS 모의테스트</a></li>
+                                        <li><a href="#">AI 모의면접</a></li>
+                                        <li><a href="#">STEP-UP</a></li>
+                                        <li><a href="#">외부교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">행사정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">개발협력 경험공유회</a></li>
+                                        <li>
+                                            <a href="#">취창업스토리</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">작품등록</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">외부교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">지원정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">장학생</a></li>
+                                        <li><a href="#">리턴 프로그램</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">커뮤니티</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">우수자소서</a></li>
+                                        <li><a href="#">면접노하우 후기</a></li>
+                                        <li><a href="#">국제기구 진출 경험</a></li>
+                                        <li>
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">스터디 모임 소개</a></li>
+                                                <li><a href="">스터디 모임 목</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">멘토링</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">멘토링이란?</a></li>
+                                                <li><a href="">1:1 멘토링</a></li>
+                                                <li><a href="">1:N 멘토링</a></li>
+                                                <li><a href="">멘토 지원하기</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">자료실</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">알림/문의</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li><a href="#">Q&A</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li>
+                                            <a href="#">이용가이드</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">개인회원</a></li>
+                                                <li><a href="">기업회원</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">설문조사</a></li>
+                                        <li><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- visual banner -->
+        <section class="visual-banner">
+            <div class="visual-img">
+                <img src="../../images/visual-banner-image.png" alt="" />
+            </div>
+            <div class="wrap-inner banner-inner">
+                <h2 class="banner-title">마이페이지 </h2>
+                <ul class="location-list">
+                    <li class="location-item"><span class="icon ic-home"></span><span class="visually-hidden">홈</span></li>
+                    <li class="location-item">마이페이지</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- left menu --> 
+                    <aside class="left-menu">
+                        <ul class="left-menu__list">
+                            <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                            <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="" aria-expanded="false">이력관리</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item"><a href="#">이력서 관리</a></li>
+                                    <li class="depth-item"><a href="#">자소서 관리</a></li>
+                                    <li class="depth-item"><a href="#">파견이력</a></li>
+                                    <li class="depth-item"><a href="#">PR 보고서</a></li>
+                                    <li class="depth-item"><a href="#">구직준비도</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">입사지원관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">입사지원 현황</a></li>
+                                    <li class="depth-item"><a href="#">관심공고</a></li>
+                                    <li class="depth-item"><a href="#">관심기업</a></li>
+                                    <li class="depth-item"><a href="#">관심분야 설정</a></li>
+                                    <li class="depth-item"><a href="#">내 이력서 열람기업</a></li>
+                                    <li class="depth-item"><a href="#">받은 제안 확인</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">컨설팅</a></h2>
+                                <ul class="depth-list"> 
+                                    <li class="depth-item"><a href="#">1:1 취업상담 </a></li>
+                                    <li class="depth-item"><a href="#">1:N 취업상담 </a></li>
+                                    <li class="depth-item"><a href="#">컨설팅 관리 </a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">교육행사관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">교육관리</a></li>
+                                    <li class="depth-item"><a href="#">행사관리</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">스터디모임</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">창업지원관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">창업 프로그램</a></li>
+                                    <li class="depth-item"><a href="#">WFK장학생</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item is-on">
+                                <h2 class="depth-title"><a href="#" aria-expanded="true">WFK장학생</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">장학생 선발</a></li>
+                                    <li class="depth-item is-active"><a href="#">장학금 신청</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">회원정보관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">회원정보 관리</a></li>
+                                    <li class="depth-item"><a href="#">환경설정</a></li>
+                                    <li class="depth-item"><a href="#">증명서 신청 및 발급</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title">장학금 신청</h2>
+                        <h3 class="sub-title">수혜종료 서류제출</h3>
+                        <p class="mr-top-s">
+                            수혜종료 및 학위수료 후 3개월 이내 수혜기간 전(全)학년 전(全)학기 학업성적표 및 학위수료증 첨부하여 종료보고서를 제출하여야 합니다.
+                            (장학금 종료 후 3개월 이내 학위 미취득 시 학위증 사본과 학위 논문은 학위 취득 후 3개월 이내에 제출하여야 합니다.)
+                        </p>
+                        <div class="ar mr-top-s">
+                            <a href="" class="btn btn--line btn-m ml-auto" download="">종료보고서 양식 다운로드 </a>
+                        </div>
+
+                        <h3 class="sub-title">공통서류</h3>
+
+                        <div class="responsive-table mr-top-s">
+                            <table class="table">
+                                <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                <colgroup class="pc-only">
+                                    <col style="width: 25%">
+                                    <col style="width: auto">
+                                    <col style="width: 20%">
+                                    <col style="width: 15%">
+                                </colgroup>
+                                <caption>수혜종류 서류제출 목록입니다. 수혜종류서류, 첨부파일, 제출일, 진행상황 내역이있습니다.</caption>
+                                <thead class="pc-only ac">
+                                    <tr>
+                                        <th>수혜종료 서류</th>
+                                        <th>첨부파일</th>
+                                        <th>제출일</th>
+                                        <th>진행상황</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> 
+                                        <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                        <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                        <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                        <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                        <td class="ac m-small order-0">종료보고서</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">제출전</span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">수혜기간 학업성적표</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">제출완료</span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">학위(수여)증명서</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0">
+                                            <a href="" class="btn btn--blue btn-s">보완요청</a>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">학위논문 또는 연구성과물</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <a href="" class="btn btn--secondaly btn-s" download="download">다운로드</a>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">승인</span></td>
+                                    </tr>
+                                </tbody> 
+                            </table>
+                        </div>
+
+                        <h3 class="sub-title mr-top-m">정규과정이 남아있는 경우 추가 제출 서류</h3>
+
+                        <div class="responsive-table mr-top-s">
+                            <table class="table">
+                                <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                <colgroup class="pc-only">
+                                    <col style="width: 25%">
+                                    <col style="width: auto">
+                                    <col style="width: 20%">
+                                    <col style="width: 15%">
+                                </colgroup>
+                                <caption>수혜종류 서류제출 목록입니다. 수혜종류서류, 첨부파일, 제출일, 진행상황 내역이있습니다.</caption>
+                                <thead class="pc-only ac">
+                                    <tr>
+                                        <th>수혜종료 서류</th>
+                                        <th>첨부파일</th>
+                                        <th>제출일</th>
+                                        <th>진행상황</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> 
+                                        <!-- m-hide 클래스 : pc에서만 보이는 요소 -->
+                                        <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                        <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                        <!-- m-right 클래스 : 모바일에서 오른쪽에 배치되는 요소 -->
+                                        <td class="ac m-small order-0">종료보고서</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">제출전</span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">수혜기간 학업성적표</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">제출완료</span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">학위(수여)증명서</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <input type="file" name="" id="upload-file" class="visually-hidden">
+                                                <label for="upload-file" class="btn btn--secondaly btn-s">파일선택</label>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0">
+                                            <a href="" class="btn btn--blue btn-s">보완요청</a>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                        <td class="ac m-small order-0">학위논문 또는 연구성과물</td>
+                                        <td class="m-full al">
+                                            <div class="flex--start gap-m">
+                                                <a href="" class="btn btn--secondaly btn-s" download="download">다운로드</a>
+                                                <!-- 업로드 파일 있을 때 -->
+                                                <ul class="file-list">
+                                                    <li class="file-item">
+                                                        <span class="file-item-name"><i class="icon ic-file"></i>논문</span>
+                                                        <button type="button" class="file-item-delete">
+                                                            <span class="visually-hidden">삭제</span>
+                                                            <span class="icon ic-close"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="m-small ac">2024.05.25 </td>
+                                        <td class="m-small ac m-right order-0"><span class="text--navy">승인</span></td>
+                                    </tr>
+                                </tbody> 
+                            </table>
+                        </div>
+
+                        <div class="btn-group mr-top-m ar">
+                            <button type="button" class="btn btn--line btn-m">임시저장</button>
+                            <button type="button" class="btn btn--primary btn-m">제출</button>
+                            <button type="button" class="btn btn--secondaly btn-m">목록</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer"></footer>
+    </body>
+</html>

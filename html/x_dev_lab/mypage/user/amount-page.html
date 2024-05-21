@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지>장학생 결정금액통지서</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+    </head>
+    <body>
+        <main id="contentSkip" class="print-page">
+            <div class="wrap-inner">
+                <div class="">
+                    <h2 class="sub-title ac">장학금 결정금액 통지서</h2>
+                    <div class="style--line pd-m m-line flex--between flex--start wrap mr-top-s">
+                        <div class="dl-group fs-m">
+                            <dl>
+                                <dt>장학기수</dt>
+                                <dd>12기</dd>
+                            </dl>
+                            <dl>
+                                <dt>지급차수</dt>
+                                <dd>2차</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="mr-top-s">
+                        <table class="table">
+                            <caption hidden="">
+                                장학생 최종 선발 통지서에 대한 정보입니다. 문의처, 합격자 정보, 활동정보, 최대수혜학기에 대한 정보가 있습니다.
+                            </caption>
+                            <colgroup>
+                                <col style="width: 32%" />
+                                <col style="width: auto" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">등록금(A)</th>
+                                    <td class="ar">
+                                        ￦ 6,944,113
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">타장학금(B) (근로성 장학금 제외)</th>
+                                    <td class="ar">
+                                        0
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">KOICA 장학금 (C) </th>
+                                    <td class="ar">
+                                        5,000,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">재정보증보험료 (D)</th>
+                                    <td class="ar">
+                                        0
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">실지급액 (E=C-D)</th>
+                                    <td class="ar">
+                                        6,944,113
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">적용환율</th>
+                                    <td class="ar">
+                                        1,200
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">[KOICA 장학금 (C)계산방법]</th>
+                                    <td>
+                                        <ol>
+                                            <li>1) A*75%+B > A 경우, A-B 만큼 지급</li>
+                                            <li>
+                                                2) A*75%+B ≤ A 경우, A*75% 만큼 지급
+                                                <ul>
+                                                    <li>     - 1학기(6개월 기준) 500만 원 상한</li>
+                                                    <li>     - 1년(12개월 기준) 1,000만 원 상한</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- PUB: 동의시 -->
+                    <div class="mr-top-s">
+                        <div class="style--line pd-m flex--between wrap flex--center">
+                            <p>본인은 상기와 같이 장학금 결정금액을 확인하였으며 <br>
+                                상기 내용대로 장학금을 지급하는 데 이의가 없음을 확인합니다. </p>
+                            <div class="ml-auto">
+                                <div class="radio-group">
+                                    <div class="radio-inline">
+                                        <input type="radio" name="agree" id="agree1" checked="" />
+                                        <label for="agree1">예</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <input type="radio" name="agree" id="agree2" />
+                                        <label for="agree2">아니오</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PUB: 동의하지 않을 시 -->
+                        <div class="style--line mr-top-s">
+                            <div class="pd-m flex--between wrap flex--center accordion-btn">
+                                <p>본인은 상기와 같이 장학금 결정금액을 확인하였으며 <br>
+                                    상기 내용대로 장학금을 지급하는 데 이의가 없음을 확인합니다. </p>
+                                <div class="ml-auto">
+                                    <div class="radio-group">
+                                        <div class="radio-inline">
+                                            <input type="radio" name="agree" id="agree1" />
+                                            <label for="agree1">예</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <input type="radio" name="agree" id="agree2" checked="" />
+                                            <label for="agree2">아니오</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pd-m border-t">
+                                <div class="w-full">
+                                    <textarea name="" id="" class="mr-top-xs" cols="1" rows="10" placeholder="이의 내용을 적어주십시오." title="이의신청"></textarea>
+
+                                    <ul class="resume-file-list mr-top-s">
+                                        <li>
+                                            <p class="file-title fw-m">증빙서류 첨부</p>
+                                            <div class="right-group">
+                                                <p class="file-name">해외봉사활동 경력 증명서.pdf</p>
+                                                <div class="btn--upload-group">
+                                                    <label for="file-upload" class="btn btn--secondaly btn-s btn--upload">파일선택</label>
+                                                    <input type="file" name="" id="file-upload" class="visually-hidden" />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="btn-group ar mr-top-s">
+                                        <button type="button" class="btn btn--blue btn-m">이의신청</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PUB: 동의시 -->
+                        <div class="bg__blue style--line pd-m ac mr-top-s">
+                            <p class="fs-m">장학금 결정금액 통지 내용을 확인 하셨습니다.</p>
+                        </div>
+
+                    </div>
+                    <div class="btn-group ar mr-top-m">
+                        <button type="button" class="btn btn--primary btn-m">확인</button>
+                        <button type="button" class="btn btn--secondaly btn-m">인쇄</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>마이페이지 장학생선발 상세</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- 스킵 메뉴 시작 -->
+        <div class="skipMenu">
+            <a href="#headSkip">메뉴로 이동</a>
+            <a href="#contentSkip" class="contentSkip">본문 바로가기</a>
+        </div>
+        <!-- 스킵 메뉴 종료 -->
+
+        <!-- header --> 
+        <header class="header">
+            <div class="header-top">
+                <div class="wrap-inner">
+                    <h1 class="head-logo">
+                        <a href="main.html">
+                            <img src="../../images/logo-main.svg" alt="koica 개발협력커리어센터 로고" />
+                        </a>
+                    </h1>
+                    <div class="pc-right-group mb-search-group">
+                        <div class="header-search">
+                            <button type="button" class="mb-head-btn search-close-btn"><span class="visually-hidden">메뉴 닫기</span></button>
+                            <input type="search" name="" id="" placeholder="검색어를 입력하세요" />
+                            <button type="button" class="search-submit-btn">검색버튼</button>
+                        </div>
+                        <ul class="small-nav__list pc-only">
+                            <li><a href="">로그인</a></li>
+                            <li><a href="">회원가입</a></li>
+                            <li><a href="">마이페이지</a></li>
+                            <li><a href="">알림</a></li>
+                            <li><a href="">LOW</a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-right-group mb-only">
+                        <button type="button" class="mb-head-btn mb-search-btn"><span class="visually-hidden">검색버튼</span></button>
+                        <button type="button" class="mb-head-btn mb-menu-btn"><span class="visually-hidden">메뉴열기</span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- 헤더 하단 메뉴 -->
+            <div id="headSkip" class="header-bottom mb-side-nav">
+                <div class="wrap-inner">
+                    <!-- PUB:  모바일에서만 노출됩니다 -->
+                    <div class="mb-side-top">
+                        <div class="mb-side-top-wrap">
+                            <a href="./login.html" class="mb-top__item">로그인</a>
+                            <a href="" class="mb-top__item">회원가입</a>
+                        </div>
+                        <button type="button" class="mb-head-btn menu-close-btn"><span class="visually-hidden">메뉴 닫기</span></button>
+                    </div>
+                    <!-- //////////////////////////// -->
+                    <div class="gnb-depth-wrap">
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">센터소개</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li>
+                                            <a href="#">커리어센터 소개</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">국제개발협력이란?</a></li>
+                                                <li><a href="">KOICA 개발협력 커리어센터</a></li>
+                                                <li><a href="">경력사다리</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">정책/제도 안내</a></li>
+                                        <li><a href="#">연간일정</a></li>
+                                        <li><a href="#">조직도</a></li>
+                                        <li><a href="#">오시는 길 </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">취업컨설팅</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">취업, 창업 상담</a></li>
+                                        <li><a href="#">입사서류 컨설팅 </a></li>
+                                        <li><a href="#">면접 컨설팅 </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">채용정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">채용정보</a></li>
+                                        <li><a href="#">주간채용정보</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">교육정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">NCS특강</a></li>
+                                        <li><a href="#">논술</a></li>
+                                        <li><a href="#">NCS 모의테스트</a></li>
+                                        <li><a href="#">AI 모의면접</a></li>
+                                        <li><a href="#">STEP-UP</a></li>
+                                        <li><a href="#">외부교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">행사정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">개발협력 경험공유회</a></li>
+                                        <li>
+                                            <a href="#">취창업스토리</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">작품등록</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">외부교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">지원정보</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">장학생</a></li>
+                                        <li><a href="#">리턴 프로그램</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">커뮤니티</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">우수자소서</a></li>
+                                        <li><a href="#">면접노하우 후기</a></li>
+                                        <li><a href="#">국제기구 진출 경험</a></li>
+                                        <li>
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">스터디 모임 소개</a></li>
+                                                <li><a href="">스터디 모임 목</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">멘토링</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">멘토링이란?</a></li>
+                                                <li><a href="">1:1 멘토링</a></li>
+                                                <li><a href="">1:N 멘토링</a></li>
+                                                <li><a href="">멘토 지원하기</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">자료실</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">알림/문의</a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="gnb-2nd-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li><a href="#">Q&A</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li>
+                                            <a href="#">이용가이드</a>
+                                            <ul class="gnb-3rd-list">
+                                                <li><a href="">개인회원</a></li>
+                                                <li><a href="">기업회원</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">설문조사</a></li>
+                                        <li><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- visual banner -->
+        <section class="visual-banner">
+            <div class="visual-img">
+                <img src="../../images/visual-banner-image.png" alt="" />
+            </div>
+            <div class="wrap-inner banner-inner">
+                <h2 class="banner-title">마이페이지 </h2>
+                <ul class="location-list">
+                    <li class="location-item"><span class="icon ic-home"></span><span class="visually-hidden">홈</span></li>
+                    <li class="location-item">마이페이지</li>
+                    <li class="location-item">WFK장학생</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- left menu --> 
+                    <aside class="left-menu">
+                        <ul class="left-menu__list">
+                            <!-- PUB: 메뉴 활성화 is-on 클래스 추가 -->
+                            <!-- PUB: 하위 메뉴 있을 시 aria-expanded="false" 추가 / 활성화시 aria-expanded="true" -->
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="" aria-expanded="false">이력관리</a></h2>
+                                <ul class="depth-list">
+                                    <!-- PUB: is-active 클래스 추가 -->
+                                    <li class="depth-item"><a href="#">이력서 관리</a></li>
+                                    <li class="depth-item"><a href="#">자소서 관리</a></li>
+                                    <li class="depth-item"><a href="#">파견이력</a></li>
+                                    <li class="depth-item"><a href="#">PR 보고서</a></li>
+                                    <li class="depth-item"><a href="#">구직준비도</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">입사지원관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">입사지원 현황</a></li>
+                                    <li class="depth-item"><a href="#">관심공고</a></li>
+                                    <li class="depth-item"><a href="#">관심기업</a></li>
+                                    <li class="depth-item"><a href="#">관심분야 설정</a></li>
+                                    <li class="depth-item"><a href="#">내 이력서 열람기업</a></li>
+                                    <li class="depth-item"><a href="#">받은 제안 확인</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">컨설팅</a></h2>
+                                <ul class="depth-list"> 
+                                    <li class="depth-item"><a href="#">1:1 취업상담 </a></li>
+                                    <li class="depth-item"><a href="#">1:N 취업상담 </a></li>
+                                    <li class="depth-item"><a href="#">컨설팅 관리 </a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">교육행사관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">교육관리</a></li>
+                                    <li class="depth-item"><a href="#">행사관리</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#">스터디모임</a></h2>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">창업지원관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">창업 프로그램</a></li>
+                                    <li class="depth-item"><a href="#">WFK장학생</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item is-on">
+                                <h2 class="depth-title"><a href="#" aria-expanded="true">WFK장학생</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item is-active"><a href="#">장학생 선발</a></li>
+                                    <li class="depth-item"><a href="#">장학금 신청</a></li>
+                                </ul>
+                            </li>
+                            <li class="left-menu__item">
+                                <h2 class="depth-title"><a href="#" aria-expanded="false">회원정보관리</a></h2>
+                                <ul class="depth-list">
+                                    <li class="depth-item"><a href="#">회원정보 관리</a></li>
+                                    <li class="depth-item"><a href="#">환경설정</a></li>
+                                    <li class="depth-item"><a href="#">증명서 신청 및 발급</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <div class="flex--between wrap">
+                            <h2 class="content-title">WFK장학생</h2>
+                            <p class="ar"><strong class="remaining-time"><span>잔여시간</span> 20일 12:40:50</strong></p>
+                        </div>
+                        <h3 class="sub-title">14기 WFK 장학금</h3>
+
+                        <!-- PUB: 합격시 -->
+                        <div class="box--line flex--between flex--start wrap">
+                            <div class="fs-l fw-b">
+                                <span class="">축하합니다.</span> <br>
+                                <p class="mr-top-xs">WFK 장학금 대상자로 선정되셨습니다.</p>
+                            </div>
+                            <button type="button" class="btn btn--line btn-m" onclick="window.open('./pass-page.html','pop01','top=10,left=10,width=1000,height=900,status=no,menubar=no,toolbar=no,resizable=no');">합격통지서 확인</button>
+                        </div>
+
+                        <div class="flex--between wrap mr-top-m">
+                            <h4 class="fs-m">지원자 기본정보</h4>
+                            <p class="text--darkgray">제출일 : 2024년 5월 25일 13:05:00</p>
+                        </div>
+                        <table class="table mb-column-table depth-table-column mr-top-xs">
+                            <caption hidden="">지원자의 기본정보입니다. 이름, 생년월일, 주소, 이메일, 집전화, 휴대폰 정보가 있습니다.</caption>
+                            <colgroup>
+                                <col style="width: 15%;">
+                                <col style="width: 35%;">
+                                <col style="width: 15%;">
+                                <col style="width: 35%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="ac">이름</th>
+                                    <td data-title="이름">홍길동</td>
+                                    <th scope="row" class="ac">생년월일</th>
+                                    <td data-title="생년월일">1980.12.12</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="ac">주소</th>
+                                    <td data-title="주소">서울시 서초구 강남대로148 청록빌딩 3층</td>
+                                    <th scope="row" class="ac">이메일</th>
+                                    <td data-title="이메일">honggildong@gmail.com </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="ac">집전화</th>
+                                    <td data-title="집전화">02-1234-5678 </td>
+                                    <th scope="row" class="ac">휴대폰</th>
+                                    <td data-title="휴대폰">010-1234-5678</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">최종학력</h4>
+                        <table class="table mb-row-table depth-table-row mr-top-xs">
+                            <caption hidden="">최종학력 목록입니다.</caption>
+                            <colgroup>
+                                <col style="width: 18%;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead class="visually-hidden">
+                                <tr>
+                                    <th scope="col">재학기간</th>
+                                    <th scope="col">학력정보</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>서울대학교</li>
+                                            <li>사회과교육학과(편입)</li>
+                                            <li>졸업</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>서울대학교</li>
+                                            <li>사회과교육학과(편입)</li>
+                                            <li>재학중</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">경력</h4>
+                        <table class="table mb-row-table depth-table-row mr-top-xs">
+                            <caption hidden="">경력 목록입니다.</caption>
+                            <colgroup>
+                                <col style="width: 18%;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead class="visually-hidden">
+                                <tr>
+                                    <th scope="col">재직기간</th>
+                                    <th scope="col">학력정보</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>월드버텍(주)</li>
+                                            <li>차장</li>
+                                            <li>웹기획</li>
+                                            <li>우수사원 표창</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>KOCIA</li>
+                                            <li>과장</li>
+                                            <li>상담</li>
+                                            <li>상벌사항이 나오는 자리</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">활동정보</h4>
+                        <table class="table mb-row-table depth-table-row mr-top-xs">
+                            <caption hidden="">활동정보 목록입니다.</caption>
+                            <colgroup>
+                                <col style="width: 18%;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead class="visually-hidden">
+                                <tr>
+                                    <th scope="col">활동기간</th>
+                                    <th scope="col">활동정보</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>글로벌새마을청년전문봉사단</li>
+                                            <li>나이지리아</li>
+                                            <li>멋진기관</li>
+                                            <li>괜찮은 직종</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2000.03~2004.02</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>국제개발 전문봉사단</li>
+                                            <li>과테말라</li>
+                                            <li>좋은기관</li>
+                                            <li>괜찮은 직종</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">신청내역</h4>
+                        <table class="table mb-row-table depth-table-row mr-top-xs">
+                            <caption hidden="">신청내역 목록입니다.</caption>
+                            <colgroup>
+                                <col style="width: 18%;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead class="visually-hidden">
+                                <tr>
+                                    <th scope="col">신청국가</th>
+                                    <th scope="col">신청정보</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">대한민국</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li>서울대학교 국제대학원</li>
+                                            <li>사회교육학</li>
+                                            <li>석사</li>
+                                            <li>입학</li>
+                                            <li>졸업논문 필수</li>
+                                            <li>화상면접 미신청</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">우대사항</h4>
+                        <table class="table mb-row-table depth-table-row mr-top-xs">
+                            <caption hidden="">우대사항 목록입니다.</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="visually-hidden">우대사항 리스트</th>
+                                    <td>
+                                        <ul class="flex--start wrap gap-m">
+                                            <li class="badge-item">국가유공자</li>
+                                            <li class="badge-item">저소득층</li>
+                                            <li class="badge-item">장애인</li>
+                                            <li class="badge-item">기타사유</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="fs-m mr-top-m">연구계획서</h4>
+                        <ul class="border-list mr-top-xs">
+                            <li class="border-item pd-s">
+                                <p class="fs-m fw-m">(1) 해외봉사 활동성과 (활동소개, 국제개발협력 관련 전문성 등) </p>
+                                <div class="mr-top-s">
+                                    <pre>
+                                        안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+    현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+    현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+    입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+    이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협상이 이번이 처음이기도하고.. 주의에 저연차분도 없고..  알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+    고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도 부장님과 사수께서도
+                                    </pre>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <p class="fs-m fw-m">(2) 연구분야 및 연구계획, 연구의 기대효과 (봉사활동과 연구계획의 연관성 포함)</p>
+                                <div class="mr-top-s">
+                                    <pre>
+                                        안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+    현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+    현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+    입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+    이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협상이 이번이 처음이기도하고.. 주의에 저연차분도 없고..  알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+    고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도 부장님과 사수께서도
+                                    </pre>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <p class="fs-m fw-m">(3) 연구분야 및 연구계획, 연구의 기대효과 (봉사활동과 연구계획의 연관성 포함)</p>
+                                <div class="mr-top-s">
+                                    <pre>
+                                        안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+    현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+    현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+    입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+    이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협상이 이번이 처음이기도하고.. 주의에 저연차분도 없고..  알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+    고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도 부장님과 사수께서도
+                                    </pre>
+                                </div>
+                            </li>
+                            <li class="border-item pd-s">
+                                <p class="fs-m fw-m">(4) 연구분야 및 연구계획, 연구의 기대효과 (봉사활동과 연구계획의 연관성 포함)</p>
+                                <div class="mr-top-s">
+                                    <pre>
+                                        안녕하세요. 현재 입사한지 딱 1년차가 되는 신입입니다.
+    현재 IT회사는 아닌곳에서 개발부에서 SI 및 SM 업무를 진행하고있습니다.
+    현재 맡고있는 업무는 서버구축, DB구축, 웹개발(디자인 제외), 배치개발, 윈도우앱개발 회사규모는 180명정도 되는 중소기업입니다.
+    입사하기전에 인턴을 4개월정도 진행한 후 세전 연봉 4000에 정식직원이 되었습니다.
+    이제 만 1년차가 되었는데.. 슬슬 연봉협상시즌이라 연봉협상을 진행해야하는데 어떻게 어디까지 연봉을 불러야하는지가 솔직히 잘 모르겠습니다.. 연봉협상이 이번이 처음이기도하고.. 주의에 저연차분도 없고..  알고있는거라고는 기본 연봉인상률정도인데.. 기본적으로 약 7%정도 오른다고 말하더라구요
+    고작 1년차지만, 신규 3억5천 사업에 소프트웨어쪽 총괄해서 개발을 진행하고 있기도하고 솔직히 신입한테 맡기는게 의문이기는하지만....) 부서내에서도 부장님과 사수께서도
+                                    </pre>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h4 class="fs-m mr-top-m">첨부파일</h4>
+                        <ul class="resume-file-list mr-top-s">
+                            <li>
+                                <p class="file-title fw-m">졸업증명서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">파일명.pdf</p>
+                                    </div>
+                                    <a href="" class="btn btn--secondaly btn-s ml-auto btn--download" download="">다운로드</a>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="file-title fw-m">경력증명서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">파일명.pdf</p>
+                                    </div>
+                                    <a href="" class="btn btn--secondaly btn-s ml-auto btn--download" download="">다운로드</a>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="file-title fw-m">자격증명서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">파일명.pdf</p>
+                                    </div>
+                                    <a href="" class="btn btn--secondaly btn-s ml-auto btn--download" download="">다운로드</a>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="file-title fw-m">장학금중복수혜확인서</p>
+                                <div class="right-group">
+                                    <div class="file-name-group">
+                                        <p class="file-name">파일명.pdf</p>
+                                    </div>
+                                    <a href="" class="btn btn--secondaly btn-s ml-auto btn--download" download="">다운로드</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="btn-group ar mr-top-m">
+                            <button class="btn btn--primary btn-m">수정</button>
+                            <button class="btn btn--secondaly btn-m">목록</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer"></footer>
+    </body>
+</html>

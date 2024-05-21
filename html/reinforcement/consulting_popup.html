@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>취업 > 팝업 유형 모음</title>
+        <!-- css -->
+        <link rel="stylesheet" href="../../css/reset.css" />
+        <link rel="stylesheet" href="../../css/wvCommon.css" />
+        <link rel="stylesheet" href="../../css/wvUser.css" />
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="../../css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="../../css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script defer src="../../js/wvScript.js"></script>
+    </head>
+    <body>
+        <!-- content -->
+        <main id="contentSkip" class="">
+            <div class="wrap-inner">
+                <div class="sub-content-wrap">
+                    <!-- content -->
+                    <section class="content-wrpper">
+                        <h2 class="content-title">취업컨설팅 팝업 유형 모음</h2>
+                        <article class="contents">
+                            <h3 class="title--m">취업, 창업 상담거부안내 팝업</h3>
+
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample')">모달창 오픈</button>
+
+                            <!-- 취업, 창업 상담거부안내 팝업 -->
+                            <div id="modal-sample" class="modal modal--alert">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <h4 class="modal--title">해당 컨설팅은 글로벌 인재를 대상으로 합니다.</h4>
+                                        <p>본인이 글로벌 인재인지 확인 하신 후 다시 신청해 주십시오</p>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button type="button" class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample')">확인</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <h3 class="title--m">컨설팅 신청 완료 팝업</h3>
+
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample2')">모달창 오픈</button>
+
+                            <!-- 컨설팅 신청 완료 팝업 -->
+                            <div id="modal-sample2" class="modal modal--alert">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample2')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <h4 class="modal--title">컨설팅 신청이 완료되었습니다.</h4>
+                                        <p>신청해 주셔서 감사합니다.<br />신청 내용은 마이페이지에서 확인 하실 수 있습니다.</p>
+                                    </div>
+                                    <div class="modal-foot ac">
+                                        <button type="button" class="btn btn--primary btn-s" onclick="closeModal('modal-sample2')">확인</button>
+                                        <button type="button" class="btn btn--secondaly btn-s" onclick="closeModal('modal-sample2')">취소</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <h3 class="title--m">이력서 불러오기 팝업</h3>
+
+                            <button type="button" class="btn btn--primary btn-l modal-open-btn" onclick="openModal('modal-sample3')">모달창 오픈</button>
+
+                            <!-- 이력서 불러오기 팝업 -->
+                            <div id="modal-sample3" class="modal">
+                                <div class="modal-box">
+                                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-sample3')">
+                                        <span class="icon ic-close"></span>
+                                        <span class="visually-hidden">닫기버튼</span>
+                                    </button>
+                                    <div class="modal-head">
+                                        이력서 불러오기
+                                        <button type="button" class="btn btn--secondaly btn-s">새 이력서 작성</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="responsive-table">
+                                            <table class="table center">
+                                                <!-- pc-only 클래스 : 모바일에서 사라짐 -->
+                                                <colgroup class="pc-only">
+                                                    <col style="width: 25%" />
+                                                    <col style="width: 10%" />
+                                                    <col style="width: 8%" />
+                                                </colgroup>
+                                                <caption>
+                                                    이력서 리스트
+                                                </caption>
+                                                <thead>
+                                                    <tr>
+                                                        <th>이력서 제목</th>
+                                                        <th>작성일</th>
+                                                        <th>선택</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <!-- m-show 클래스 : pc에서만 보이는 요소 -->
+                                                        <!-- m-full 클래스 : 모바일에서 넓이 100차지하는 요소 -->
+                                                        <!-- m-small 클래스 : 모바일에서 타이틀 이외 요소 -->
+                                                        <!-- m-font-s 클래스 : 모바일에서 폰트 크기 작아지는 요소 -->
+                                                        <td class="m-show m-full al">
+                                                            <a href="" class="ellipsis2 table-title"
+                                                                >여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이 찾는 바로 그 인재 홍길동입니다. 여러분이
+                                                                찾는 바로 그 인재 홍길동입니다.
+                                                            </a>
+                                                        </td>
+                                                        <td class="m-show m-small m-font-s">2023-09-15</td>
+                                                        <td class="m-show m-small m-right">
+                                                            <div class="btn-group ac">
+                                                                <button type="button" class="btn btn--secondaly btn-s">이력서 수정</button>
+                                                                <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="m-show m-full al"><a href="" class="ellipsis2 table-title">여러분이 찾는 바로 그 인재 홍길동입니다. </a></td>
+                                                        <td class="m-show m-small m-font-s">2023-09-15</td>
+                                                        <td class="m-show m-small m-right">
+                                                            <div class="btn-group ac">
+                                                                <button type="button" class="btn btn--secondaly btn-s">이력서 수정</button>
+                                                                <button type="button" class="btn btn--primary btn-s">선택</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- 리스트 항목이 없을 경우 -->
+                                                    <tr>
+                                                        <td colspan="3" class="m-show m-full ac">
+                                                            <p>
+                                                                작성된 이력서가 없습니다. <br />
+                                                                이력서를 작성해주십시오.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer"></footer>
+    </body>
+</html>

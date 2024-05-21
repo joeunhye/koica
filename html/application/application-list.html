@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>채용 공고 목록</title>
+        <!-- css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/wvCommon.css" />
+        <link rel="stylesheet" href="/css/wvUser.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+
+        <!-- 모바일 css -->
+        <link rel="stylesheet" href="/css/wvCommon-m.css" media="screen and (max-width: 860px)" />
+        <link rel="stylesheet" href="/css/wvUser-m.css" media="screen and (max-width: 860px)" />
+        <!-- script -->
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script defer src="/js/wvScript.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                salaryRangeSlider();
+                careerRangeSlider();
+
+                // 필터 검색 아코디언
+                $('.filter-title-btn').click(function(){
+                    const $group = $(this).closest('.filter-group')
+                    const $cont = $group.children('.group-cont');
+
+                    $group.toggleClass('off');
+
+                    if($group.hasClass('off')) {
+                        $cont.slideUp()
+                        $(this).attr('title', '펼치기')
+                    } else {
+                        $cont.slideDown()
+                        $(this).attr('title', '닫기')
+                    }
+                })
+
+                const $condiTabBtns = document.querySelectorAll('.condition-search .tab-btn');
+                const $condiConts = document.querySelectorAll('.condition-cont');
+
+                // 조건검색 탭 기능
+                $condiTabBtns?.forEach((condiTabBtn, idx)=> {
+                    condiTabBtn.addEventListener('click', function(e){
+                        e.preventDefault();
+                        
+                        removeClass($condiTabBtns, 'active')
+                        condiTabBtn.classList.add('active');
+                        
+                        const parent = condiTabBtn.closest('.condition-head');
+                        const hiddenText = parent.querySelectorAll('.visually-hidden');
+
+                        hiddenText.forEach((hidden) => {
+                            hidden.remove();
+                        });
+
+                        accessibilityText(condiTabBtn);
+
+                        removeClass($condiConts, 'is-on')
+                        $condiConts[idx].classList.add('is-on');
+                    })
+                })
+
+                const $regionLinks = document.querySelectorAll('.region__item a');
+                const $condiLinks = document.querySelectorAll('.list__group .list__item a');
+                
+                selectHandler($regionLinks, '.region__list', '.region__item')
+                selectHandler($condiLinks, '.list__group', '.list__item');
+
+                // 조건 선택 기능
+                function selectHandler(linkItems, parentItem, item){
+                    linkItems.forEach((linkItem)=> {
+                        linkItem.addEventListener('click', function(e){
+                            e.preventDefault();
+                            const condiItem = linkItem.parentElement;
+                            const parent = linkItem.closest(parentItem);
+                            const itemSiblings = parent.querySelectorAll(item);
+                        
+                            // 하나만 선택되어야 하는 요소
+                            if(parent.classList.contains('only-one')){
+                                removeClass(itemSiblings, 'active')
+                                condiItem.classList.add('active');
+                            } else {
+                                condiItem.classList.toggle('active');
+                            }
+
+                            const hiddenText = parent.querySelectorAll('.visually-hidden');
+
+                            hiddenText.forEach((hidden) => {
+                                hidden.remove();
+                            });
+
+                            accessibilityText(linkItem);
+                        })
+                    })
+                }
+
+                // remove class
+                function removeClass(els, className){
+                    els.forEach((el)=> {
+                        el.classList.remove(className);
+                    })
+                }
+
+                // 모바일에서 구직조건 창 띄우기
+                $('.condition-search-open').click(function(){
+                    $('.condition-container').addClass('is-show');
+                    // $('.condition-container').fadeIn();
+                    $('body').addClass('overflow-hidden');
+                })
+
+                $('.condition-close-btn').click(function(){
+                    $('.condition-container').removeClass('is-show');
+                    // $('.condition-container').fadeOut();
+                    $('body').removeClass('overflow-hidden');
+                })
+                
+                $('.mb-filter-btn').click(function(){
+                    $('.filter-container').addClass('is-show');
+                    // $('.filter-container').fadeIn();
+                    $('body').addClass('overflow-hidden');
+                })
+
+                $('.filter-close-btn').click(function(){
+                    $('.filter-container').removeClass('is-show');
+                    // $('.filter-container').fadeOut();
+                    $('body').removeClass('overflow-hidden');
+                })
+
+                $(window).on('resize', function(){
+                    if($(window).innerWidth() > 860){
+                        $('body').removeClass('overflow-hidden');
+                    }
+                })
+
+                $('.irs-line').prop('tabindex', '-1');
+                
+                // 연봉 슬라이드
+                function salaryRangeSlider(){
+                    var $range = $(".salary-range-slider"),
+                        $inputFrom = $(".salary-cont .js-input-from"),
+                        $inputTo = $(".salary-cont .js-input-to"),
+                        instance,
+                        min = 2000,
+                        max = 6000,
+                        from = 0,
+                        to = 0;
+    
+                    $range.ionRangeSlider({
+                        skin: "round",
+                        type: "double",
+                        min: min,
+                        max: max,
+                        from: min,
+                        to: 5000,
+                        step: 100,
+                        grid: true,
+                        force_edges: true,
+                        hide_min_max: true, 
+                        hide_from_to: true, 
+                        grid_num: 1,
+                        prettify_enabled: true,
+                        prettify_separator: ",",
+                        onStart: updateInputs,
+                        onChange: updateInputs
+                    });
+                    instance = $range.data("ionRangeSlider");
+    
+                    function updateInputs (data) {
+                        from = data.from;
+                        to = data.to;
+                        
+                        $inputFrom.prop("value", from);
+                        $inputTo.prop("value", to);	
+                    }
+    
+                    $inputFrom.on("input", function () {
+                        var val = $(this).prop("value");
+                        
+                        // validate
+                        if (val < min) {
+                            val = min;
+                        } else if (val > to) {
+                            val = to;
+                        }
+                        
+                        instance.update({
+                            from: val
+                        });
+                    });
+    
+                    $inputTo.on("input", function () {
+                        var val = $(this).prop("value");
+                        
+                        // validate
+                        if (val < from) {
+                            val = from;
+                        } else if (val > max) {
+                            val = max;
+                        }
+                        
+                        instance.update({
+                            to: val
+                        });
+                    });
+
+                    // 체크박스 선택시 슬라이더 비활성화
+                    // $('.salary-cont').find('input[type="checkbox"]').on('click', function(){
+                    //     if($(this).is(":checked") === true) {
+                    //         instance.update({
+                    //             block: true,
+                    //         });
+                    //         console.log('체크됨');
+                    //     } else if ($(this).is(":checked") === false) {
+                    //         console.log('체크안됨');
+                    //         instance.update({
+                    //             block: false,
+                    //         });
+                    //     }
+                    // })
+                }
+
+                // 경력 슬라이드
+                function careerRangeSlider(){
+                    var $range = $(".career-range-slider"),
+                        $inputFrom = $(".career-cont .js-input-from"),
+                        $inputTo = $(".career-cont .js-input-to"),
+                        instance,
+                        min = 1,
+                        max = 5,
+                        from = 0,
+                        to = 0;
+    
+                    $range.ionRangeSlider({
+                        skin: "round",
+                        type: "double",
+                        min: min,
+                        max: max,
+                        from: min,
+                        to: max,
+                        step: 1,
+                        grid: true,
+                        grid_num: 1,
+                        force_edges: true,
+                        hide_min_max: true, 
+                        hide_from_to: true, 
+                        prettify: my_prettify,
+                        values_separator: "~",
+                        onStart: updateInputs,
+                        onChange: updateInputs
+                    });
+
+                    function my_prettify (n) {
+                        return n + "년";
+                    }
+
+                    instance = $range.data("ionRangeSlider");
+    
+                    function updateInputs (data) {
+                        from = data.from;
+                        to = data.to;
+                        
+                        $inputFrom.prop("value", from);
+                        $inputTo.prop("value", to);	
+                    }
+    
+                    $inputFrom.on("input", function () {
+                        var val = $(this).prop("value");
+                        
+                        // validate
+                        if (val < min) {
+                            val = min;
+                        } else if (val > to) {
+                            val = to;
+                        }
+                        
+                        instance.update({
+                            from: val
+                        });
+                    });
+    
+                    $inputTo.on("input", function () {
+                        var val = $(this).prop("value");
+                        
+                        // validate
+                        if (val < from) {
+                            val = from;
+                        } else if (val > max) {
+                            val = max;
+                        }
+                        
+                        instance.update({
+                            to: val
+                        });
+                    });
+                }
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <!-- 스킵 메뉴 시작 -->
+        <div class="skipMenu">
+            <a href="#headSkip">메뉴로 이동</a>
+            <a href="#contentSkip" class="contentSkip">본문 바로가기</a>
+        </div>
+        <!-- 스킵 메뉴 종료 -->
+
+        <!-- header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="wrap-inner">
+                    <h1 class="head-logo">
+                        <a href="main.html">
+                            <img src="/images/logo-main.svg" class="pc-only" alt="koica 개발협력커리어센터 로고" />
+                            <img src="/images/logo-main-mobile.svg" class="mb-only" alt="koica 개발협력커리어센터 로고" />
+                        </a>
+                    </h1>
+                    <div class="pc-right-group">
+                        <ul class="small-nav__list pc-only">
+                            <li><a href="" title="로그인"><span class="icon ic-login"></span></a></li>
+                            <li><a href="" title="마이페이지"><span class="icon ic-user2"></span></a></li>
+                            <li>
+                                <!-- 알림 있을 시 -->
+                                <a href="" title="알림" class="btn--alarm">
+                                    <span class="icon ic-alert2"></span>
+                                    <span class="alarm-num">99</span>
+                                </a>
+                            </li>
+                            <li><a href="" title="검색"><span class="icon ic-search"></span></a></li>
+                            <li><a href="" title="저사향모드" class="btn--low">Low</a></li>
+                            <li><a href="" title="사이트맵"><span class="icon ic-menu"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-right-group mb-only">
+                        <button type="button" class="mb-menu-btn">
+                            <span class="bar1"></span>
+                            <span class="bar2"></span>
+                            <span class="bar3"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- 헤더 하단 메뉴 -->
+            <div id="headSkip" class="header-bottom mb-side-nav">
+                <div class="wrap-inner">
+                    <!-- //////////////////////////// -->
+                    <!-- pc 전용 메뉴 시작 -->
+                    <div class="gnb-depth-wrap pc-menu-wrap">
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Center <br><small>소개</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">센터 개요 및 연혁</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">개요</a></li>
+                                                <li><a href="">연혁</a></li>
+                                                <li><a href="">센터직원 소개</a></li>
+                                                <li><a href="">오시는 길</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">센터 서비스 안내</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">지원 대상</a></li>
+                                                <li><a href="">지원 절차</a></li>
+                                                <li><a href="">취업지원 프로그램</a></li>
+                                                <li><a href="">창업지원 프로그램</a></li>
+                                                <li><a href="">연간일정</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 진출 로드맵</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">단계별 KOICA 사업 소개</a></li>
+                                                <li><a href="">취업처별 진출 로드맵</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">취창업 성공수기 및 통계</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">귀국인재 취창업 통계</a></li>
+                                                <li><a href="">취업 성공사례</a></li>
+                                                <li><a href="">창업 성공사례</a></li>
+                                                <li><a href="">연도별 취창업 수기집</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Application<br><small>채용</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">취업, 창업 상담</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">1:1 상담 신청</a></li>
+                                                <li><a href="">1:N 상담 신청</a></li>
+                                                <li><a href="">현직자 멘토링 신청</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="">입사서류 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">NCS 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">논술 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">면접 컨설팅</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Reinforcement <br><small>취업</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="">창업지원 신청</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 교육/행사</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Enterprise <br><small>창업</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">KOICA 개발협력 좋은 일자리</a></li>
+                                                <li><a href="">정부 및 공공기관 </a></li>
+                                                <li><a href="">국제기구</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">비개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">정부 및 공공기관</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">인재추천 및 매칭</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">(구직자) 자기소개</a></li>
+                                                <li><a href="">(고용주) 인재구함</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Environment <br><small>소식</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="#">개발협력 교육</a></li>
+                                        <li class="depth2-item"><a href="#">개발협력 행사</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">취창업 성공수기 공모</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">기타 행사 및 교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Resources <br><small>공유</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">스터디모임 소개</a></li>
+                                                <li><a href="">스터디 목록</a></li>
+                                                <li><a href="">자율 소통공간</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">자료실/ 이용가이드</a></li>
+                                        <li class="depth2-item"><a href="#">Q&A 및 건의사항</a></li>
+                                        <li class="depth2-item"><a href="#">자주하는 질문(FAQ)</a></li>
+                                        <li class="depth2-item"><a href="#">설문조사</a></li>
+                                        <li class="depth2-item"><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pc 전용 메뉴 종료 -->
+                    <!-- mobile 전용 메뉴 시작 -->
+                    <div class="gnb-depth-wrap mb-menu-wrap">
+                        <div class="mb-side-top-wrap">
+                            <div class="top-box">
+                                <a href="" title="검색버튼" class="btn--search"><i class="icon ic-search"></i></a>
+                                <a href="" title="저사양모드" class="btn--low">Low</a>
+                            </div>
+                            <div class="bottom-box">
+                                <li class="mb-top__item"><a href=""><span class="icon ic-login"></span>로그인</a></li>
+                                <li class="mb-top__item"><a href=""><span class="icon ic-user2"></span>마이페이지</a></li>
+                                <li class="mb-top__item">
+                                    <!-- 알림 있을 시 -->
+                                    <a href="" title="알림" class="btn--alarm">
+                                        <span class="icon ic-alert2"></span>
+                                        <span class="alarm-num">99</span>
+                                    </a>
+                                </li>
+                                <li class="mb-top__item"><a href=""><span class="icon ic-vector"></span>사이트맵</a></li>
+                            </div>
+                        </div>
+                        <ul class="gnb-list">
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Center <small>(소개)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">센터 개요 및 연혁</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">개요</a></li>
+                                                <li><a href="">연혁</a></li>
+                                                <li><a href="">센터직원 소개</a></li>
+                                                <li><a href="">오시는 길</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">센터 서비스 안내</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">지원 대상</a></li>
+                                                <li><a href="">지원 절차</a></li>
+                                                <li><a href="">취업지원 프로그램</a></li>
+                                                <li><a href="">창업지원 프로그램</a></li>
+                                                <li><a href="">연간일정</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 진출 로드맵</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">단계별 KOICA 사업 소개</a></li>
+                                                <li><a href="">취업처별 진출 로드맵</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">취창업 성공수기 및 통계</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">귀국인재 취창업 통계</a></li>
+                                                <li><a href="">취업 성공사례</a></li>
+                                                <li><a href="">창업 성공사례</a></li>
+                                                <li><a href="">연도별 취창업 수기집</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Application <small>(채용)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">취업, 창업 상담</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">1:1 상담 신청</a></li>
+                                                <li><a href="">1:N 상담 신청</a></li>
+                                                <li><a href="">현직자 멘토링 신청</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="">입사서류 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">NCS 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">논술 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">면접 컨설팅</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Reinforcement <small>(취업)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="">창업지원 신청</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 컨설팅</a></li>
+                                        <li class="depth2-item"><a href="">창업지원 교육/행사</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="">Enterprise <small>(창업)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item">
+                                            <a href="">개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">KOICA 개발협력 좋은 일자리</a></li>
+                                                <li><a href="">정부 및 공공기관 </a></li>
+                                                <li><a href="">국제기구</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">비개발협력 분야 채용정보</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">정부 및 공공기관</a></li>
+                                                <li><a href="">비영리기관</a></li>
+                                                <li><a href="">민간기관</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item">
+                                            <a href="">인재추천 및 매칭</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">(구직자) 자기소개</a></li>
+                                                <li><a href="">(고용주) 인재구함</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">Environment <small>(소식)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li class="depth2-item"><a href="#">개발협력 교육</a></li>
+                                        <li class="depth2-item"><a href="#">개발협력 행사</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">취창업 성공수기 공모</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">공모전 소개</a></li>
+                                                <li><a href="">수상작</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">기타 행사 및 교육</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="gnb-item">
+                                <h2 class="gnb-title"><a href="#">Resources <small>(공유)</small></a></h2>
+                                <div class="head-menu__box">
+                                    <ul class="depth2-list">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li class="depth2-item">
+                                            <a href="#">스터디 모임</a>
+                                            <ul class="depth3-list">
+                                                <li><a href="">스터디모임 소개</a></li>
+                                                <li><a href="">스터디 목록</a></li>
+                                                <li><a href="">자율 소통공간</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="depth2-item"><a href="#">자료실/ 이용가이드</a></li>
+                                        <li class="depth2-item"><a href="#">Q&A 및 건의사항</a></li>
+                                        <li class="depth2-item"><a href="#">자주하는 질문(FAQ)</a></li>
+                                        <li class="depth2-item"><a href="#">설문조사</a></li>
+                                        <li class="depth2-item"><a href="#">취업동향</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- mobile 전용 메뉴 종료 -->
+                </div>
+                <div class="head-line-bar"></div>
+            </div>
+        </header>
+
+        <!-- content -->
+        <main id="contentSkip">
+            <div class="wrap-inner">
+                <div class="application-page application-list-page">
+                    <div class="mb-only app-search-box">
+                        <div class="condition-add-group">
+                            <p><button type="button" class="mb-reset-btn"><i class="icon ic-refresh"></i></button>구직조건을 선택하세요!</p>
+                            <button type="button" class="condition-search-open"><i class="icon ic-plus-bold"></i>추가</button>
+                        </div>
+                    </div>
+                    <aside class="filter-container">
+                        <form action="">
+                            <div class="filter-box">
+                                <h3 class="title pc-only"><i class="icon ic-filter"></i>Filter</h3>
+                                <div class="title-group mb-only">
+                                    <h3 class="title">추가 검색 조건<button type="button" class="filter-close-btn"><i class="icon ic-close"></i></button></h3>
+                                </div>
+                                <ul class="filter-list">
+                                    <li class="filter-group">
+                                        <h4 class="group-title">
+                                            글로벌인재
+                                            <button type="button" class="filter-title-btn" title="펼치기"></button>
+                                        </h4>
+                                        <div class="group-cont">
+                                            <ul class="filter-check__list">
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box1">
+                                                    <label for="check-box1">해외봉사단</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box2">
+                                                    <label for="check-box2">자문단</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box3">
+                                                    <label for="check-box3">YP</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box4">
+                                                    <label for="check-box4">KMCO</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box5">
+                                                    <label for="check-box5">코디네이터</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box6">
+                                                    <label for="check-box6">PAO</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">개발협력 좋은 일자리<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont">
+                                            <ul class="filter-check__list">
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box7">
+                                                    <label for="check-box7">임직원</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box8">
+                                                    <label for="check-box8">전문가</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box9">
+                                                    <label for="check-box9">경력사다리1단계</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box10">
+                                                    <label for="check-box10">국제기구</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box11">
+                                                    <label for="check-box11">경력사다리2단계</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">연봉<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont salary-cont">
+                                            <div class="range-slider" tabindex="-1">
+                                                <input type="text" class="salary-range-slider" value="" />
+                                            </div>
+                                            <div class="extra-controls">
+                                                <input type="text" class="js-input-from" value="0" />
+                                                ~
+                                                <input type="text" class="js-input-to" value="0" />
+                                                <button type="button" class="btn btn--secondaly btn-s">검색</button>
+                                            </div>
+                                            <div class="mr-top-xxs">
+                                                <div class="checkbox-block">
+                                                    <input type="checkbox" name="" id="salary-check">
+                                                    <label for="salary-check">협의</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">경력<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont career-cont">
+                                            <div class="filter-search__list mr-top-xs">
+                                                <div class="range-slider">
+                                                    <input type="text" class="career-range-slider" value="" />
+                                                </div>
+                                                <div class="extra-controls">
+                                                    <input type="text" class="js-input-from" value="0" />
+                                                    ~
+                                                    <input type="text" class="js-input-to" value="0" />
+                                                    <button type="button" class="btn btn--secondaly btn-s">검색</button>
+                                                </div>
+                                            </div>
+                                            <ul class="filter-check__list mr-top-xs">
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="career-check1">
+                                                    <label for="career-check1">무관</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="career-check2">
+                                                    <label for="career-check2">신입</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">고용형태<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont">
+                                            <ul class="filter-check__list">
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box7">
+                                                    <label for="check-box7">정규직</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box8">
+                                                    <label for="check-box8">기간제</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box9">
+                                                    <label for="check-box9">단기</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box10">
+                                                    <label for="check-box10">계약직</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box11">
+                                                    <label for="check-box11">파견직</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box11">
+                                                    <label for="check-box11">인턴</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box11">
+                                                    <label for="check-box11">기타</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">학력<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont">
+                                            <ul class="filter-check__list">
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box7">
+                                                    <label for="check-box7">고졸이하</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box8">
+                                                    <label for="check-box8">전문대졸업</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box9">
+                                                    <label for="check-box9">대학교졸업</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box10">
+                                                    <label for="check-box10">대학원 석사</label>
+                                                </li>
+                                                <li class="filter-check__item checkbox-block">
+                                                    <input type="checkbox" name="" id="check-box11">
+                                                    <label for="check-box11">대학원 박사</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="filter-group">
+                                        <h4 class="group-title">외국어능력<button type="button" class="filter-title-btn" title="펼치기"></button></h4>
+                                        <div class="group-cont">
+                                            <div class="flex--between">
+                                                <div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="radio" id="radio-box2" checked="">
+                                                        <label for="radio-box2">필수</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="radio" id="radio-box2" checked="">
+                                                        <label for="radio-box2">선택</label>
+                                                    </div>
+                                                </div>
+                                                <div class="tooltip mb-left">
+                                                    <button type="button" class="question-mark" title="툴팁 열기">?</button>
+                                                    <!-- 툴팁 내용 -->
+                                                    <div class="tooltip-cont">
+                                                        <p>최상 : 현지인 수준의 의사소통 가능</p>
+                                                        <p>상 : 업무관련 거의 모든 상황에서 만족할 만한 의사소통 가능</p>
+                                                        <p>중상 : 업무와 관련된 제한적인 의사소통 가능</p>
+                                                        <p>중 : 일상에서 제한적인 의사소통 가능</p>
+                                                        <p>하 : 일상에서 간단한 의사소통 가능</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <select name="" id="" class="input--full mr-top-xs" title="외국어 선택">
+                                                <option selected="" disabled="" hidden="">외국어 선택</option>
+                                                <option value="1">영어</option>
+                                                <option value="1">영어</option>
+                                                <option value="1">영어</option>
+                                                <option value="1">영어</option>
+                                                <option value="1">영어</option>
+                                            </select>
+                                            <div class="mr-top-xs">
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="" id="check-box2">
+                                                    <label for="check-box2">최상</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="" id="check-box2">
+                                                    <label for="check-box2">상</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="" id="check-box2">
+                                                    <label for="check-box2">중</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="" id="check-box2">
+                                                    <label for="check-box2">하</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="filter-reset-wrap">
+                                    <!-- pc에서 보이는 버튼 -->
+                                    <button type="button" class="filter-reset-btn pc-only"><i class="icon ic-refresh"></i>검색조건 초기화</button>
+                                    <!-- 모바일에서 보이는 버튼 -->
+                                    <button type="button" class="mb-only btn btn--secondaly btn-m btn-f">초기화</button>
+                                    <button type="button" class="mb-only btn btn--primary btn-m btn-f">결과보기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </aside>
+                    <section class="content-wrpper">
+                        <aside class="condition-container">
+                            <form action="">
+                                <div class="condition-search">
+                                    <div  class="condition-head">
+                                        <div class="condition-tab">
+                                            <a href="" class="tab-btn active">국제기구<span class="visually-hidden">선택됨</span></a>
+                                            <a href="" class="tab-btn">정부 및 공공기관</a>
+                                            <a href="" class="tab-btn">법인</a>
+                                        </div>
+                                        <div class="right-btn-group">
+                                            <a href="" class="tab-btn btn btn--secondaly btn-s">지역</a>
+                                            <a href="" class="tab-btn btn btn--secondaly btn-s">분야</a>
+                                            <button type="button" class="condition-close-btn mb-only"><i class="icon ic-close"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="condition-body">
+                                        <!-- 국제기구 선택 -->
+                                        <div class="condition-cont is-on">
+                                            <ul class="list__group">
+                                                <li class="list__item active"><a href="">전체</a></li>
+                                                <li class="list__item"><a href="">UN기구</a></li>
+                                                <li class="list__item"><a href="">국내소재 국제기구</a></li>
+                                                <li class="list__item"><a href="">국제금융기구</a></li>
+                                                <li class="list__item"><a href="">전비영리기관체</a></li>
+                                                <li class="list__item"><a href="">기타</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 정부 및 공공기관 -->
+                                        <div class="condition-cont">
+                                            <ul class="list__group">
+                                                <li class="list__item active"><a href="">전체</a></li>
+                                                <li class="list__item"><a href="">공공기관</a></li>
+                                                <li class="list__item"><a href="">교육 및 연구기관</a></li>
+                                                <li class="list__item"><a href="">정부 및 공공기관의 유관기관</a></li>
+                                                <li class="list__item"><a href="">중앙행정기관</a></li>
+                                                <li class="list__item"><a href="">지방자치단체</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 법인 -->
+                                        <div class="condition-cont">
+                                            <ul class="list__group">
+                                                <li class="list__item active"><a href="">전체</a></li>
+                                                <li class="list__item"><a href="">교육 및 연구기관</a></li>
+                                                <li class="list__item"><a href="">민간기업</a></li>
+                                                <li class="list__item"><a href="">비영리기관</a></li>
+                                                <li class="list__item"><a href="">사회복지서비스 기관</a></li>
+                                                <li class="list__item"><a href="">의료 및 보건 기관</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- 지역 -->
+                                        <div class="condition-cont">
+                                            <div class="region__group">
+                                                <ul class="region__list only-one">
+                                                    <li class="region__item active"><a href="">국내</a></li>
+                                                    <li class="region__item"><a href="">해외</a></li>
+                                                </ul>
+                                                <ul class="region__list only-one">
+                                                    <li class="region__item"><a href="">서울</a></li>
+                                                    <li class="region__item active"><a href="">경기도</a></li>
+                                                    <li class="region__item"><a href="">강원도</a></li>
+                                                    <li class="region__item"><a href="">인천광역시</a></li>
+                                                    <li class="region__item"><a href="">충청북도</a></li>
+                                                    <li class="region__item"><a href="">경상북도</a></li>
+                                                </ul>
+                                                <ul class="region__list last">
+                                                    <li class="region__item active"><a href="">경기도 전체</a></li>
+                                                    <li class="region__item"><a href="">가평군</a></li>
+                                                    <li class="region__item"><a href="">과천시</a></li>
+                                                    <li class="region__item"><a href="">가평군</a></li>
+                                                    <li class="region__item"><a href="">광명시</a></li>
+                                                    <li class="region__item"><a href="">광주시</a></li>
+                                                    <li class="region__item"><a href="">가평군</a></li>
+                                                    <li class="region__item"><a href="">과천시</a></li>
+                                                    <li class="region__item"><a href="">가평군</a></li>
+                                                    <li class="region__item"><a href="">광명시</a></li>
+                                                    <li class="region__item"><a href="">광주시</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- 분야 -->
+                                        <div class="condition-cont">
+                                            <ul class="list__group">
+                                                <li class="list__item active"><a href="">전체</a></li>
+                                                <li class="list__item"><a href="">교육</a></li>
+                                                <li class="list__item"><a href="">보건 (수자원 보건의료 보건위생)</a></li>
+                                                <li class="list__item"><a href="">거버넌스 평화</a></li>
+                                                <li class="list__item"><a href="">농림수산</a></li>
+                                                <li class="list__item"><a href="">환경 (기후행동, 기후변화)</a></li>
+                                                <li class="list__item"><a href="">ICT(과학기술혁신/통신/디지털/산업)</a></li>
+                                                <li class="list__item"><a href="">경제적분야 (혼합금융)</a></li>
+                                                <li class="list__item"><a href="">공공행정</a></li>
+                                                <li class="list__item"><a href="">에너지</a></li>
+                                                <li class="list__item"><a href="">성평등, 인권</a></li>
+                                                <li class="list__item"><a href="">지역개발(농촌개발)</a></li>
+                                                <li class="list__item"><a href="">인도적지원</a></li>
+                                                <li class="list__item"><a href="">기타</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="condition-foot">
+                                        <div class="select__group">
+                                            <span class="select__item">국제기구 > 전체<button type="button" class="delete-btn" title="삭제"></button></span>
+                                            <span class="select__item">ICT(과학기술혁신/통신/디지털/산업)<button type="button" class="delete-btn" title="삭제"></button></span>
+                                            <span class="select__item">전지역 (505)<button type="button" class="delete-btn" title="삭제"></button></span>
+                                            <span class="select__item">전지역 (505)<button type="button" class="delete-btn" title="삭제"></button></span>
+                                        </div>
+                                        <div class="btn__group">
+                                            <!-- pc에서 보이는 버튼 -->
+                                            <button type="button" class="pc-only reset--btn">초기화<i class="icon ic-refresh"></i></button>
+                                            <button type="button" class="pc-only btn btn--navy btn-l">선택된 조건 검색</button>
+                                            <!-- 모바일에서 보이는 버튼 -->
+                                            <button type="button" class="mb-only btn btn--secondaly btn-l btn-f">초기화</button>
+                                            <button type="button" class="mb-only btn btn--primary btn-l btn-f">결과보기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </aside>
+
+                        <div class="content-search mr-top-s no-wrap">
+                            <div class="content-search__inner">
+                                <div class="search-group">
+                                    <label for="nameInp" class="visually-hidden">키워드검색</label>
+                                    <input type="search" id="nameInp" placeholder="키워드검색">
+                                    <button type="button" class="search__btn" title="검색">
+                                        <span class="icon ic-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 모바일 필터 검색 버튼 -->
+                            <button type="button" class="mb-only mb-filter-btn"><i class="icon ic-filter"></i></button>
+                        </div>
+
+                        <!-- 공고 목록 -->
+                        <div class="mr-top-m">
+                            <div class="list-accessories">
+                                <div class="list-length">총 <span class="text--blue">20</span>개의 공고가 있습니다.</div>
+                            </div>
+                            <div class="list-item-group">
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">인디드재팬(Indeed Japan)</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check23" title="관심버튼">
+                                                <label for="like-check23"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                        <figure class="enter-logo-wrap">
+                                            <img src="https://imgs.jobkorea.co.kr/Images/Logo/86/s/y/2140xa0kcwcjrsdodx_3620kxdxlitaiah2sk.gif?p=y&hash=c" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">HITACHI반타라주식회사 - 서플라이체인(기술직) 채용</a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>일본</li>
+                                                <li>생산관리 사무원</li>
+                                                <li>신입</li>
+                                                <li>대학(교) 졸업</li>
+                                            </ul>
+                                            <p class="text--darkgray">국제협력, 역구기획, 시설관리</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m">홈페이지 지원</button>
+                                        <div class="side-detail">
+                                            <strong class="text--red">D-15</strong>
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 16명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">TEXTILES YOUMKWANG S.A.</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                        <figure class="enter-logo-wrap">
+                                            <img src="https://imgs.jobkorea.co.kr/Images/Logo/86/w/c/2000t80szblrmsct_3720stbhiffia2is.gif?p=y&hash=c" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                오더관리, 생산관리 (니카라과)
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>니카라과</li>
+                                                <li>영업관리 사무원</li>
+                                            </ul>
+                                            <p class="text--darkgray">KOICA 민관협력사업 지원</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m">이메일 지원</button>
+                                        <div class="side-detail">
+                                            <strong class="text--red">D-30</strong>
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 25명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">과테말라대사관</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                [KOTRA] 과테말라, 과테말라대사관, 관저요리사(1명)
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>과테말라</li>
+                                                <li>음식서비스관련 관리자</li>
+                                            </ul>
+                                            <p class="text--darkgray">사업 모니터링, 홍보 및 행정</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 2명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">HS LOGISTICS CO., LTD</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                [KOTRA] HS LOGISTICS CO., LTD, 베트남, 물류 영업/관리 (1명)
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>베트남</li>
+                                                <li>신입</li>
+                                                <li>대학(교) 졸업</li>
+                                            </ul>
+                                            <p class="text--darkgray">그외 기타 분류안된 운송관련 서비스업</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 12명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">휴젤(주)</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                [캐나다/Ontario]Finance & Operation Manager
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>대한민국</li>
+                                                <li>완제 의약품 제조업</li>
+                                            </ul>
+                                            <p class="text--darkgray">재무 관리</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 6명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">팔도 비나</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                팔도비나 태국 대표사무소 정규직 채용
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>캄보디아</li>
+                                                <li>면류, 마카로니 및 유사식품 제조업</li>
+                                            </ul>
+                                            <p class="text--darkgray">영업관련 관리</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 2명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">Urban Fresh Sushi</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                호주 일식전문점에서 정직원 채용합니다. 워홀소지자 or 신청자
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>호주</li>
+                                                <li>일식 음식점업</li>
+                                            </ul>
+                                            <p class="text--darkgray">고객 응대 및 서비스체크, 레지스터 관리, 전반적인 홀 관리</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 10명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">NEZOT</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                [KOTRA] 일본, NEZOT, 엑스퍼트 프로그래머 (10명)
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>일본</li>
+                                                <li>그외 기타 정보 서비스업</li>
+                                            </ul>
+                                            <p class="text--darkgray">PHP（Laravel）/ JavaScript（Vue.js）/ SQL</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 10명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="normal-list__item">
+                                    <div class="first-group left">
+                                        <div class="enter-name-group flex--start gap-s">
+                                            <a href="./enter-detail.html" class="fw-m hover-text">NEZOT</a>
+                                            <div class="btn--like">
+                                                <input type="checkbox" name="like" id="like-check2" title="관심버튼">
+                                                <label for="like-check2"><span class="icon ic-star"></span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-group">
+                                        <div class="info-group__item">
+                                            <a href="./application-detail.html" class="info-group__title ellipsis2">
+                                                [KOTRA] 멕시코, DONGKUK STEEL MEXICO, 관리직 (1명)
+                                            </a>
+                                            <ul class="info-detail list--inline text--darkgray">
+                                                <li>일본</li>
+                                                <li>그외 기타 정보 서비스업</li>
+                                            </ul>
+                                            <p class="text--darkgray">PHP（Laravel）/ JavaScript（Vue.js）/ SQL</p>
+                                        </div>
+                                    </div>
+                                    <div class="side-group mb-reverse">
+                                        <button type="button" class="btn btn--primary btn-m" disabled>마감</button>
+                                        <div class="side-detail">
+                                            <!-- <strong class="text--red">D-30</strong> -->
+                                            <span>~02/23(금)</span>
+                                            <div class="side-detail__list mr-top-xs">
+                                                <p>현재 지원자 10명</p>
+                                                <span class="slash">/</span>
+                                                <p>스크랩 20명</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pagination">
+                                <a href="#none" class="page-btn prev" title="이전으로">
+                                    <span class="icon ic-left"></span>
+                                </a>
+                                <ol class="page-list">
+                                    <li class="page-item active">
+                                        <a href="#none" class="page" title="현재 페이지">
+                                            <strong class="current">1</strong>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#none">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#none">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#none">4</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#none">5</a>
+                                    </li>
+                                </ol>
+                                <!-- 페이지 넘어갈 수 있는 상태일 때 active클래스 추가 -->
+                                <a href="#none" class="page-btn next active" title="다음으로">
+                                    <span class="icon ic-right"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="wrap-inner">
+                <button type="button" class="btn-top" title="맨위로 가기"></button>
+                <h2 class="foot-logo">
+                    <img src="/images/logo-foot-main.svg" class="pc-only" alt="koica 개발협력 커리어센터">
+                    <img src="/images/logo-foot-mobile.svg" class="mb-only" alt="koica 개발협력 커리어센터">
+                </h2>
+                <div class="foot-meddle-group">
+                    <ul class="foot-link-list">
+                        <li><a href="">개인정보처리방침</a></li>
+                        <li><a href="">이메일무단수집거부</a></li>
+                        <li><a href="">책임의 한계 및 법적고지</a></li>
+                        <li><a href="">회원정책안내</a></li>
+                        <li><a href="">찾아오시는 길</a></li>
+                        <li><a href="">사이트맵</a></li>
+                    </ul>
+                    <div class="family-select">
+                        <select name="" id="">
+                            <option value="" hidden>Family Site</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                            <option value="">패밀리사이트</option>
+                        </select>
+                        <button type="button">이동</button>
+                    </div>
+                </div>
+                <div class="foot-info-group">
+                    <dl>
+                        <dt>본사주소</dt>
+                        <dd>
+                            (13449) 경기도 성남시 수정구 대왕판교로 825 한국국제협력단
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>방문상담</dt>
+                        <dd>
+                            (06792) 서울시 서초구 헌릉로 15-18 (구 염곡동 304-3) 글로벌인재교육원 교육본부 1층 코이카봉사단 모집상담파트
+                            <button type="button" class="btn--copy"><span class="visually-hidden">주소복사</span></button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>문의</dt>
+                        <dd>kov1@koica.go.kr</dd>
+                    </dl>
+                    <dl>
+                        <dt>대표번호</dt>
+                        <dd>1588 - 0434 / 평일 09:00 ~ 18:00</dd>
+                    </dl>
+                </div>
+
+                <p class="copyright">Copyrights ⓒ by 2017 KOICA. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>
